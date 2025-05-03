@@ -1,15 +1,163 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  output = "../node_modules/.prisma/client"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
+ 
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  PLAYER
+}
+
+model User {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?         @unique
+  password      String?  
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  role          UserRole?       @default(USER)
+  // Optional for WebAuthn support
+  Authenticator Authenticator[]
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Match {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  homeTeam        String
+  awayTeam        String
+  homeTeamLogo    String?
+  awayTeamLogo    String?
+  date            String
+  time            String
+  venue           String
+  competition     String?
+  ticketsAvailable Boolean? @default(false)
+  upcoming        Boolean? @default(false)
+  isFeatured      Boolean? @default(false)
+  isLive          Boolean? @default(false)
+  
+  badge          Json?    // Stores: { title: string, color: string, duration: string }
+  matchPreview   Json[]   // Stores: [{ id: number|string, label: string }]
+  playersToWatch Json[]   // Stores: [{ id: number, name: string, position?: string, team?: string, avatar?: string }]
+  highlights     Json[]   // Stores: [{ id: number, title: string, description?: string, date?: string, league?: string }]
+  
+  backToback     Json?    // Stores: { homeTeam: { team: string, win: numb2er }, awayTeam?: { team: string, win: number }, bothTeams?: { draw: number } }
+  matchResult    Json?    // Stores: { homeTeamScore: number, awayTeamScore: number, competition: string, status: string }
+  tickets        Json?    // Stores: { price: number, quantity: number, sections: [{ name: string, price: number, available: number }] }
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Player {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  position  String
+  number    Int
+  featured  Boolean?  @default(false)
+  image     String?
+  
+  // Stats as JSON field 
+  stats     Json?     // Stores: {
+                      //   goals?: number,
+                      //   assists?: number,
+                      //   appearances: number,
+                      //   cleanSheets?: number,
+                      //   saves?: number,
+                      //   yellowCards?: number,
+                      //   redCards?: number,
+                      //   minutesPlayed?: number,
+                      //   passAccuracy?: number
+                      // }
+
+  playerbio Json[]    // Stores: [{ id: number, label: string }]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model News {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  title   String
+  slug    String
+  excerpt String
+  category String
+  author String
+  image String
+  date String
+  readTime String
+  content Json[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+}
+ 
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@unique([identifier, token])
+}
+ 
+// Optional for WebAuthn support
+model Authenticator {
+  credentialID         String  @id @map("_id")
+  userId               String  @db.ObjectId
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([userId, credentialID])
 }

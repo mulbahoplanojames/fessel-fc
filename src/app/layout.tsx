@@ -2,7 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/context/theme-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "FC Fassell - Official Website",
   description:
     "The official website of FC Fassell Football Club. Get the latest news, match updates, player profiles, and buy tickets for upcoming matches.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
