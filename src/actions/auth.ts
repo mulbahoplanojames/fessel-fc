@@ -2,8 +2,9 @@
 
 import { signIn, signOut } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
-import { AuthError } from "next-auth";
+// import { AuthError } from "next-auth";
 import prisma from "../../prisma";
+import { AuthError } from "next-auth";
 
 export async function login(provider: string) {
   await signIn(provider, {
@@ -46,27 +47,61 @@ export const loginWithCredentials = async (formData: FormData) => {
       console.log("User already exists", existingUser);
     }
 
-    await signIn("credentials", rawFormData);
+    const result = await signIn("credentials", {
+      ...rawFormData,
+      // redirect: false, // Prevent automatic redirect
+    });
+
+    console.log("Result", result);
+
+    // if (!result?.ok) {
+    //   return {
+    //     error: {
+    //       message: "Invalid credentials",
+    //     },
+    //   };
+    // }
+
+    revalidatePath("/admin");
+    // return { success: true };
   } catch (error) {
     console.log("Error", error);
     if (error instanceof AuthError) {
-      switch (error.type) {
-        case "CredentialsSignin":
-          return {
-            error: {
-              message: "Invalid credentials",
-            },
-          };
-        default:
-          return {
-            error: {
-              message: "Something went wrong",
-            },
-          };
-      }
+      return {
+        error: {
+          message: "Invalid credentials",
+        },
+      };
+    }
+
+    if (error instanceof Error) {
+      return {
+        error: {
+          message: error.message || "Something went wrong",
+        },
+      };
     }
 
     throw error;
+
+    // if (error instanceof AuthError) {
+    //   switch (error.type) {
+    //     case "CredentialsSignin":
+    //       return {
+    //         error: {
+    //           message: "Invalid credentials",
+    //         },
+    //       };
+    //     default:
+    //       return {
+    //         error: {
+    //           message: "Something went wrong",
+    //         },
+    //       };
+    //   }
+    // }
+
+    // throw error;
   }
 
   revalidatePath("/admin");

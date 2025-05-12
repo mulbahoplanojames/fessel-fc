@@ -8,6 +8,7 @@ import {
 
 import LoginGitHub from "@/components/auth/login-github";
 import LoginForm from "@/components/auth/login-form";
+import LoginGoogle from "@/components/auth/login-google";
 
 export default function Page() {
   return (
@@ -24,6 +25,9 @@ export default function Page() {
             <LoginForm />
             <div className="mt-3">
               <LoginGitHub />
+            </div>
+            <div className="mt-3">
+              <LoginGoogle />
             </div>
           </CardContent>
         </Card>

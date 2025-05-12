@@ -34,7 +34,7 @@ export function SiteHeader() {
         <Breadcrumb className="hidden sm:block">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">Kigali Lonestar FC</BreadcrumbLink>
+              <BreadcrumbLink href="#">Fassel FC</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>

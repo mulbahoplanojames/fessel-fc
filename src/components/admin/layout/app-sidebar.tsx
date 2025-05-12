@@ -89,7 +89,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Image src="/badge.jpeg" alt="logo image" fill />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Kigali Lonestar</span>
+                  <span className="truncate font-medium">Fassel</span>
                   <span className="truncate text-xs">Football Club</span>
                 </div>
               </Link>
