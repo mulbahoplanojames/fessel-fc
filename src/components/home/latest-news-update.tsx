@@ -5,11 +5,11 @@ import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { ChevronRight } from "lucide-react";
-// import { handleNewsFetch } from "@/utils/helpers/fetch-players";
-import news from "@/data/news.json";
+// import news from "@/data/news.json";
+import { handleNewsFetch } from "@/utils/helpers/handle-fetch";
 
 const LatestNewsUpdate = async () => {
-  // const news = await handleNewsFetch();
+  const news = await handleNewsFetch();
 
   return (
     <section className="py-14 bg-muted/50 container px-4 mx-auto">

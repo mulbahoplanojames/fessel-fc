@@ -1,15 +1,14 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import matches from "@/data/matches.json";
-// import { handleMatchFetch } from "@/utils/helpers/fetch-players";
+// import matches from "@/data/matches.json";
 import { CalendarDays } from "lucide-react";
 import { MatchCard } from "../match-card";
 import { DBMatch } from "@/types/match-type";
-// import { Match } from "@/types/db-match-type";
+import { handleMatchFetch } from "@/utils/helpers/handle-fetch";
 
 const UpcommingMatches = async () => {
-  // const matches = await handleMatchFetch();
+  const matches = await handleMatchFetch();
   if (!matches) {
     return null;
   }
