@@ -3,7 +3,30 @@ import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { informationsLink, quickLinks } from "@/data/footer-data";
 
+const socialLinks = [
+  {
+    label: "Facebook",
+    icon: <Facebook />,
+    path: "https://facebook.com",
+  },
+  {
+    label: "Instagram",
+    icon: <Instagram />,
+    path: "https://instagram.com",
+  },
+  {
+    label: "Twitter",
+    icon: <Twitter />,
+    path: "https://twitter.com",
+  },
+  {
+    label: "Youtube",
+    icon: <Youtube />,
+    path: "https://youtube.com",
+  },
+];
 export function Footer() {
   return (
     <footer className="bg-muted/30">
@@ -13,7 +36,7 @@ export function Footer() {
             <Link href="/" className="flex items-center space-x-2 mb-6">
               <Image
                 src="/placeholder.svg?height=48&width=48&text=Logo"
-                alt="Kigali Lonestar FC Logo"
+                alt="Fassel FC Logo"
                 width={48}
                 height={48}
                 className="rounded-full"
@@ -21,39 +44,21 @@ export function Footer() {
               <span className="font-bold text-xl">Kigali Lonestar FC</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">
-              The pride of Kigali, competing in the Rwanda Premier League since
-              2022. Our mission is to develop local talent and bring joy to our
-              fans through beautiful football.
+              The pride of Liberia, competing in the Liberian Premier League.
+              Our mission is to develop local talent and bring joy to our fans
+              through beautiful football.
             </p>
             <div className="flex space-x-4 mb-8">
-              <Link
-                href="https://twitter.com"
-                className="bg-muted/50 p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link
-                href="https://facebook.com"
-                className="bg-muted/50 p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
-              >
-                <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link
-                href="https://instagram.com"
-                className="bg-muted/50 p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
-              >
-                <Instagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-              <Link
-                href="https://youtube.com"
-                className="bg-muted/50 p-2 rounded-full text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
-              >
-                <Youtube className="h-5 w-5" />
-                <span className="sr-only">YouTube</span>
-              </Link>
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.path}
+                  className="bg-muted/50 p-2 rounded-full text-muted-foreground hover:text-primary-clr hover:bg-muted transition-colors"
+                >
+                  {link.icon}
+                  <span className="sr-only">{link.label}</span>
+                </Link>
+              ))}
             </div>
             <div className="mb-6">
               <h3 className="font-semibold mb-3">
@@ -65,7 +70,10 @@ export function Footer() {
                   placeholder="Your email"
                   className="rounded-full w-full flex-1"
                 />
-                <Button type="submit" className="rounded-full">
+                <Button
+                  type="submit"
+                  className="rounded-full text-white bg-primary-clr hover:bg-primary-clr/90"
+                >
                   Subscribe
                 </Button>
               </div>
@@ -76,108 +84,56 @@ export function Footer() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/matches"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Matches
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/news"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    News
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/players"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Players
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/tickets"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Tickets
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/fan-zone"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Fan Zone
-                  </Link>
-                </li>
+                {quickLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.path}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold mb-4">Information</h3>
               <ul className="space-y-3">
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Sponsors
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    Careers
-                  </Link>
-                </li>
+                {informationsLink.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.path}
+                      className="text-muted-foreground hover:text-primary-clr transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <address className="not-italic text-muted-foreground space-y-3">
-                <p>Kigali Lonestar FC</p>
-                <p>ULK Campus</p>
-                <p>KN 5 Rd, Kigali</p>
-                <p>Rwanda</p>
+                <p>FC Fassell</p>
+                <p>Antoinette Tubman Stadium</p>
+                <p>Monrovia</p>
+                <p>Liberia</p>
                 <p className="pt-3">
                   <a
-                    href="mailto:info@kigalilonestar.com"
-                    className="hover:text-primary transition-colors"
+                    href="mailto:info@fcfassell.com"
+                    className="hover:text-primary-clr transition-colors"
                   >
-                    info@kigalilonestar.com
+                    info@fcfassell.com
                   </a>
                 </p>
                 <p>
                   <a
-                    href="tel:+250791676207"
-                    className="hover:text-primary transition-colors"
+                    href="tel:+231123456789"
+                    className="hover:text-primary-clr transition-colors"
                   >
-                    +250 916 676 207
+                    +231 123 456 789
                   </a>
                 </p>
               </address>

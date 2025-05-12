@@ -7,6 +7,7 @@ import MobileNavbar from "./mobile-navbar";
 import { auth } from "@/lib/auth";
 import { UserDropDown } from "./user-dropdown";
 import { ThemeModeToggle } from "@/components/mode-toggle";
+import CartButton from "./cart-button";
 
 export async function Navbar() {
   const session = await auth();
@@ -47,10 +48,12 @@ export async function Navbar() {
                 <Link href="/sign-in">Sign In</Link>
               </Button>
             )}
+            <CartButton />
             <ThemeModeToggle />
           </div>
           {/* Mobile Navigation */}
           <MobileNavbar />
+          <CartButton />
         </div>
       </header>
     </>

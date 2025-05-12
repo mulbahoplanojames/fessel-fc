@@ -81,7 +81,7 @@ const MobileNavbar = () => {
                 {route.label}
               </Link>
             ))}
-            <div className="border-t pt-4 mt-2">
+            <div className="border-t pt-4 mt-2 ">
               <div className="flex items-center  space-x-4">
                 <Button
                   className=" rounded-full flex w-full bg-primary-clr hover:bg-primary-clr/80"
