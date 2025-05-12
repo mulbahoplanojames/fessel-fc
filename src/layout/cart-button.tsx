@@ -9,7 +9,7 @@ export default function CartButton() {
   const { itemCount } = useCart();
 
   return (
-    <Link href="/shop/cart" className="relative">
+    <Link href="/shop/cart" className="relative ">
       <Button variant="ghost" size="icon">
         <ShoppingCart className="h-5 w-5" />
         <span className="sr-only">Cart</span>

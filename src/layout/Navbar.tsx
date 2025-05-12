@@ -32,7 +32,7 @@ export async function Navbar() {
         <div className="flex items-center gap-2">
           <div className="md:flex hidden items-center  space-x-1 ">
             <Button
-              className="rounded-full hidden sm:flex text-primary-clr"
+              className="rounded-full hidden sm:flex text-black dark:text-white"
               asChild
               variant="outline"
             >
@@ -42,13 +42,15 @@ export async function Navbar() {
               <UserDropDown />
             ) : (
               <Button
-                className="mx-2 rounded-full hidden sm:flex bg-primary-clr  hover:bg-primary-clr/80 dark:text-white"
+                className="mx-2 rounded-full hidden sm:flex bg-primary-clr text-black  hover:bg-primary-clr/80 dark:text-white"
                 asChild
               >
                 <Link href="/sign-in">Sign In</Link>
               </Button>
             )}
-            <CartButton />
+            <div className="md:hidden">
+              <CartButton />
+            </div>
             <ThemeModeToggle />
           </div>
           {/* Mobile Navigation */}

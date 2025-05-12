@@ -100,7 +100,7 @@ const NavMenu = () => {
               "flex items-center text-[14px] font-medium transition-colors hover:text-primary-clr dark:hover:text-primary-clr ",
               route.active
                 ? "text-primary-clr border-b-2 border-primary-clr "
-                : "text-muted-foreground dark:text-white"
+                : "text-black dark:text-white"
             )}
           >
             {route.label}
