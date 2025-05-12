@@ -1,0 +1,511 @@
+[
+  {
+    "id": 1,
+    "homeTeam": "FC Fassell",
+    "awayTeam": "Nimba United",
+    "homeTeamLogo": "/logo.png",
+    "awayTeamLogo": "/team/nimba_united.webp",
+    "date": "Saturday, 1 June 2025",
+    "time": "20:00",
+    "venue": "Amahoro Stadium",
+    "competition": "Liberia Premier League",
+    "ticketsAvailable": true,
+    "isFeatured": true,
+    "upcoming": false,
+    "isLive": true,
+    "badge": {
+      "title": "Live",
+      "color": "red",
+      "duration": "Kick off in 1 hour"
+    },
+    "matchPreview": [
+      {
+        "id": 1,
+        "label": "FC Fassell will face their long-time rivals Rayon FC in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon FC unbeaten in their last five."
+      },
+      {
+        "id": "2",
+        "label": "The last time these two teams met, Kigali Lonestar emerged victorious with a 2-1 win, thanks to goals from Jean-Pierre Karekezi and Emmanuel Mugisha. Rayon FC will be looking to avenge that defeat and close the gap at the top of the table."
+      },
+      {
+        "id": "3",
+        "label": "Kigali Lonestar's head coach has emphasized the importance of maintaining their winning streak to keep their title hopes alive. The team has been training intensively for this match, focusing on defensive organization and quick counter-attacks."
+      },
+      {
+        "id": "4",
+        "label": "Fans can expect an electric atmosphere at Amahoro Stadium as these two giants of Rwandan football battle for supremacy. With both teams known for their attacking style of play, this match promises goals and excitement."
+      }
+    ],
+    "playersToWatch": [
+      {
+        "id": 1,
+        "name": "Jean-Pierre Karekezi",
+        "position": "Midfielder . 8 assists this season",
+        "team": "FC Fassell",
+        "avatar": "/players/dummy1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Emmanuel Mugisha",
+        "position": "Striker . 12 goals this season",
+        "team": "Bright Stars FC",
+        "avatar": "/players/dummy3.jpg"
+      }
+    ],
+    "highlights": [
+      {
+        "id": 1,
+        "title": "FC Fassell 2-1 Bright Stars FC",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Bright Stars FC in the 30th minute of the game.",
+        "date": "2021-10-17",
+        "league": "Rwanda Premier League"
+      },
+      {
+        "id": 2,
+        "title": "FC Fassell 2-1 Bright Stars FC",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Bright Stars FC in the 30th minute of the game.",
+        "date": "2021-10-17",
+        "league": "Rwanda Premier League"
+      }
+    ],
+    "backToback": {
+      "homeTeam": {
+        "team": "FC Fassell",
+        "win": 3
+      },
+      "awayTeam": {
+        "team": "Bright Stars FC",
+        "win": 2
+      },
+      "bothTeams": {
+        "draw": 1
+      }
+    },
+    "results": {
+      "homeTeamScore": 2,
+      "awayTeamScore": 1,
+      "competition": "Rwanda Premier League • Completed",
+      "status": "FT"
+    },
+    "ticket": {
+      "price": "5,000",
+      "image": "/placeholder.svg"
+    }
+  },
+  {
+    "id": 2,
+    "homeTeam": "FC Fassell",
+    "awayTeam": "Freeport FC",
+    "homeTeamLogo": "/logo.png",
+    "awayTeamLogo": "/team/Freeport_Football_Club_Logo.webp",
+    "date": "Friday, 29 July 2025",
+    "time": "20:00",
+    "venue": "Santiago Bernabeu",
+    "competition": "First Division",
+    "ticketsAvailable": true,
+    "isFeatured": true,
+    "upcoming": false,
+    "isLive": false,
+    "badge": {
+      "title": "Upcoming",
+      "color": "green",
+      "duration": "Kick off in 2 days"
+    },
+    "matchPreview": [
+      {
+        "id": 1,
+        "label": "FC Fassell will face their long-time rivals Rayon FC in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon FC unbeaten in their last five."
+      },
+      {
+        "id": "2",
+        "label": "The last time these two teams met, Kigali Lonestar emerged victorious with a 2-1 win, thanks to goals from Jean-Pierre Karekezi and Emmanuel Mugisha. Rayon FC will be looking to avenge that defeat and close the gap at the top of the table."
+      },
+      {
+        "id": "3",
+        "label": "Kigali Lonestar's head coach has emphasized the importance of maintaining their winning streak to keep their title hopes alive. The team has been training intensively for this match, focusing on defensive organization and quick counter-attacks."
+      },
+      {
+        "id": "4",
+        "label": "Fans can expect an electric atmosphere at Amahoro Stadium as these two giants of Rwandan football battle for supremacy. With both teams known for their attacking style of play, this match promises goals and excitement."
+      }
+    ],
+    "playersToWatch": [
+      {
+        "id": 1,
+        "name": "Edward Kalisa",
+        "position": "Midfielder . 8 assists this season",
+        "team": "FC Fassell",
+        "avatar": "/players/dummy3.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Coolest Mugisha",
+        "position": "Striker . 12 goals this season",
+        "team": "Rayon FC",
+        "avatar": "/players/dummy2.jpg"
+      }
+    ],
+    "highlights": [
+      {
+        "id": 1,
+        "title": "FC Fassell 2-1 Rayon FC",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Rayon FC in the 30th minute of the game.",
+        "date": "2021-10-24",
+        "league": "Rwanda Premier League"
+      },
+      {
+        "id": 2,
+        "title": "FC Fassell 2-1 Rayon FC",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Rayon FC in the 30th minute of the game.",
+        "date": "2021-10-24",
+        "league": "Rwanda Premier League"
+      },
+      {
+        "id": 3,
+        "title": "FC Fassell 2-1 Rayon FC",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Rayon FC in the 30th minute of the game.",
+        "date": "2021-10-24",
+        "league": "Rwanda Premier League"
+      }
+    ],
+    "backToback": {
+      "homeTeam": {
+        "team": "FC Fassell",
+        "win": 3
+      },
+      "awayTeam": {
+        "team": "Rayon FC",
+        "win": 2
+      },
+      "bothTeams": {
+        "draw": 1
+      }
+    },
+    "ticket": {
+      "price": "7,000",
+      "image": "/placeholder.svg"
+    }
+  },
+  {
+    "id": 3,
+    "homeTeam": "FC Fassell",
+    "awayTeam": "LISCR FC",
+    "homeTeamLogo": "/logo.png",
+    "awayTeamLogo": "/team/LISCR_FC_official_logo.webp",
+    "date": "20 May 2025",
+    "time": "20:00",
+    "venue": "Samuel K Doe Sport Complex",
+    "competition": "LestGbelle Super Cup",
+    "ticketsAvailable": false,
+    "isFeatured": true,
+    "upcoming": true,
+    "isLive": false,
+    "badge": {
+      "title": "Upcoming",
+      "color": "green",
+      "duration": "Kick off in 5 days"
+    },
+    "matchPreview": [
+      {
+        "id": 1,
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+      },
+      {
+        "id": "2",
+        "label": "The last time these two teams met, Kigali Lonestar emerged victorious with a 2-1 win, thanks to goals from Jean-Pierre Karekezi and Emmanuel Mugisha. Rayon Sports will be looking to avenge that defeat and close the gap at the top of the table."
+      },
+      {
+        "id": "3",
+        "label": "Kigali Lonestar's head coach has emphasized the importance of maintaining their winning streak to keep their title hopes alive. The team has been training intensively for this match, focusing on defensive organization and quick counter-attacks."
+      },
+      {
+        "id": "4",
+        "label": "Fans can expect an electric atmosphere at Amahoro Stadium as these two giants of Rwandan football battle for supremacy. With both teams known for their attacking style of play, this match promises goals and excitement."
+      }
+    ],
+    "playersToWatch": [
+      {
+        "id": 1,
+        "name": "Jean-Pierre Karekezi",
+        "position": "Midfielder . 8 assists this season",
+        "team": "FC Fassell",
+        "avatar": "/players/dummy1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Emmanuel Mugisha",
+        "position": "Striker . 12 goals this season",
+        "team": "Armee Patriotique Rwandaise FC",
+        "avatar": "/players/dummy2.jpg"
+      }
+    ],
+    "highlights": [
+      {
+        "id": 1,
+        "title": "FC Fassell 2-1 Armee Patriotique Rwandaise FC",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Armee Patriotique Rwandaise FC in the 30th minute of the game.",
+        "date": "2021-11-01",
+        "league": "Rwanda Premier League"
+      }
+    ],
+    "backToback": {
+      "homeTeam": {
+        "team": "FC Fassell",
+        "win": 3
+      },
+      "awayTeam": {
+        "team": "Armee Patriotique Rwandaise FC",
+        "win": 2
+      },
+      "bothTeams": {
+        "draw": 1
+      }
+    },
+    "ticket": {
+      "price": "5,000",
+      "image": "/placeholder.svg"
+    }
+  },
+  {
+    "id": 4,
+    "homeTeam": "FC Fassell",
+    "awayTeam": "Invisible Eleven",
+    "homeTeamLogo": "/logo.png",
+    "awayTeamLogo": "/team/Invincible_Eleven.webp",
+    "date": "Saturday, 1 May 2025",
+    "time": "20:00",
+    "venue": "Anthony Tubman Staduim",
+    "competition": "Liberia Champions League",
+    "ticketsAvailable": false,
+    "isFeatured": false,
+    "upcoming": true,
+    "isLive": false,
+    "badge": {
+      "title": "Upcoming",
+      "color": "green",
+      "duration": "Kick off in 12 days"
+    },
+    "matchPreview": [
+      {
+        "id": 1,
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+      },
+      {
+        "id": "2",
+        "label": "The last time these two teams met, Kigali Lonestar emerged victorious with a 2-1 win, thanks to goals from Jean-Pierre Karekezi and Emmanuel Mugisha. Rayon Sports will be looking to avenge that defeat and close the gap at the top of the table."
+      },
+      {
+        "id": "3",
+        "label": "Kigali Lonestar's head coach has emphasized the importance of maintaining their winning streak to keep their title hopes alive. The team has been training intensively for this match, focusing on defensive organization and quick counter-attacks."
+      },
+      {
+        "id": "4",
+        "label": "Fans can expect an electric atmosphere at Amahoro Stadium as these two giants of Rwandan football battle for supremacy. With both teams known for their attacking style of play, this match promises goals and excitement."
+      }
+    ],
+    "playersToWatch": [
+      {
+        "id": 1,
+        "name": "Jean-Pierre Karekezi",
+        "position": "Midfielder . 8 assists this season",
+        "team": "FC Fassell",
+        "avatar": "/players/dummy1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Emmanuel Mugisha",
+        "position": "Striker . 12 goals this season",
+        "team": "AS Kigali",
+        "avatar": "/players/dummy1.jpg"
+      }
+    ],
+    "highlights": [
+      {
+        "id": 1,
+        "title": "FC Fassell 2-1 AS Kigali",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for AS Kigali in the 30th minute of the game.",
+        "date": "2021-11-08",
+        "league": "Rwanda Premier League"
+      },
+      {
+        "id": 2,
+        "title": "FC Fassell 2-1 AS Kigali",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for AS Kigali in the 30th minute of the game.",
+        "date": "2021-11-08",
+        "league": "Rwanda Premier League"
+      },
+      {
+        "id": 3,
+        "title": "FC Fassell 2-1 AS Kigali",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for AS Kigali in the 30th minute of the game.",
+        "date": "2021-11-08",
+        "league": "Rwanda Premier League"
+      }
+    ],
+    "backToback": {
+      "homeTeam": {
+        "team": "FC Fassell",
+        "win": 3
+      },
+      "awayTeam": {
+        "team": "AS Kigali",
+        "win": 2
+      },
+      "bothTeams": {
+        "draw": 1
+      }
+    }
+  },
+  {
+    "id": 5,
+    "homeTeam": "FC Fassell",
+    "awayTeam": "Mighty Barolle",
+    "homeTeamLogo": "/logo.png",
+    "awayTeamLogo": "/team/Mighty_Barolle.webp",
+    "date": "2025-7-15",
+    "time": "20:00",
+    "venue": "Samuel K Doe Sport Complex",
+    "competition": "Liberia Premier League",
+    "ticketsAvailable": true,
+    "isFeatured": false,
+    "upcoming": true,
+    "isLive": false,
+    "badge": {
+      "title": "Upcoming",
+      "color": "green",
+      "duration": "Kick off in 15 days"
+    },
+    "matchPreview": [
+      {
+        "id": 1,
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+      },
+      {
+        "id": "2",
+        "label": "The last time these two teams met, Kigali Lonestar emerged victorious with a 2-1 win, thanks to goals from Jean-Pierre Karekezi and Emmanuel Mugisha. Rayon Sports will be looking to avenge that defeat and close the gap at the top of the table."
+      },
+      {
+        "id": "3",
+        "label": "Kigali Lonestar's head coach has emphasized the importance of maintaining their winning streak to keep their title hopes alive. The team has been training intensively for this match, focusing on defensive organization and quick counter-attacks."
+      },
+      {
+        "id": "4",
+        "label": "Fans can expect an electric atmosphere at Amahoro Stadium as these two giants of Rwandan football battle for supremacy. With both teams known for their attacking style of play, this match promises goals and excitement."
+      }
+    ],
+    "playersToWatch": [
+      {
+        "id": 1,
+        "name": "Jean-Pierre Karekezi",
+        "position": "Midfielder . 8 assists this season",
+        "team": "FC Fassell",
+        "avatar": "/players/dummy1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Emmanuel Mugisha",
+        "position": "Striker . 12 goals this season",
+        "team": "Etincelles FC",
+        "avatar": "/players/dummy1.jpg"
+      }
+    ],
+    "highlights": [
+      {
+        "id": 1,
+        "title": "FC Fassell 2-1 Etincelles FC",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Etincelles FC in the 30th minute of the game.",
+        "date": "2021-11-15",
+        "league": "Rwanda Premier League"
+      }
+    ],
+    "backToback": {
+      "homeTeam": {
+        "team": "FC Fassell",
+        "win": 3
+      },
+      "awayTeam": {
+        "team": "Etincelles FC",
+        "win": 2
+      },
+      "bothTeams": {
+        "draw": 1
+      }
+    }
+  },
+  {
+    "id": 6,
+    "homeTeam": "FC Fassell",
+    "awayTeam": "Watanga FC",
+    "homeTeamLogo": "/logo.png",
+    "awayTeamLogo": "https://i.pinimg.com/736x/82/77/33/827733f0a73b075cea746e3907b8576c.jpg",
+    "date": "2025-11-22",
+    "time": "20:00",
+    "venue": "Anthony Tubman Staduim",
+    "competition": "Orange Cup",
+    "ticketsAvailable": true,
+    "isFeatured": false,
+    "upcoming": true,
+    "isLive": false,
+    "badge": {
+      "title": "Upcoming",
+      "color": "green",
+      "duration": "Kick off in 22 days"
+    },
+    "matchPreview": [
+      {
+        "id": 1,
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+      },
+      {
+        "id": "2",
+        "label": "The last time these two teams met, Kigali Lonestar emerged victorious with a 2-1 win, thanks to goals from Jean-Pierre Karekezi and Emmanuel Mugisha. Rayon Sports will be looking to avenge that defeat and close the gap at the top of the table."
+      },
+      {
+        "id": "3",
+        "label": "Kigali Lonestar's head coach has emphasized the importance of maintaining their winning streak to keep their title hopes alive. The team has been training intensively for this match, focusing on defensive organization and quick counter-attacks."
+      },
+      {
+        "id": "4",
+        "label": "Fans can expect an electric atmosphere at Amahoro Stadium as these two giants of Rwandan football battle for supremacy. With both teams known for their attacking style of play, this match promises goals and excitement."
+      }
+    ],
+    "playersToWatch": [
+      {
+        "id": 1,
+        "name": "Jean-Pierre Karekezi",
+        "position": "Midfielder . 8 assists this season",
+        "team": "FC Fassell",
+        "avatar": "/players/dummy1.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Emmanuel Mugisha",
+        "position": "Striker . 12 goals this season",
+        "team": "Mukura Victory Sports",
+        "avatar": "/players/dummy1.jpg"
+      }
+    ],
+    "highlights": [
+      {
+        "id": 1,
+        "title": "FC Fassell 2-1 Mukura Victory Sports",
+        "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Mukura Victory Sports in the 30th minute of the game.",
+        "date": "2021-11-22",
+        "league": "Rwanda Premier League"
+      }
+    ],
+    "backToback": {
+      "homeTeam": {
+        "team": "FC Fassell",
+        "win": 3
+      },
+      "awayTeam": {
+        "team": "Mukura Victory Sports",
+        "win": 2
+      },
+      "bothTeams": {
+        "draw": 1
+      }
+    }
+  }
+]

@@ -1,0 +1,240 @@
+[
+  {
+    "id": 1,
+    "title": "FC Fassell signs new promising midfielder from Uganda",
+    "excerpt": "The club is excited to announce the signing of a new talented midfielder to strengthen the squad for the upcoming season. The 22-year-old has been a standout performer in the Ugandan Premier League.",
+    "category": "Club News",
+    "date": "March 25, 2025",
+    "author": "James Kagabo",
+    "readTime": "5 min read",
+    "image": "/new-signing.png",
+    "content": [
+      {
+        "id": 1.1,
+        "label": "Kigali Lonestar FC is thrilled to announce the signing of talented midfielder David Mugisha from Kampala City FC. The 22-year-old Ugandan international has signed a three-year contract with our club after an impressive season in the Ugandan Premier League."
+      },
+      {
+        "id": 1.1,
+        "label": "Mugisha, known for his exceptional vision and passing ability, scored 8 goals and provided 12 assists in 30 appearances last season, helping Kampala City FC secure a second-place finish. His performances earned him a spot in the Ugandan national team, where he has already earned 5 caps."
+      },
+      {
+        "id": 1.3,
+        "label": "I'm extremely excited to join Kigali Lonestar FC, said Mugisha during his unveiling at Amahoro Stadium. This is a club with great ambition and a strong vision for the future. I've always admired Rwandan football, and I can't wait to contribute to the team's success in the upcoming season."
+      },
+      {
+        "id": 1.4,
+        "label": "Head Coach Robert Niyonzima expressed his satisfaction with the new addition: David is exactly the type of player we've been looking for. He brings creativity, energy, and a winning mentality to our midfield. His ability to both score and create goals will be invaluable as we compete for trophies this season."
+      }
+    ],
+    "relatedNews": [2, 3, 4]
+  },
+  {
+    "id": 2,
+    "title": "Team captain returns from injury ahead of crucial match",
+    "excerpt": "Team captain Emmanuel Hakizimana has returned to full training after recovering from a hamstring injury that kept him sidelined for six weeks. His return comes at a crucial time as the team prepares for the upcoming Rwanda Cup semi-final.",
+    "category": "Club News",
+    "date": "March 23, 2025",
+    "author": "Marie Uwase",
+    "readTime": "4 min read",
+    "image": "/players/coach.png",
+    "content": [
+      {
+        "id": 2.1,
+        "label": "In a significant boost to Kigali Lonestar FC, team captain Emmanuel Hakizimana has returned to full training after recovering from a hamstring injury that kept him sidelined for six weeks. The defensive midfielder's return comes at a crucial time as the team prepares for the upcoming Rwanda Cup semi-final against traditional rivals APR FC."
+      },
+      {
+        "id": 2.2,
+        "label": "Hakizimana, who has been with the club since its founding in 2010, expressed his relief at returning to fitness: The past six weeks have been challenging, watching from the sidelines while my teammates battled on the pitch. I've worked hard with the medical team to ensure a complete recovery, and I feel stronger than ever."
+      },
+      {
+        "id": 2.3,
+        "label": "The captain's absence was felt during the team's recent run of matches, with Kigali Lonestar winning just two of the five league games he missed. His leadership, defensive prowess, and ability to dictate play from deep positions have been crucial to the team's success over the years."
+      },
+      {
+        "id": 2.4,
+        "label": "Head Coach Robert Niyonzima welcomed the captain's return: Emmanuel is the heart of this team. His experience, leadership, and tactical understanding are invaluable. Having him back for the semi-final gives us a significant advantage, not just in terms of his playing ability but also his influence on the rest of the squad."
+      }
+    ],
+    "relatedNews": [1, 5, 5]
+  },
+  {
+    "id": 3,
+    "title": "\"We aim for the title this season\" - Team Captain",
+    "category": "Interview",
+    "author": "James Kagabo",
+    "excerpt": "The club aim for the Rwanda Premier League title this season, says team captain Emmanuel Hakizimana in an exclusive interview.",
+    "date": "March 15, 2025",
+    "readTime": "6 min read",
+    "image": "/players/captin.png",
+    "content": [
+      {
+        "id": 3.1,
+        "label": "In an exclusive interview with Kigali Lonestar FC's official website, team captain Emmanuel Hakizimana has set out the squad's ambitions for the upcoming season, declaring that nothing less than the Rwanda Premier League title will satisfy the team's hunger for success."
+      },
+      {
+        "id": 3.2,
+        "label": "\"We've come close in the last two seasons, finishing second and third, but this year we're aiming for the top,\" stated Hakizimana, who is entering his fifteenth season with the club. \"The squad has been strengthened, our preparation has been excellent, and there's a real belief among the players that this can be our year.\""
+      },
+      {
+        "id": 3.3,
+        "label": "The 33-year-old midfielder, who has won two Rwanda Cups and one league title with Kigali Lonestar, pointed to the team's improved defensive record in pre-season as a key factor in their title aspirations. \"Championship-winning teams are built on solid defenses. We've conceded just two goals in six pre-season matches, which shows the progress we've made in that area.\""
+      },
+      {
+        "id": 3.4,
+        "label": "When asked about the competition, Hakizimana acknowledged the strength of traditional powerhouses APR FC and Rayon Sports but expressed confidence in Fassel FC ability to overcome them. \"APR and Rayon are always strong, but we've beaten both of them in pre-season. The gap has closed, and I believe our squad depth gives us an advantage over the course of a long season.\""
+      },
+      {
+        "id": 3.5,
+        "label": "The captain also highlighted the impact of new signing David Mugisha from Uganda: \"David has integrated seamlessly into the squad. His creativity in midfield adds a new dimension to our attack, and his winning mentality is infectious. He's exactly the type of player we needed.\""
+      }
+    ],
+    "relatedNews": [2, 6, 9]
+  },
+
+  {
+    "id": 4,
+    "title": "Head coach discusses pre-season preparations and new signings",
+    "excerpt": "Head Coach Robert Niyonzima shares insights on the team's pre-season training camp in Uganda, the integration of new signings, and his tactical plans for the upcoming Rwanda Premier League season.",
+    "category": "Interview",
+    "author": "Oplano Mulbah",
+    "date": "March 12, 2025",
+    "readTime": "8 min read",
+    "image": "/players/coach.png",
+    "content": [
+      {
+        "id": 4.1,
+        "label": "Head Coach Robert Niyonzima discusses the team's pre-season training camp in Uganda, where the players underwent rigorous fitness and tactical drills to prepare for the upcoming Rwanda Premier League season."
+      },
+      {
+        "id": 4.2,
+        "label": "The head coach highlights the integration of new signings, emphasizing their role in bolstering the squad's depth and adding a competitive edge to the team dynamics."
+      },
+      {
+        "id": 4.3,
+        "label": "Tactical plans for the season focus on a high-pressing game and quick transitions, aiming to dominate possession and exploit opposition defenses with speed and precision."
+      },
+      {
+        "id": 4.4,
+        "label": "Coach Niyonzima expresses confidence in the team's ability to challenge for the title, citing a strong squad and successful pre-season performances as key factors."
+      }
+    ],
+    "relatedNews": [2, 8, 5]
+  },
+  {
+    "id": 5,
+    "title": "\"Playing for Fassel FC is a dream come true\" - New Signing",
+    "excerpt": "New signing David Mugisha discusses his move from Uganda, his first impressions of Rwanda, and his ambitions with Kigali Lonestar FC in this in-depth interview.",
+    "category": "Interview",
+    "author": "Swakarla Stephen",
+    "date": "March 10, 2025",
+    "readTime": "10 min read",
+    "image": "/new-signing.png",
+    "content": [
+      {
+        "id": 5.1,
+        "label": "Playing for Kigali Lonestar is a dream come true - New Signing"
+      },
+      {
+        "id": 5.2,
+        "label": "New signing David Mugisha discusses his move from Uganda, his first impressions of Rwanda, and his ambitions with Kigali Lonestar FC in this in-depth interview."
+      },
+      {
+        "id": 5.3,
+        "label": "The 22-year-old midfielder expresses his excitement at joining the club and his eagerness to contribute to the team's success in the upcoming season."
+      },
+      {
+        "id": 5.4,
+        "label": "Mugisha highlights the warm welcome he has received from his teammates and the coaching staff, praising the professionalism and ambition of the club."
+      },
+      {
+        "id": 5.5,
+        "label": "The Ugandan international shares his impressions of Rwandan football and the competitive nature of the Rwanda Premier League, emphasizing the quality of players and the intensity of the matches."
+      }
+    ],
+    "relatedNews": [1, 5, 3]
+  },
+  {
+    "id": 6,
+    "title": "Tactical breakdown: How we secured the victory against Nimba United",
+    "category": "Analysis",
+    "author": "Oplano james Mulbah",
+    "excerpt": "In this tactical analysis, we break down the key factors that contributed to Kigali Lonestar FC's impressive 2-0 victory over defending champions APR FC in last weekend's top-of-the-table clash at Amahoro Stadium.",
+    "date": "March 10, 2025",
+    "readTime": "7 min read",
+    "image": "/players/captin.png",
+    "content": [
+      {
+        "id": 6.1,
+        "label": "In this tactical analysis, we break down the key factors that contributed to Kigali Lonestar FC's impressive 2-0 victory over defending champions APR FC in last weekend's top-of-the-table clash at Amahoro Stadium."
+      },
+      {
+        "id": 6.2,
+        "label": "Coach Robert Niyonzima's decision to switch from the usual 4-3-3 to a more compact 3-5-2 proved masterful. This adjustment allowed Kigali Lonestar to control the central areas while using wing-backs to exploit the spaces behind APR's attacking full-backs. The three-man defense of Manzi, Hakizimana, and Mugheni effectively neutralized APR's dangerous front three, limiting them to just two shots on target throughout the match"
+      },
+
+      {
+        "id": 6.3,
+        "label": "The midfield trio of Niyonzima, Mugisha, and Uwimana dominated proceedings, winning 65% of duels in the central area. New signing David Mugisha was particularly impressive, completing 94% of his passes and creating four clear chances. His ability to receive the ball under pressure and progress it forward repeatedly broke APR's pressing attempts"
+      }
+    ],
+    "relatedNews": [5, 9, 1]
+  },
+  {
+    "id": 7,
+    "title": "Season preview: Analyzing Fassel FC title chances",
+    "excerpt": "With the new season just weeks away, our tactical analyst examines Fassel FC strengths, weaknesses, and overall prospects for mounting a serious title challenge.",
+    "category": "Analysis",
+    "author": "Justin Muhire",
+    "date": "March 5, 2025",
+    "readTime": "8 min read",
+    "image": "/placeholder.svg?height=200&width=400&text=Analysis+2",
+    "content": [
+      {
+        "id": 7.1,
+        "label": "With the new season just weeks away, our tactical analyst examines Fassel FC strengths, weaknesses, and overall prospects for mounting a serious title challenge."
+      },
+      {
+        "id": 7.2,
+        "label": "The team's attacking prowess, led by the talented forward line, is expected to be a key factor in their title aspirations."
+      },
+      {
+        "id": 7.3,
+        "label": "Defensive solidity will also play a crucial role, with the backline needing to maintain consistency throughout the season."
+      },
+      {
+        "id": 7.4,
+        "label": "Midfield creativity, driven by new signing David Mugisha, could provide the edge in closely contested matches."
+      }
+    ],
+    "relatedNews": [1, 3, 6]
+  },
+  {
+    "id": 8,
+    "title": "The evolution of Fassel FC playing style under Coach Niyonzima",
+    "excerpt": "A detailed analysis of how Fassel FC tactical approach has evolved since Robert Niyonzima took over as head coach two years ago, with statistical comparisons and tactical diagrams.",
+    "category": "Analysis",
+    "author": "Tactical Insights",
+    "date": "March 2, 2025",
+    "readTime": "10 min read",
+    "image": "/placeholder.svg?height=200&width=400&text=Analysis+3",
+    "content": [
+      {
+        "id": 8.1,
+        "label": "The evolution of Fassel FC playing style under Coach Niyonzima"
+      },
+      {
+        "id": 8.2,
+        "label": "A detailed analysis of how Fassel FC tactical approach has evolved since Robert Niyonzima took over as head coach two years ago, with statistical comparisons and tactical diagrams."
+      },
+      {
+        "id": 8.3,
+        "label": "The team's shift from a possession-based game to a more direct, counter-attacking style has yielded positive results, with increased goal-scoring opportunities and defensive stability."
+      },
+      {
+        "id": 8.4,
+        "label": "Key tactical adjustments, such as the use of overlapping full-backs and a high defensive line, have been instrumental in the team's success in recent seasons."
+      }
+    ],
+    "relatedNews": [6, 7, 9]
+  }
+]
