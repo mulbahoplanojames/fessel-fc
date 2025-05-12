@@ -1,0 +1,552 @@
+[
+  {
+    "id": 1,
+    "name": "Joseph Coleman",
+    "position": "Forward",
+    "number": 9,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 12,
+      "assists": 5,
+      "appearances": 18
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Emmanuel Johnson",
+    "position": "Midfielder",
+    "number": 8,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 4,
+      "assists": 10,
+      "appearances": 20
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Marcus Williams",
+    "position": "Defender",
+    "number": 4,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 1,
+      "assists": 2,
+      "appearances": 19
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Samuel Davis",
+    "position": "Goalkeeper",
+    "number": 1,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "cleanSheets": 8,
+      "saves": 45,
+      "appearances": 20
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Patrick Wilson",
+    "position": "Forward",
+    "number": 11,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 8,
+      "assists": 3,
+      "appearances": 17
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Thomas Brown",
+    "position": "Defender",
+    "number": 5,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 0,
+      "assists": 1,
+      "appearances": 20
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Oliver Smith",
+    "position": "Midfielder",
+    "number": 6,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 2,
+      "assists": 7,
+      "appearances": 19
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "James Taylor",
+    "position": "Forward",
+    "number": 10,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 9,
+      "assists": 6,
+      "appearances": 16
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Francis Moore",
+    "position": "Defender",
+    "number": 3,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 0,
+      "assists": 3,
+      "appearances": 18
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+
+  {
+    "id": 10,
+    "name": "Samuel Jackson",
+    "position": "Midfielder",
+    "number": 14,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 3,
+      "assists": 4,
+      "appearances": 15
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a midfielder. I am currently the captain of the Rwanda national football team. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my passing, vision, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been the captain of the Rwanda national team since 2018, leading the team to the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile midfielder who can play in a variety of positions, including central midfield, attacking midfield, and defensive midfield. I am also known for my work rate, stamina, and tactical awareness."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Yves Cooper",
+    "position": "Forward",
+    "number": 7,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 6,
+      "assists": 2,
+      "appearances": 17
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Fiston Harris",
+    "position": "Goalkeeper",
+    "number": 12,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "cleanSheets": 3,
+      "saves": 22,
+      "appearances": 5
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Mustafa",
+    "position": "Midfielder",
+    "number": 18,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 3,
+      "assists": 10,
+      "appearances": 12
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Thomas",
+    "position": "Midfielder",
+    "number": 22,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 2,
+      "assists": 5,
+      "appearances": 9
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Osceakah K. Henries",
+    "position": "Forward",
+    "number": 7,
+    "featured": true,
+    "image": "/players/coolest.jpeg",
+    "stats": {
+      "goals": 12,
+      "assists": 5,
+      "appearances": 7
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Liberian  professional footballer who played as a forward. I am currently the head coach of the Rwanda national football team. I am the all-time top scorer for the Rwanda national team, with 25 goals in 53 appearances. I have played for clubs in Rwanda, Uganda, Kenya, and South Africa, including APR, AEL Limassol, Al-Merreikh, and Free State Stars. "
+      },
+      {
+        "id": 2,
+        "label": "I have also played for the Rwanda national team, making my debut in 1999 and retiring in 2013. I have won the Liberian Premier League, the Liberian Cup, and the Liberian Super Cup with APR, as well as the Cypriot Cup with AEL Limassol. I have also won the CECAFA Cup with the Rwanda national team."
+      },
+      {
+        "id": 3,
+        "label": " I have been the head coach of the Rwanda national team since 2018, leading the team to the quarter-finals of the 2021 Africa Cup of Nations. I am a qualified coach with a UEFA A license and a CAF A license."
+      }
+    ]
+  },
+
+  {
+    "id": 16,
+    "name": "Ephraim W Weah",
+    "position": "Forward",
+    "number": 11,
+    "image": "/players/Ephriam_Weah.jpeg",
+    "stats": {
+      "goals": 9,
+      "assists": 2,
+      "appearances": 9
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+
+  {
+    "id": 17,
+    "name": "Ryan M. Kamara",
+    "position": "Forward",
+    "number": 10,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 9,
+      "assists": 4,
+      "appearances": 16
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "⁠Paul Duopue",
+    "position": "Forward",
+    "number": 13,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 6,
+      "assists": 2,
+      "appearances": 17
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "J Jonathan Luah Gonqueh Jr",
+    "position": "Forward",
+    "number": 9,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 6,
+      "assists": 2,
+      "appearances": 17
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "A. Tweh",
+    "position": "Forward",
+    "number": 24,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 6,
+      "assists": 2,
+      "appearances": 17
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Decent",
+    "position": "Forward",
+    "number": 19,
+    "image": "/placeholder.svg?height=300&width=300",
+    "stats": {
+      "goals": 6,
+      "assists": 2,
+      "appearances": 17
+    },
+    "playerbio": [
+      {
+        "id": 1,
+        "label": "I am a Rwandan professional footballer who plays as a defender. I have played for clubs in Rwanda, Uganda, and Kenya, including APR, SC Villa, and Gor Mahia. I have also played for the Rwanda national team, making my debut in 2010."
+      },
+      {
+        "id": 2,
+        "label": "I have won the Rwandan Premier League, the Rwandan Cup, and the Rwandan Super Cup with APR, as well as the Ugandan Premier League with SC Villa. I have also won the CECAFA Cup with the Rwanda national team. I am known for my defensive skills, positioning, and leadership on the field."
+      },
+      {
+        "id": 3,
+        "label": "I have been a key player for the Rwanda national team since 2018, helping the team reach the quarter-finals of the 2021 Africa Cup of Nations. I am a versatile defender who can play in a variety of positions, including center-back, right-back, and left-back. I am also known for my aerial ability, tackling, and passing."
+      }
+    ]
+  }
+]

@@ -9,7 +9,7 @@ export type NewsItem = {
   date: string;
   readTime: string;
   content: { id: number; label?: string }[];
-  relatedNews: number[];
+  // relatedNews: number[];
 };
 
 export interface News {
