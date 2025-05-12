@@ -115,7 +115,7 @@ export function LiveScoreTracker() {
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="relative h-10 w-10 bg-white rounded-full p-1">
+                      <div className="relative h-10 w-10 bg-white rounded-full  overflow-hidden">
                         <Image
                           src={match.homeTeamLogo || "/placeholder.svg"}
                           alt={match.homeTeam}
@@ -130,7 +130,7 @@ export function LiveScoreTracker() {
 
                   <div className="flex items-center justify-between mt-2">
                     <div className="flex items-center space-x-3">
-                      <div className="relative h-10 w-10 bg-white rounded-full p-1">
+                      <div className="relative h-10 w-10 bg-white rounded-full overflow-hidden">
                         <Image
                           src={match.awayTeamLogo || "/placeholder.svg"}
                           alt={match.awayTeam}
