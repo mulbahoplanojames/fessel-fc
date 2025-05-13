@@ -1,9 +1,16 @@
 "use client";
 
+import FanEvents from "@/components/fan-zone/fan-events";
+import FanForum from "@/components/fan-zone/fan-forum";
+import FanGallery from "@/components/fan-zone/fan-gallery";
 import FanZoneHero from "@/components/fan-zone/fan-zone-hero";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { initialPhotos, initialPosts } from "@/data/fanzone-data";
+import {
+  formatTimestamp,
+  initialPhotos,
+  initialPosts,
+} from "@/data/fanzone-data";
 import { ForumPost, GalleryPhoto } from "@/types/fanzone-type";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -153,38 +160,6 @@ export default function FanZonePage() {
     localStorage.setItem("galleryPhotos", JSON.stringify(updatedPhotos));
   };
 
-  // Format timestamp
-  const formatTimestamp = (timestamp: number) => {
-    const now = Date.now();
-    const diff = now - timestamp;
-
-    // Less than a minute
-    if (diff < 60000) {
-      return "Just now";
-    }
-
-    // Less than an hour
-    if (diff < 3600000) {
-      const minutes = Math.floor(diff / 60000);
-      return `${minutes} ${minutes === 1 ? "minute" : "minutes"} ago`;
-    }
-
-    // Less than a day
-    if (diff < 86400000) {
-      const hours = Math.floor(diff / 3600000);
-      return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
-    }
-
-    // Less than a week
-    if (diff < 604800000) {
-      const days = Math.floor(diff / 86400000);
-      return `${days} ${days === 1 ? "day" : "days"} ago`;
-    }
-
-    // Format as date
-    return new Date(timestamp).toLocaleDateString();
-  };
-
   return (
     <>
       <FanZoneHero />
@@ -199,7 +174,10 @@ export default function FanZonePage() {
               Share your passion for FC Fassell with other supporters
             </p>
           </div>
-          <Button className="mt-4 md:mt-0 rounded-full" asChild>
+          <Button
+            className="mt-4 md:mt-0 rounded-full bg-primary-clr hover:bg-primary-clr/80"
+            asChild
+          >
             <Link href="/fan-zone/join">Join Fan Club</Link>
           </Button>
         </div>
@@ -216,13 +194,30 @@ export default function FanZonePage() {
             <TabsTrigger value="events">Fan Events</TabsTrigger>
           </TabsList>
           <TabsContent value="forum">
-            <Forum />
+            <FanForum
+              forumPosts={forumPosts}
+              handlePostSubmit={handlePostSubmit}
+              handleLikePost={handleLikePost}
+              postContent={postContent}
+              setPostContent={setPostContent}
+              formatTimestamp={formatTimestamp}
+            />
           </TabsContent>
           <TabsContent value="gallery">
-            <Gallery />
+            <FanGallery
+              handlePhotoSubmit={handlePhotoSubmit}
+              previewUrl={previewUrl}
+              clearFileSelection={clearFileSelection}
+              handleFileChange={handleFileChange}
+              photoCaption={photoCaption}
+              setPhotoCaption={setPhotoCaption}
+              galleryPhotos={galleryPhotos}
+              handleLikePhoto={handleLikePhoto}
+              formatTimestamp={formatTimestamp}
+            />
           </TabsContent>
           <TabsContent value="events">
-            <Events />
+            <FanEvents />
           </TabsContent>
         </Tabs>
       </div>
