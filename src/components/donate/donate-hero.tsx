@@ -20,8 +20,8 @@ export default function DonateHero() {
           Support Our Club
         </Badge>
         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl max-w-4xl">
-          Help Us Build the Future of
-          <span className="text-primary">Liberia Football</span>
+          Help Us Build the Future of&nbsp;
+          <span className="text-primary-clr">Liberia Football</span>
         </h1>
         <p className="mt-4 max-w-2xl text-xl text-white/90">
           Your donation helps us develop talent, improve facilities, and create

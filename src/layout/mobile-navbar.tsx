@@ -95,13 +95,13 @@ const MobileNavbar = () => {
               >
                 <Link href="/donate">Donate</Link>
               </Button>
+
               <div className="flex-1 items-center  space-x-4">
                 <Button
-                  className=" rounded-full flex w-full bg-primary-clr hover:bg-primary-clr/80"
+                  className="mx-2 rounded-full flex bg-primary-clr text-black  hover:bg-primary-clr/80 dark:text-white"
                   asChild
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <Link href="/tickets">Buy Tickets</Link>
+                  <Link href="/sign-in">Sign In</Link>
                 </Button>
               </div>
             </div>

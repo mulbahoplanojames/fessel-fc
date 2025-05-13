@@ -21,13 +21,13 @@ export default function DonateTestimonial() {
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4">
                   <Image
-                    src="/placeholder.svg?height=80&width=80&text=JM"
+                    src="/products/coah4.jpg"
                     alt="Jean Mugisha"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-1">Jean Mugisha</h3>
+                <h3 className="text-lg font-semibold mb-1">Jean Peterson</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Monthly Donor since 2022
                 </p>
@@ -46,7 +46,7 @@ export default function DonateTestimonial() {
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4">
                   <Image
-                    src="/placeholder.svg?height=80&width=80&text=RB"
+                    src="/products/coach3.jpg"
                     alt="Rwanda Bank"
                     fill
                     className="object-cover"
@@ -71,13 +71,13 @@ export default function DonateTestimonial() {
               <div className="flex flex-col items-center text-center">
                 <div className="relative w-20 h-20 rounded-full overflow-hidden mb-4">
                   <Image
-                    src="/placeholder.svg?height=80&width=80&text=MU"
+                    src="/players/coach.png"
                     alt="Marie Uwase"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-1">Marie Uwase</h3>
+                <h3 className="text-lg font-semibold mb-1">Oplano James</h3>
                 <p className="text-sm text-muted-foreground mb-4">
                   Annual Donor since 2020
                 </p>

@@ -386,15 +386,13 @@ export default function DonatePage() {
                                         <span className="font-medium">
                                           Bank Name:
                                         </span>
-                                        <span>Bank of Kigali</span>
+                                        <span>Bank of Liberia</span>
                                       </div>
                                       <div className="flex justify-between">
                                         <span className="font-medium">
                                           Account Name:
                                         </span>
-                                        <span>
-                                          Kigali Lonestar FC Foundation
-                                        </span>
+                                        <span>Fassel FC Foundation</span>
                                       </div>
                                       <div className="flex justify-between">
                                         <span className="font-medium">

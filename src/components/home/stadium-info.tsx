@@ -49,7 +49,7 @@ export default function StadiumInfo() {
           </div>
           <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/placeholder.svg?height=500&width=700&text=Stadium"
+              src="/liberia-africa-staduim.webp"
               alt="Antoinette Tubman Stadium"
               fill
               className="object-cover"
