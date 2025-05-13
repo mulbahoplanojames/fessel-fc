@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +11,7 @@ import { CircleUser, Grip, Handshake, Settings } from "lucide-react";
 import prisma from "../../prisma";
 import Link from "next/link";
 import LogoutButton from "@/components/auth/logout-button";
+import Image from "next/image";
 
 export async function UserDropDown() {
   const session = await auth();
@@ -29,13 +29,16 @@ export async function UserDropDown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="mx-2">
-        <Avatar>
-          <AvatarImage src="/placeholder-user.jpg" alt="user" />
-          <AvatarFallback>US</AvatarFallback>
-        </Avatar>
+        <Image
+          src={user?.image || "/placeholder-user.jpg"}
+          alt="user"
+          width={40}
+          height={40}
+          className="rounded-full"
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="z-[9999] mt-3">
-        <DropdownMenuLabel>{userEmail}</DropdownMenuLabel>
+        <DropdownMenuLabel>{user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {userRole && userRole === "ADMIN" && (
           <DropdownMenuItem

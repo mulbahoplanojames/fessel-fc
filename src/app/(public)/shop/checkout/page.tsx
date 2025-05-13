@@ -16,9 +16,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useCart } from "@/context/cart-context";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {
+  const router = useRouter();
   const { items, itemCount, subtotal, clearCart } = useCart();
 
   // Calculate shipping and total
@@ -28,8 +29,6 @@ export default function CheckoutPage() {
     0
   );
   const total = subtotal + shipping + personalizationCost;
-
-  const router = useRouter();
 
   return (
     <div className="container px-4 py-12 mx-auto">

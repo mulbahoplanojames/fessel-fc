@@ -160,17 +160,41 @@ export default function ShopPage() {
             </TabsList>
           </Tabs>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product as Product} />
-            ))}
-          </div>
-
-          <div className="mt-12 flex justify-center">
-            <Button variant="outline" className="rounded-full">
-              Load More Products
-            </Button>
-          </div>
+          {filteredProducts.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {filteredProducts.map((product) => (
+                  <ProductCard key={product.id} product={product as Product} />
+                ))}
+              </div>
+              <div className="mt-12 flex justify-center">
+                <Button variant="outline" className="rounded-full">
+                  Load More Products
+                </Button>
+              </div>
+            </>
+          ) : (
+            <div className="text-center">
+              <h2 className="text-2xl font-bold mb-4">
+                No products found with the current filter.
+              </h2>
+              <p className="mb-8">
+                Try adjusting your filter or search query to find the product
+                you are looking for.
+              </p>
+              <Button
+                variant="outline"
+                className="rounded-full"
+                onClick={() =>
+                  handleFilterChange({
+                    target: { name: "category", value: "" },
+                  })
+                }
+              >
+                Reset Filter
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>

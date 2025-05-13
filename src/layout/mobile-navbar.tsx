@@ -50,6 +50,11 @@ const MobileNavbar = () => {
       label: "Fan Zone",
       active: pathname === "/fan-zone" || pathname.startsWith("/fan-zone/"),
     },
+    {
+      href: "/shop",
+      label: "Shop",
+      active: pathname === "/shop" || pathname.startsWith("/shop/"),
+    },
   ];
   return (
     <div className="md:hidden flex flex-1 justify-end">
@@ -81,11 +86,20 @@ const MobileNavbar = () => {
                 {route.label}
               </Link>
             ))}
-            <div className="border-t pt-4 mt-2 ">
-              <div className="flex items-center  space-x-4">
+            <div className="border-t pt-4 mt-2 flex items-center  gap-3">
+              <Button
+                className="rounded-full  text-black dark:text-white"
+                asChild
+                variant="outline"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Link href="/donate">Donate</Link>
+              </Button>
+              <div className="flex-1 items-center  space-x-4">
                 <Button
                   className=" rounded-full flex w-full bg-primary-clr hover:bg-primary-clr/80"
                   asChild
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <Link href="/tickets">Buy Tickets</Link>
                 </Button>

@@ -9,6 +9,7 @@ import prisma from "../../prisma";
 import { saltAndHashPassword } from "@/utils/helpers/hash-salt-password";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  // debug: process.env.NODE_ENV === "development",
   adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",

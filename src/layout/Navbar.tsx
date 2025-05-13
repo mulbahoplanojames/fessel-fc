@@ -32,7 +32,7 @@ export async function Navbar() {
         <div className="flex items-center gap-2">
           <div className="md:flex hidden items-center  space-x-1 ">
             <Button
-              className="rounded-full hidden sm:flex text-black dark:text-white "
+              className="rounded-full hidden sm:flex text-black dark:text-white"
               asChild
               variant="outline"
             >
