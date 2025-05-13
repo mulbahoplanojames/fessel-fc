@@ -30,7 +30,7 @@ export async function UserDropDown() {
     <DropdownMenu>
       <DropdownMenuTrigger className="mx-2">
         <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarImage src="/placeholder-user.jpg" alt="user" />
           <AvatarFallback>US</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
