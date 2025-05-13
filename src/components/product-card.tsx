@@ -9,20 +9,9 @@ import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/cart-context";
+import { Product } from "@/types/product-type";
 
-interface ProductCardProps {
-  product: {
-    id: string;
-    name: string;
-    price: number;
-    image: string;
-    category: string;
-    isNew?: boolean;
-    isBestseller?: boolean;
-  };
-}
-
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart();
 
   const handleAddToCart = (e: React.MouseEvent) => {

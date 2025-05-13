@@ -4,7 +4,6 @@ import "../globals.css";
 import { Navbar } from "@/layout/Navbar";
 import TanstackQueryProvider from "@/context/TankStackQueryProvider";
 import { Footer } from "@/layout/Footer";
-import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "FC Fassell - Official Website",
@@ -25,7 +24,6 @@ export default function PublicLayout({
       <Navbar />
       <TanstackQueryProvider>
         <main className="flex-1">{children}</main>
-        <Toaster position="bottom-right" />
       </TanstackQueryProvider>
       <Footer />
     </div>
