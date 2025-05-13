@@ -48,7 +48,8 @@ export default function FanEvents() {
                 className="w-full rounded-full bg-primary-clr text-black hover:bg-primary-clr/90"
                 asChild
               >
-                <Link href={`/fan-zone/events/${i + 1}`}>
+                {/* <Link href={`/fan-zone/events/${i + 1}`}> */}
+                <Link href="#">
                   {i % 2 === 0 ? "Register" : "Join Fan Club to Register"}
                 </Link>
               </Button>
