@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-const MatchHero = () => {
+const AboutHero = () => {
   return (
     <>
-      <section className="relative w-full md:h-[300px] h-[200px] overflow-hidden">
+      <section className="relative w-full md:h-[300px] h-[250px] overflow-hidden">
         <Image
           src="/hero-placeholder.jpg"
-          alt="Matches"
+          alt="About Us"
           fill
           className="object-cover brightness-50"
           priority
@@ -14,10 +14,10 @@ const MatchHero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
         <div className="container relative z-10 flex flex-col items-center justify-center h-full mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Matches
+            About Us
           </h1>
           <p className="mt-4 max-w-xl text-xl text-white/90">
-            Follow all Kigali Lonestar FC matches, results and upcoming fixtures
+            Learn more about Kigali Lonestar Football Club
           </p>
         </div>
       </section>
@@ -25,4 +25,4 @@ const MatchHero = () => {
   );
 };
 
-export default MatchHero;
+export default AboutHero;
