@@ -3,12 +3,11 @@
     "id": "1",
     "name": "FC Fassell Home Jersey 2024/25",
     "price": 75,
-    "image": "/placeholder.svg?height=400&width=400&text=Backpack",
+    "image": "/products/home-jersey1.jpg",
     "images": [
-      "/placeholder.svg?height=600&width=600&text=Jersey+Front",
-      "/placeholder.svg?height=600&width=600&text=Jersey+Back",
-      "/placeholder.svg?height=600&width=600&text=Jersey+Detail",
-      "/placeholder.svg?height=600&width=600&text=Jersey+Sleeve"
+      "/products/home-jersey2.jpg",
+      "/products/home-jersey1.jpg",
+      "/products/home-jersey2.jpg"
     ],
     "description": "Show your support for FC Fassell with the official 2024/25 home jersey. Features the iconic gold and black colors with the club crest proudly displayed on the chest. Made with lightweight, breathable fabric for maximum comfort.",
     "features": [
@@ -32,12 +31,8 @@
     "id": "2",
     "name": "FC Fassell Away Jersey 2024/25",
     "price": 75,
-    "image": "/placeholder.svg?height=400&width=400&text=Backpack",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Away+Jersey+Front",
-      "/placeholder.svg?height=600&width=600&text=Away+Jersey+Back",
-      "/placeholder.svg?height=600&width=600&text=Away+Jersey+Detail"
-    ],
+    "image": "/products/away-jersey2.jpg",
+    "images": ["/products/away-jersey1.jpg", "/products/away-jersey2.jpg"],
     "description": "The official FC Fassell away jersey for the 2024/25 season. Features a sleek design with the club's colors and crest. Made with lightweight, breathable fabric for maximum comfort during matches or casual wear.",
     "features": [
       "100% polyester",
@@ -60,11 +55,11 @@
     "id": "3",
     "name": "FC Fassell Third Kit 2024/25",
     "price": 75,
-    "image": "/placeholder.svg?height=400&width=400&text=Backpack",
+    "image": "/products/fasselthirdkit.webp",
     "images": [
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Front",
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Back",
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Detail"
+      "/products/fasselthirdkit.webp",
+      "/products/fasselthirdkit.webp",
+      "/products/fasselthirdkit.webp"
     ],
     "description": "The official FC Fassell third kit for the 2024/25 season. A unique design inspired by Liberian culture and heritage. Perfect for showing your support at matches or casual wear.",
     "features": [
@@ -88,12 +83,8 @@
     "id": "4",
     "name": "FC Fassell Training Jersey",
     "price": 55,
-    "image": "/placeholder.svg?height=400&width=400&text=Training+Jersey",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Front",
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Back",
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Detail"
-    ],
+    "image": "/products/traningkit1.jpg",
+    "images": ["/products/traningkit1.jpg", "/products/traningkit1.jpg"],
     "description": "This is our professional traning jersey for this season and our fans are free to wear them ",
     "features": [
       "100% polyester",
@@ -116,12 +107,8 @@
     "id": "5",
     "name": "FC Fassell Home Shorts 2024/25",
     "price": 35,
-    "image": "/placeholder.svg?height=400&width=400&text=Shorts",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Front",
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Back",
-      "/placeholder.svg?height=600&width=600&text=Third+Kit+Detail"
-    ],
+    "image": "/products/home-short.jpg",
+    "images": ["/products/home-short.jpg", "/products/home-short.jpg"],
     "category": "kits",
     "isNew": true,
     "isBestseller": false,
@@ -144,11 +131,11 @@
     "id": "6",
     "name": "FC Fassell Anthem Jacket",
     "price": 85,
-    "image": "/placeholder.svg?height=400&width=400&text=Backpack",
+    "image": "/products/fasselthirdkit.webp",
     "images": [
-      "/placeholder.svg?height=600&width=600&text=Jacket+Front",
-      "/placeholder.svg?height=600&width=600&text=Jacket+Back",
-      "/placeholder.svg?height=600&width=600&text=Jacket+Detail"
+      "/products/fasselthirdkit.webp",
+      "/products/fasselthirdkit.webp",
+      "/products/fasselthirdkit.webp"
     ],
     "description": "The official FC Fassell anthem jacket worn by players before matches. Features the club's colors and crest. Made with comfortable material perfect for pre-match warmups or casual wear.",
     "features": [
@@ -172,12 +159,8 @@
     "id": "7",
     "name": "FC Fassell Hoodie",
     "price": 65,
-    "image": "/placeholder.svg?height=400&width=400&text=Backpack",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Front",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Back",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Detail"
-    ],
+    "image": "/products/hoodie.jpg",
+    "images": ["/products/hoodie.jpg", "/products/hoodie.jpg"],
     "description": "Stay warm and show your support with the official FC Fassell hoodie. Features the club's colors and crest in a comfortable, casual design perfect for match days or everyday wear.",
     "features": [
       "80% cotton, 20% polyester",
@@ -200,12 +183,8 @@
     "id": "8",
     "name": "FC Fassell T-Shirt",
     "price": 30,
-    "image": "/placeholder.svg?height=400&width=400&text=T-Shirt",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Front",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Back",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Detail"
-    ],
+    "image": "/products/t-shirt.jpg",
+    "images": ["/products/t-shirt.jpg", "/products/t-shirt.jpg"],
     "category": "clothing",
     "isNew": false,
     "isBestseller": false,
@@ -228,12 +207,8 @@
     "id": "9",
     "name": "FC Fassell Cap",
     "price": 25,
-    "image": "/placeholder.svg?height=400&width=400&text=Cap",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Front",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Back",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Detail"
-    ],
+    "image": "/products/cap.jpg",
+    "images": ["/products/cap.jpg", "/products/cap.jpg"],
     "category": "accessories",
     "isNew": false,
     "isBestseller": false,
@@ -256,12 +231,8 @@
     "id": "10",
     "name": "FC Fassell Scarf",
     "price": 20,
-    "image": "/placeholder.svg?height=400&width=400&text=Scarf",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Front",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Back",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Detail"
-    ],
+    "image": "/products/scarf.jpg",
+    "images": ["/products/scarf.jpg", "/products/scarf.jpg"],
     "category": "accessories",
     "isNew": false,
     "isBestseller": false,
@@ -284,12 +255,8 @@
     "id": "11",
     "name": "FC Fassell Backpack",
     "price": 45,
-    "image": "/placeholder.svg?height=400&width=400&text=Backpack",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Front",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Back",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Detail"
-    ],
+    "image": "/products/backpack.jpg",
+    "images": ["/products/backpack.jpg", "/products/backpack.jpg"],
     "category": "accessories",
     "isNew": false,
     "isBestseller": false,
@@ -312,12 +279,8 @@
     "id": "12",
     "name": "FC Fassell Football",
     "price": 30,
-    "image": "/placeholder.svg?height=400&width=400&text=Football",
-    "images": [
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Front",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Back",
-      "/placeholder.svg?height=600&width=600&text=Hoodie+Detail"
-    ],
+    "image": "/products/football.jpg",
+    "images": ["/products/football.jpg", "/products/football.jpg"],
     "category": "equipment",
     "isNew": false,
     "isBestseller": false,
