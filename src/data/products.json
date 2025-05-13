@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "name": "FC Fassell Home Jersey 2024/25",
+    "price": 75,
+    "image": "/placeholder.svg?height=400&width=400&text=Jersey",
+    "category": "kits",
+    "isNew": true,
+    "isBestseller": true
+  },
+  {
+    "id": "2",
+    "name": "FC Fassell Away Jersey 2024/25",
+    "price": 75,
+    "image": "/placeholder.svg?height=400&width=400&text=Away+Jersey",
+    "category": "kits",
+    "isNew": true,
+    "isBestseller": false
+  },
+  {
+    "id": "3",
+    "name": "FC Fassell Third Kit 2024/25",
+    "price": 75,
+    "image": "/placeholder.svg?height=400&width=400&text=Third+Kit",
+    "category": "kits",
+    "isNew": true,
+    "isBestseller": false
+  },
+  {
+    "id": "4",
+    "name": "FC Fassell Training Jersey",
+    "price": 55,
+    "image": "/placeholder.svg?height=400&width=400&text=Training+Jersey",
+    "category": "kits",
+    "isNew": false,
+    "isBestseller": false
+  },
+  {
+    "id": "5",
+    "name": "FC Fassell Home Shorts 2024/25",
+    "price": 35,
+    "image": "/placeholder.svg?height=400&width=400&text=Shorts",
+    "category": "kits",
+    "isNew": true,
+    "isBestseller": false
+  },
+  {
+    "id": "6",
+    "name": "FC Fassell Anthem Jacket",
+    "price": 85,
+    "image": "/placeholder.svg?height=400&width=400&text=Jacket",
+    "category": "clothing",
+    "isNew": false,
+    "isBestseller": true
+  },
+  {
+    "id": "7",
+    "name": "FC Fassell Hoodie",
+    "price": 65,
+    "image": "/placeholder.svg?height=400&width=400&text=Hoodie",
+    "category": "clothing",
+    "isNew": false,
+    "isBestseller": true
+  },
+  {
+    "id": "8",
+    "name": "FC Fassell T-Shirt",
+    "price": 30,
+    "image": "/placeholder.svg?height=400&width=400&text=T-Shirt",
+    "category": "clothing",
+    "isNew": false,
+    "isBestseller": false
+  },
+  {
+    "id": "9",
+    "name": "FC Fassell Cap",
+    "price": 25,
+    "image": "/placeholder.svg?height=400&width=400&text=Cap",
+    "category": "accessories",
+    "isNew": false,
+    "isBestseller": false
+  },
+  {
+    "id": "10",
+    "name": "FC Fassell Scarf",
+    "price": 20,
+    "image": "/placeholder.svg?height=400&width=400&text=Scarf",
+    "category": "accessories",
+    "isNew": false,
+    "isBestseller": false
+  },
+  {
+    "id": "11",
+    "name": "FC Fassell Backpack",
+    "price": 45,
+    "image": "/placeholder.svg?height=400&width=400&text=Backpack",
+    "category": "accessories",
+    "isNew": false,
+    "isBestseller": false
+  },
+  {
+    "id": "12",
+    "name": "FC Fassell Football",
+    "price": 30,
+    "image": "/placeholder.svg?height=400&width=400&text=Football",
+    "category": "equipment",
+    "isNew": false,
+    "isBestseller": false
+  }
+]
