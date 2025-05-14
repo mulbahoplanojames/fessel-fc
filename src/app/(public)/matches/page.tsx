@@ -21,7 +21,7 @@ const MatchesPage = () => {
               </h2>
             </div>
             <p className="text-muted-foreground">
-              View all upcoming and past matches for Kigali Lonestar FC
+              View all upcoming and past matches for FC Fassel
             </p>
           </div>
           <Button

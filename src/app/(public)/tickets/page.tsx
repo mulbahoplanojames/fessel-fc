@@ -71,7 +71,7 @@ export default function TicketsPage() {
               Available Tickets
             </h2>
             <p className="text-muted-foreground">
-              Secure your seat for the next Kigali Lonestar FC match
+              Secure your seat for the next FC Fassel match
             </p>
           </div>
           <div className="relative mt-4 md:mt-0 w-full md:w-auto">
@@ -155,7 +155,7 @@ export default function TicketsPage() {
                             <div className="flex items-center text-sm">
                               <Ticket className="h-4 w-4 mr-2 text-primary" />
                               <span>
-                                Tickets from {match.tickets?.price} RWF
+                                Tickets from {match.tickets?.price} LRD
                               </span>
                             </div>
                           </div>
@@ -203,8 +203,8 @@ export default function TicketsPage() {
               Ticket Information
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Everything you need to know about purchasing tickets for Kigali
-              Lonestar FC matches
+              Everything you need to know about purchasing tickets for FC Fassel
+              matches
             </p>
           </div>
 

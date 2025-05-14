@@ -107,7 +107,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
               </div>
               <div className="flex items-center">
                 <MapPin className="h-4 w-4 mr-2" />
-                <span>{match?.venue} Kigali</span>
+                <span>{match?.venue} Liberia</span>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                   <p className="text-sm text-muted-foreground">
                     Standard seating
                   </p>
-                  <p className="mt-1 font-medium">5,000 RWF</p>
+                  <p className="mt-1 font-medium">5,000 LRD</p>
                 </div>
               </Label>
               <Label
@@ -148,7 +148,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                 <div className="text-center">
                   <h4 className="font-medium">Premium</h4>
                   <p className="text-sm text-muted-foreground">Better view</p>
-                  <p className="mt-1 font-medium">10,000 RWF</p>
+                  <p className="mt-1 font-medium">10,000 LRD</p>
                 </div>
               </Label>
               <Label
@@ -161,7 +161,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                   <p className="text-sm text-muted-foreground">
                     Best experience
                   </p>
-                  <p className="mt-1 font-medium">20,000 RWF</p>
+                  <p className="mt-1 font-medium">20,000 LRD</p>
                 </div>
               </Label>
             </RadioGroup>
@@ -179,8 +179,8 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                   <span className="w-16 text-center font-medium">
                     {prices[
                       selectedSection as keyof typeof prices
-                    ].adult.toLocaleString()}{" "}
-                    RWF
+                    ].adult.toLocaleString()}
+                    LRD
                   </span>
                   <div className="flex items-center ml-4">
                     <Button
@@ -213,7 +213,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                     {prices[
                       selectedSection as keyof typeof prices
                     ].child.toLocaleString()}{" "}
-                    RWF
+                    LRD
                   </span>
                   <div className="flex items-center ml-4">
                     <Button
@@ -246,7 +246,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                     {prices[
                       selectedSection as keyof typeof prices
                     ].senior.toLocaleString()}{" "}
-                    RWF
+                    LRD
                   </span>
                   <div className="flex items-center ml-4">
                     <Button
@@ -297,7 +297,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                           quantities.adult *
                           prices[selectedSection as keyof typeof prices].adult
                         ).toLocaleString()}{" "}
-                        RWF
+                        LRD
                       </span>
                     </div>
                   )}
@@ -309,7 +309,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                           quantities.child *
                           prices[selectedSection as keyof typeof prices].child
                         ).toLocaleString()}{" "}
-                        RWF
+                        LRD
                       </span>
                     </div>
                   )}
@@ -321,7 +321,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
                           quantities.senior *
                           prices[selectedSection as keyof typeof prices].senior
                         ).toLocaleString()}{" "}
-                        RWF
+                        LRD
                       </span>
                     </div>
                   )}
@@ -331,7 +331,7 @@ const TicketClient = ({ ticketId }: { ticketId: string }) => {
 
                 <div className="flex justify-between font-medium">
                   <span>Total</span>
-                  <span>{calculateTotal().toLocaleString()} RWF</span>
+                  <span>{calculateTotal().toLocaleString()} LRD</span>
                 </div>
 
                 <Button className="w-full" size="lg" asChild>

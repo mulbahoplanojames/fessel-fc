@@ -74,7 +74,7 @@ export default function DonatePage() {
                   Make a Donation
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Choose how you&apos;d like to support Kigali Lonestar FC
+                  Choose how you&apos;d like to support FC Fassel
                 </p>
               </div>
 
@@ -449,7 +449,7 @@ export default function DonatePage() {
                                 </Label>
                                 <Textarea
                                   id="message"
-                                  placeholder="Share why you're supporting Kigali Lonestar FC"
+                                  placeholder="Share why you're supporting FC Fassel"
                                   rows={3}
                                 />
                               </div>
