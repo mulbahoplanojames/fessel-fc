@@ -77,10 +77,7 @@ export function LiveScoreTracker() {
             </span>
             Live Matches
           </h2>
-          <Link
-            href="/matches/live"
-            className="text-sm text-primary hover:underline"
-          >
+          <Link href="#" className="text-sm text-primary hover:underline">
             View All Live Matches
           </Link>
         </div>

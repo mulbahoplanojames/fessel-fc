@@ -57,7 +57,8 @@ const MobileNavbar = () => {
     },
   ];
   return (
-    <div className="md:hidden flex flex-1 justify-end">
+    <div className="md:hidden flex flex-1 justify-end gap-3">
+      <ThemeModeToggle />
       {isMobileMenuOpen ? (
         <button onClick={() => setIsMobileMenuOpen(false)} className="mr-4">
           <X className="h-8 w-8 font-bold text-primary-clr" />
@@ -67,7 +68,6 @@ const MobileNavbar = () => {
           <MenuIcon className="h-8 w-8 text-primary-clr" />
         </button>
       )}
-      <ThemeModeToggle />
       {isMobileMenuOpen && (
         <div className="absolute top-16 left-0 right-0 bg-background border-b p-4 shadow-lg">
           <nav className="flex flex-col space-y-2">
@@ -78,7 +78,7 @@ const MobileNavbar = () => {
                 className={cn(
                   "flex items-center text-sm font-medium transition-colors hover:text-primary p-2 rounded-md",
                   route.active
-                    ? "bg-muted text-primary"
+                    ? "text-primary bg-primary-clr"
                     : "text-muted-foreground"
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -88,22 +88,13 @@ const MobileNavbar = () => {
             ))}
             <div className="border-t pt-4 mt-2 flex items-center  gap-3">
               <Button
-                className="rounded-full  text-black dark:text-white"
+                className="flex-1 rounded-full flex bg-primary-clr text-black  hover:bg-primary-clr/80 dark:text-white"
                 asChild
                 variant="outline"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <Link href="/donate">Donate</Link>
               </Button>
-
-              <div className="flex-1 items-center  space-x-4">
-                <Button
-                  className="mx-2 rounded-full flex bg-primary-clr text-black  hover:bg-primary-clr/80 dark:text-white"
-                  asChild
-                >
-                  <Link href="/sign-in">Sign In</Link>
-                </Button>
-              </div>
             </div>
           </nav>
         </div>

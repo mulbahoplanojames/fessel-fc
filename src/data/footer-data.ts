@@ -5,23 +5,23 @@ const informationsLink = [
   },
   {
     label: "Contact",
-    path: "/contact",
+    path: "/about",
   },
   {
     label: "Stadium Info",
-    path: "/stadium",
+    path: "#",
   },
   {
     label: "Sponsors",
-    path: "/sponsors",
+    path: "#",
   },
   {
     label: "Careers",
-    path: "/careers",
+    path: "#",
   },
   {
     label: "Privacy Policy",
-    path: "/privacy-policy",
+    path: "#",
   },
 ];
 

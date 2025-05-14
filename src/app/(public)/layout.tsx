@@ -20,12 +20,14 @@ export default function PublicLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <TanstackQueryProvider>
-        <main className="flex-1">{children}</main>
-      </TanstackQueryProvider>
-      <Footer />
-    </div>
+    <TanstackQueryProvider>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <TanstackQueryProvider>
+          <main className="flex-1">{children}</main>
+        </TanstackQueryProvider>
+        <Footer />
+      </div>
+    </TanstackQueryProvider>
   );
 }
