@@ -7,22 +7,22 @@ import Link from "next/link";
 
 const mangement = [
   {
-    name: "Boima Voyou Jr",
+    name: "Cassel Kuoh",
     position: "Club President",
-    image: "/coach/coach2.jpg",
+    image: "/players/upload/ceo.jpeg",
   },
   {
-    name: "Marie Uwimana",
+    name: "Richard Mulbah",
     position: "Chief Executive Officer",
-    image: "/coach/coach2.jpg",
+    image: "/placeholder.svg",
   },
   {
-    name: "Robert Mugisha",
+    name: "Robert Johnson",
     position: "Sporting Director",
-    image: "/coach/coach3.jpg",
+    image: "/placeholder.svg",
   },
   {
-    name: "Emmanuel Hakizimana",
+    name: "Emmanuel Flomo",
     position: "Head of Youth Development",
     image: "/coach/coah4.jpg",
   },

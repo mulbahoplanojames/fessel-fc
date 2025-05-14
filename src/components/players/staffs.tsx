@@ -2,9 +2,9 @@ import Image from "next/image";
 
 const staffs = [
   {
-    name: "ISIDORE KIEH",
+    name: "Ivan Minnaert",
     position: "Head Coach",
-    image: "/placeholder.svg?height=300&width=300",
+    image: "/players/upload/ivan-minnaert.jpeg",
   },
   {
     name: "JUSTINE Z. LAMAH",
