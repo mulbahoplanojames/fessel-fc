@@ -64,6 +64,11 @@ const NavMenu = () => {
       label: "Fan Zone",
       active: pathname === "/fan-zone" || pathname.startsWith("/fan-zone/"),
     },
+    {
+      path: "/gallery",
+      label: "Gallery",
+      active: pathname === "/gallery" || pathname.startsWith("/gallery/"),
+    },
   ];
 
   return (
@@ -71,7 +76,7 @@ const NavMenu = () => {
       {routes.map((route) =>
         route.label === "About" ? (
           <DropdownMenu key={route.label}>
-            <DropdownMenuTrigger className=" text-[14px] font-medium transition-colors hover:text-primary-clr dark:hover:text-primary-clr transition-colors  relative group ">
+            <DropdownMenuTrigger className=" text-[14px] font-medium  hover:text-primary-clr dark:hover:text-primary-clr transition-colors  relative group ">
               About
             </DropdownMenuTrigger>
             <DropdownMenuContent className="z-[9999]">

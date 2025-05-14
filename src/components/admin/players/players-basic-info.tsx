@@ -99,7 +99,8 @@ const PlayersBasicInfo: React.FC<PlayersBasicInfoProps> = ({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="liberia">Liberia</SelectItem>
-                  <SelectItem value="rwanda">Rwanda</SelectItem>
+                  <SelectItem value="moroco">Moroco</SelectItem>
+                  <SelectItem value="gambia">Gambia</SelectItem>
                   <SelectItem value="uganda">Uganda</SelectItem>
                   <SelectItem value="kenya">Kenya</SelectItem>
                   <SelectItem value="tanzania">Tanzania</SelectItem>

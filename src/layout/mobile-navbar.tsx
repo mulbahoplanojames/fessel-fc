@@ -55,6 +55,11 @@ const MobileNavbar = () => {
       label: "Shop",
       active: pathname === "/shop" || pathname.startsWith("/shop/"),
     },
+    {
+      href: "/gallery",
+      label: "Gallery",
+      active: pathname === "/gallery" || pathname.startsWith("/gallery/"),
+    },
   ];
   return (
     <div className="md:hidden flex flex-1 justify-end gap-3">

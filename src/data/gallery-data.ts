@@ -1,0 +1,176 @@
+export const photos = [
+  {
+    id: 1,
+    title: "Match vs Mighty Barrolle",
+    src: "/placeholder.svg?height=400&width=400&text=Match+Photo+1",
+    date: "2024-04-15",
+    category: "matches",
+  },
+  {
+    id: 2,
+    title: "Training Session",
+    src: "/placeholder.svg?height=400&width=400&text=Training+Photo",
+    date: "2024-04-10",
+    category: "training",
+  },
+  {
+    id: 3,
+    title: "Fan Day Event",
+    src: "/placeholder.svg?height=400&width=400&text=Fan+Event",
+    date: "2024-04-05",
+    category: "events",
+  },
+  {
+    id: 4,
+    title: "Match vs LISCR FC",
+    src: "/placeholder.svg?height=400&width=400&text=Match+Photo+2",
+    date: "2024-03-28",
+    category: "matches",
+  },
+  {
+    id: 5,
+    title: "Team Photo 2024",
+    src: "/placeholder.svg?height=400&width=400&text=Team+Photo",
+    date: "2024-03-20",
+    category: "team",
+  },
+  {
+    id: 6,
+    title: "Youth Academy Training",
+    src: "/placeholder.svg?height=400&width=400&text=Youth+Academy",
+    date: "2024-03-15",
+    category: "academy",
+  },
+  {
+    id: 7,
+    title: "Match vs Nimba United",
+    src: "/placeholder.svg?height=400&width=400&text=Match+Photo+3",
+    date: "2024-03-10",
+    category: "matches",
+  },
+  {
+    id: 8,
+    title: "Community Outreach",
+    src: "/placeholder.svg?height=400&width=400&text=Community+Event",
+    date: "2024-03-05",
+    category: "community",
+  },
+  {
+    id: 9,
+    title: "New Kit Unveiling",
+    src: "/placeholder.svg?height=400&width=400&text=Kit+Unveiling",
+    date: "2024-02-28",
+    category: "events",
+  },
+  {
+    id: 10,
+    title: "Match vs Watanga FC",
+    src: "/placeholder.svg?height=400&width=400&text=Match+Photo+4",
+    date: "2024-02-20",
+    category: "matches",
+  },
+  {
+    id: 11,
+    title: "Training Session",
+    src: "/placeholder.svg?height=400&width=400&text=Training+Photo+2",
+    date: "2024-02-15",
+    category: "training",
+  },
+  {
+    id: 12,
+    title: "Fan Celebration",
+    src: "/placeholder.svg?height=400&width=400&text=Fan+Celebration",
+    date: "2024-02-10",
+    category: "events",
+  },
+];
+
+export const videos = [
+  {
+    id: 1,
+    title: "Match Highlights: FC Fassell vs Mighty Barrolle",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Match+Highlights+1",
+    duration: "10:25",
+    date: "2024-04-15",
+    category: "highlights",
+  },
+  {
+    id: 2,
+    title: "Player Interview: Joseph Coleman",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Player+Interview",
+    duration: "5:18",
+    date: "2024-04-10",
+    category: "interviews",
+  },
+  {
+    id: 3,
+    title: "Training Session Highlights",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Training+Highlights",
+    duration: "7:42",
+    date: "2024-04-05",
+    category: "training",
+  },
+  {
+    id: 4,
+    title: "Match Highlights: FC Fassell vs LISCR FC",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Match+Highlights+2",
+    duration: "9:36",
+    date: "2024-03-28",
+    category: "highlights",
+  },
+  {
+    id: 5,
+    title: "Coach's Analysis: Tactical Breakdown",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Tactical+Analysis",
+    duration: "12:15",
+    date: "2024-03-20",
+    category: "analysis",
+  },
+  {
+    id: 6,
+    title: "Youth Academy Showcase",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Youth+Academy+Video",
+    duration: "8:50",
+    date: "2024-03-15",
+    category: "academy",
+  },
+];
+
+export const events = [
+  {
+    id: 1,
+    title: "Fan Day 2024",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Fan+Day+2024",
+    date: "2024-05-20",
+    location: "Antoinette Tubman Stadium, Monrovia",
+    description:
+      "Meet the players, get autographs, and participate in fun activities with the FC Fassell team.",
+  },
+  {
+    id: 2,
+    title: "Community Football Clinic",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Football+Clinic",
+    date: "2024-06-10",
+    location: "Samuel Kanyon Doe Sports Complex, Paynesville",
+    description:
+      "Free football clinic for children aged 8-14, coached by FC Fassell players and staff.",
+  },
+  {
+    id: 3,
+    title: "Season Ticket Holder Event",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Season+Ticket+Event",
+    date: "2024-07-05",
+    location: "FC Fassell Club House, Monrovia",
+    description:
+      "Exclusive event for season ticket holders with dinner, entertainment, and special announcements.",
+  },
+  {
+    id: 4,
+    title: "Charity Match",
+    thumbnail: "/placeholder.svg?height=300&width=500&text=Charity+Match",
+    date: "2024-07-25",
+    location: "Antoinette Tubman Stadium, Monrovia",
+    description:
+      "Special charity match to raise funds for local education initiatives. FC Fassell vs. Liberian All-Stars.",
+  },
+];
