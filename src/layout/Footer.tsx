@@ -41,7 +41,7 @@ export function Footer() {
                 height={48}
                 className="rounded-full"
               />
-              <span className="font-bold text-xl">Kigali Lonestar FC</span>
+              <span className="font-bold text-xl">FC Fassel</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-md">
               The pride of Liberia, competing in the Liberian Premier League.
@@ -116,8 +116,11 @@ export function Footer() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact</h3>
               <address className="not-italic text-muted-foreground space-y-3">
-                <p>FC Fassell</p>
-                <p>Antoinette Tubman Stadium</p>
+                <p>Football Club Fassell</p>
+                <p>
+                  2nd Floor, Tugbeh Doe Building, Corner of Front & Buchanan
+                  Streets
+                </p>
                 <p>Monrovia</p>
                 <p>Liberia</p>
                 <p className="pt-3">
@@ -144,8 +147,7 @@ export function Footer() {
         <div className="border-t mt-12 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Kigali Lonestar FC. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} FC Fassel. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <Link

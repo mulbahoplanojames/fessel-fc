@@ -36,7 +36,7 @@ const ClubHistory = () => {
                 <h3 className="text-xl font-semibold">2010: The Beginning</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                FC Fassell was founded in 2010 by a group of passionate football
+                FC Fassell was founded in 2009 by a group of passionate football
                 enthusiasts led by John Smith, with the vision of creating a
                 club that would develop local talent and compete at the highest
                 level of Liberian football. Starting in the second division, the

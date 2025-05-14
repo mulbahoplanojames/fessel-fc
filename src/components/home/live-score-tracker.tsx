@@ -28,8 +28,8 @@ const mockLiveMatches: LiveMatch[] = [
     awayTeam: "LISCR FC",
     homeScore: 2,
     awayScore: 1,
-    homeTeamLogo: "/placeholder.svg?height=64&width=64",
-    awayTeamLogo: "/placeholder.svg?height=64&width=64",
+    homeTeamLogo: "/logo.png",
+    awayTeamLogo: "/team/LISCR_FC_official_logo.webp",
     minute: 20,
     competition: "Rwanda Premier League",
     status: "live",
@@ -84,7 +84,7 @@ export function LiveScoreTracker() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {liveMatches.map((match) => (
-            <Link key={match.id} href={`/matches/${match.id}`}>
+            <Link key={match.id} href={`#`}>
               <Card className="hover:shadow-md transition-shadow cursor-pointer p-0">
                 <CardContent className="p-4">
                   <div className="flex justify-between items-center mb-4">
