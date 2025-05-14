@@ -26,11 +26,7 @@ const MatchPreview = ({ match }: { match: PrismaMatchType }) => {
                 <CardContent className="p-4 flex items-center gap-4">
                   <div className="relative h-16 w-16 rounded-full overflow-hidden">
                     <Image
-                      src={
-                        player.avatar
-                          ? player.avatar
-                          : "/placeholder.svg?height=64&width=64"
-                      }
+                      src={player.avatar ? player.avatar : "/user.jpg"}
                       alt={player.name}
                       fill
                       className="object-cover"
@@ -54,7 +50,7 @@ const MatchPreview = ({ match }: { match: PrismaMatchType }) => {
         <div className="space-y-4">
           <Card>
             <CardContent className="p-4">
-              <h3 className="font-semibold mb-2">Kigali Lonestar FC</h3>
+              <h3 className="font-semibold mb-2">FC Fassel</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
