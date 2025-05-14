@@ -21,7 +21,7 @@
     "matchPreview": [
       {
         "id": 1,
-        "label": "FC Fassell will face their long-time rivals Rayon FC in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon FC unbeaten in their last five."
+        "label": "FC Fassell will face their long-time rivals Rayon FC in what promises to be an exciting Liberia Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon FC unbeaten in their last five."
       },
       {
         "id": "2",
@@ -58,14 +58,14 @@
         "title": "FC Fassell 2-1 Bright Stars FC",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Bright Stars FC in the 30th minute of the game.",
         "date": "2021-10-17",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       },
       {
         "id": 2,
         "title": "FC Fassell 2-1 Bright Stars FC",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Bright Stars FC in the 30th minute of the game.",
         "date": "2021-10-17",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       }
     ],
     "backToback": {
@@ -84,7 +84,7 @@
     "results": {
       "homeTeamScore": 2,
       "awayTeamScore": 1,
-      "competition": "Rwanda Premier League • Completed",
+      "competition": "Liberia Premier League • Completed",
       "status": "FT"
     },
     "ticket": {
@@ -114,7 +114,7 @@
     "matchPreview": [
       {
         "id": 1,
-        "label": "FC Fassell will face their long-time rivals Rayon FC in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon FC unbeaten in their last five."
+        "label": "FC Fassell will face their long-time rivals Rayon FC in what promises to be an exciting Liberia Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon FC unbeaten in their last five."
       },
       {
         "id": "2",
@@ -151,21 +151,21 @@
         "title": "FC Fassell 2-1 Rayon FC",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Rayon FC in the 30th minute of the game.",
         "date": "2021-10-24",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       },
       {
         "id": 2,
         "title": "FC Fassell 2-1 Rayon FC",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Rayon FC in the 30th minute of the game.",
         "date": "2021-10-24",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       },
       {
         "id": 3,
         "title": "FC Fassell 2-1 Rayon FC",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Rayon FC in the 30th minute of the game.",
         "date": "2021-10-24",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       }
     ],
     "backToback": {
@@ -208,7 +208,7 @@
     "matchPreview": [
       {
         "id": 1,
-        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Liberia Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
       },
       {
         "id": "2",
@@ -245,7 +245,7 @@
         "title": "FC Fassell 2-1 Armee Patriotique Rwandaise FC",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Armee Patriotique Rwandaise FC in the 30th minute of the game.",
         "date": "2021-11-01",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       }
     ],
     "backToback": {
@@ -288,7 +288,7 @@
     "matchPreview": [
       {
         "id": 1,
-        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Liberia Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
       },
       {
         "id": "2",
@@ -325,21 +325,21 @@
         "title": "FC Fassell 2-1 AS Kigali",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for AS Kigali in the 30th minute of the game.",
         "date": "2021-11-08",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       },
       {
         "id": 2,
         "title": "FC Fassell 2-1 AS Kigali",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for AS Kigali in the 30th minute of the game.",
         "date": "2021-11-08",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       },
       {
         "id": 3,
         "title": "FC Fassell 2-1 AS Kigali",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for AS Kigali in the 30th minute of the game.",
         "date": "2021-11-08",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       }
     ],
     "backToback": {
@@ -378,7 +378,7 @@
     "matchPreview": [
       {
         "id": 1,
-        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Liberia Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
       },
       {
         "id": "2",
@@ -415,7 +415,7 @@
         "title": "FC Fassell 2-1 Etincelles FC",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Etincelles FC in the 30th minute of the game.",
         "date": "2021-11-15",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       }
     ],
     "backToback": {
@@ -454,7 +454,7 @@
     "matchPreview": [
       {
         "id": 1,
-        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Rwanda Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
+        "label": "FC Fassell will face their long-time rivals Rayon Sports in what promises to be an exciting Liberia Premier League clash. Both teams are in good form, with Kigali Lonestar winning their last three matches and Rayon Sports unbeaten in their last five."
       },
       {
         "id": "2",
@@ -491,7 +491,7 @@
         "title": "FC Fassell 2-1 Mukura Victory Sports",
         "description": "Jean-Pierre Karekezi scores a goal for FC Fassell in the 2nd minute of the game. Emmanuel Mugisha scores a goal for Mukura Victory Sports in the 30th minute of the game.",
         "date": "2021-11-22",
-        "league": "Rwanda Premier League"
+        "league": "Liberia Premier League"
       }
     ],
     "backToback": {

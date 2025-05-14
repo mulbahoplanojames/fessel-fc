@@ -182,11 +182,17 @@ export default function MatcheClient() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Competitions</SelectItem>
-                <SelectItem value="Rwanda Premier League">
-                  Rwanda Premier League
+                <SelectItem value="Friendly">Friendly</SelectItem>
+                <SelectItem value="LFA-Orange National League">
+                  LFA-Orange National League
                 </SelectItem>
-                <SelectItem value="Rwanda Cup">Rwanda Cup</SelectItem>
+                <SelectItem value="Liberia First Division Cup">
+                  Liberia First Division Cup
+                </SelectItem>
                 <SelectItem value="CECAFA Club Cup">CECAFA Club Cup</SelectItem>
+                <SelectItem value="CAF Champions League">
+                  CAF Champions League
+                </SelectItem>
               </SelectContent>
             </Select>
           </div>

@@ -198,10 +198,10 @@ const AddBasicInfo: React.FC<AddBasicInfoProps> = ({
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="Friendly">Friendly</SelectItem>
-                  <SelectItem value="Rwanda Premier League">
+                  <SelectItem value="LFA-Orange National League">
                     LFA-Orange National League
                   </SelectItem>
-                  <SelectItem value="Rwanda Cup">
+                  <SelectItem value="Liberia First Division Cup">
                     Liberia First Division Cup
                   </SelectItem>
                   <SelectItem value="CECAFA Club Cup">
