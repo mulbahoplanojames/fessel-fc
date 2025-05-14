@@ -82,7 +82,7 @@ const ClubInfo = () => {
         </div>
         <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
           <Image
-            src="/hero-placeholder.jpg"
+            src="/hero-placeholder-1.jpeg"
             alt="FC Fassell Team"
             fill
             className="object-cover"

@@ -3,12 +3,12 @@ import React from "react";
 
 export default function GalleryHero() {
   return (
-    <section className="relative w-full h-[300px] overflow-hidden">
+    <section className="relative w-full h-[400px] overflow-hidden">
       <Image
-        src="/placeholder.svg?height=300&width=1400&text=Gallery"
+        src="/hero-placeholder-1.jpeg"
         alt="Gallery"
         fill
-        className="object-cover brightness-50"
+        className="object-cover brightness-60"
         priority
       />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />

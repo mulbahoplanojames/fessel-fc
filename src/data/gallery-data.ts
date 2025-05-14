@@ -140,7 +140,7 @@ export const events = [
   {
     id: 1,
     title: "Fan Day 2024",
-    thumbnail: "/placeholder.svg?height=300&width=500&text=Fan+Day+2024",
+    thumbnail: "/about-images/img3.jpg",
     date: "2024-05-20",
     location: "Antoinette Tubman Stadium, Monrovia",
     description:
@@ -149,7 +149,7 @@ export const events = [
   {
     id: 2,
     title: "Community Football Clinic",
-    thumbnail: "/placeholder.svg?height=300&width=500&text=Football+Clinic",
+    thumbnail: "/banners/club-new1.jpg",
     date: "2024-06-10",
     location: "Samuel Kanyon Doe Sports Complex, Paynesville",
     description:
@@ -158,7 +158,7 @@ export const events = [
   {
     id: 3,
     title: "Season Ticket Holder Event",
-    thumbnail: "/placeholder.svg?height=300&width=500&text=Season+Ticket+Event",
+    thumbnail: "/about-images/img4.jpg",
     date: "2024-07-05",
     location: "FC Fassell Club House, Monrovia",
     description:
@@ -167,7 +167,7 @@ export const events = [
   {
     id: 4,
     title: "Charity Match",
-    thumbnail: "/placeholder.svg?height=300&width=500&text=Charity+Match",
+    thumbnail: "/banners/club-new1.jpg",
     date: "2024-07-25",
     location: "Antoinette Tubman Stadium, Monrovia",
     description:

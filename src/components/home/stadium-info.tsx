@@ -49,8 +49,8 @@ export default function StadiumInfo() {
           </div>
           <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/liberia-africa-staduim.webp"
-              alt="Antoinette Tubman Stadium"
+              src="/stadium.jpeg"
+              alt="Fassel Stadium"
               fill
               className="object-cover"
             />
