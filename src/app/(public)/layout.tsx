@@ -1,7 +1,7 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "../globals.css";
-import { Navbar } from "@/layout/Navbar";
+import Navbar from "@/layout/Navbar";
 import TanstackQueryProvider from "@/context/TankStackQueryProvider";
 import { Footer } from "@/layout/Footer";
 

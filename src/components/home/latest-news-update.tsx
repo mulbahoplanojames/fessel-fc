@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
@@ -5,11 +7,37 @@ import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import { Badge } from "../ui/badge";
 import { ChevronRight } from "lucide-react";
-// import news from "@/data/news.json";
 import { handleNewsFetch } from "@/utils/helpers/handle-fetch";
+import { useEffect, useState } from "react";
 
-const LatestNewsUpdate = async () => {
-  const news = await handleNewsFetch();
+const LatestNewsUpdate = () => {
+  const [news, setNews] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const data = await handleNewsFetch();
+        setNews(data || []);
+      } catch (error) {
+        console.error("Failed to fetch news:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-14 bg-muted/50 container px-4 mx-auto">
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Loading news...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-14 bg-muted/50 container px-4 mx-auto">

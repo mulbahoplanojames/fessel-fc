@@ -1,16 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
 import Image from "next/image";
 import NavMenu from "./nav-menu";
 import MobileNavbar from "./mobile-navbar";
-import { auth } from "@/lib/auth";
-import { UserDropDown } from "./user-dropdown";
+import { useSession } from "next-auth/react";
+import UserDropDown from "./user-dropdown";
 import { ThemeModeToggle } from "@/components/mode-toggle";
 import CartButton from "./cart-button";
 
-export async function Navbar() {
-  const session = await auth();
+export default function Navbar() {
+  const { data: session } = useSession();
 
   return (
     <>

@@ -1,7 +1,7 @@
 "use client";
 import { login } from "@/actions/auth";
 import { Button } from "../ui/button";
-import { FcGoogle } from "react-icons/fc";
+import { Chrome } from "lucide-react";
 
 const LoginGoogle = () => {
   return (
@@ -10,7 +10,7 @@ const LoginGoogle = () => {
       variant="outline"
       className="w-full"
     >
-      <FcGoogle className="size-5" />
+      <Chrome className="size-5" />
       Login with Google
     </Button>
   );

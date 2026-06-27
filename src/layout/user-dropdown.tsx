@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,24 +8,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { auth } from "@/lib/auth";
+import { useSession } from "next-auth/react";
 import { CircleUser, Grip, Handshake, Settings } from "lucide-react";
-import prisma from "../../prisma";
 import Link from "next/link";
 import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
 
-export async function UserDropDown() {
-  const session = await auth();
-
-  const userEmail = session?.user?.email;
-
-  const user = await prisma.user.findUnique({
-    where: {
-      email: userEmail!,
-    },
-  });
-
+export default function UserDropDown() {
+  const { data: session } = useSession();
+  const user = session?.user;
   const userRole = user?.role;
 
   return (

@@ -1,15 +1,42 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
 import { TabsContent } from "../ui/tabs";
-// import matches from "@/data/matches.json";
 import { Match } from "@/types/match-type";
 import { handleMatchFetch } from "@/utils/helpers/handle-fetch";
 
-const MatchResults = async () => {
-  const matches = await handleMatchFetch();
+const MatchResults = () => {
+  const [matches, setMatches] = useState<Match[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMatches = async () => {
+      try {
+        const data = await handleMatchFetch();
+        setMatches(data);
+      } catch (error) {
+        console.error("Failed to fetch matches:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMatches();
+  }, []);
+
+  if (loading) {
+    return (
+      <TabsContent value="results">
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Loading matches...</p>
+        </div>
+      </TabsContent>
+    );
+  }
 
   return (
     <TabsContent value="results">

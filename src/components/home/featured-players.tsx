@@ -1,13 +1,40 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-// import players from "@/data/players.json";
 import { PrismaPlayerType } from "@/types/players-type";
 import { handlePlayersFetch } from "@/utils/helpers/handle-fetch";
 import { PlayerCard } from "../player-card";
 
-const FeaturedPlayers = async () => {
-  const players = await handlePlayersFetch();
+const FeaturedPlayers = () => {
+  const [players, setPlayers] = useState<PrismaPlayerType[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      try {
+        const data = await handlePlayersFetch();
+        setPlayers(data || []);
+      } catch (error) {
+        console.error("Failed to fetch players:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlayers();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-20 container px-4 mx-auto">
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Loading players...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 container px-4 mx-auto">

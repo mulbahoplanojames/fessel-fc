@@ -14,6 +14,20 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: "jwt",
   },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.role = token.role as string | undefined;
+      }
+      return session;
+    },
+  },
   providers: [
     Github({
       clientId: process.env.AUTH_GITHUB_ID,
@@ -76,7 +90,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             throw new Error("Invalid credentials from auth lib");
           }
         }
-        return user;
+        
+        // Convert Prisma user to NextAuth compatible user
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          role: user.role || undefined,
+        };
       },
     }),
   ],

@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import { CartProvider } from "@/context/cart-context";
+import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,20 +27,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <CartProvider>
-        <body className={poppins.className}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <div className="relative flex min-h-screen flex-col">
-              <main className="flex-1">{children}</main>
-            </div>
-          </ThemeProvider>
-        </body>
-      </CartProvider>
+      <SessionProvider>
+        <CartProvider>
+          <body className={poppins.className}>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="light"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <div className="relative flex min-h-screen flex-col">
+                <main className="flex-1">{children}</main>
+              </div>
+            </ThemeProvider>
+          </body>
+        </CartProvider>
+      </SessionProvider>
     </html>
   );
 }

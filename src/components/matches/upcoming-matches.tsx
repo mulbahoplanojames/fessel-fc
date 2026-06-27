@@ -1,12 +1,39 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { TabsContent } from "../ui/tabs";
-// import matches from "@/data/matches.json";
 import { Match } from "@/types/match-type";
 import { handleMatchFetch } from "@/utils/helpers/handle-fetch";
 import { MatchCard } from "../match-card";
 
-const UpcomingMatches = async () => {
-  const matches = await handleMatchFetch();
+const UpcomingMatches = () => {
+  const [matches, setMatches] = useState<Match[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMatches = async () => {
+      try {
+        const data = await handleMatchFetch();
+        setMatches(data);
+      } catch (error) {
+        console.error("Failed to fetch matches:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMatches();
+  }, []);
+
+  if (loading) {
+    return (
+      <TabsContent value="upcoming">
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Loading matches...</p>
+        </div>
+      </TabsContent>
+    );
+  }
 
   return (
     <TabsContent value="upcoming">

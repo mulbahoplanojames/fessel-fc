@@ -1,17 +1,42 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
-// import matches from "@/data/matches.json";
 import { CalendarDays } from "lucide-react";
 import { MatchCard } from "../match-card";
 import { DBMatch } from "@/types/match-type";
 import { handleMatchFetch } from "@/utils/helpers/handle-fetch";
 
-const UpcommingMatches = async () => {
-  const matches = await handleMatchFetch();
-  if (!matches) {
-    return null;
+const UpcommingMatches = () => {
+  const [matches, setMatches] = useState<DBMatch[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMatches = async () => {
+      try {
+        const data = await handleMatchFetch();
+        setMatches(data || []);
+      } catch (error) {
+        console.error("Failed to fetch matches:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMatches();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-20 container px-4 mx-auto">
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Loading matches...</p>
+        </div>
+      </section>
+    );
   }
+
   return (
     <>
       <section className="py-20 container px-4 mx-auto">
