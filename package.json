@@ -9,11 +9,6 @@
     "lint": "next lint",
     "postinstall": "prisma generate --schema=prisma/schema.prisma"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      ".prisma/client"
-    ]
-  },
   "dependencies": {
     "@auth/mongodb-adapter": "^3.8.0",
     "@auth/prisma-adapter": "2.7.2",
