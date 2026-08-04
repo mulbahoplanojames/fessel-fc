@@ -1,10 +1,11 @@
 import type React from "react";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "@/context/theme-provider";
 import { CartProvider } from "@/context/cart-context";
 import { SessionProvider } from "next-auth/react";
+import "./globals.css";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,7 +15,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "FC Fassell - Official Website",
   description:
-    "The official website of FC Fassell Football Club. Get the latest news, match updates, player profiles, and buy tickets for upcoming matches.",
+    "The official website of FC Fassell Football Club. Get the latest news, match updates, player profiles, and buy tickets for upcoming matches. Follow us on social media for the latest updates.",
   icons: {
     icon: "/logo.png",
   },
