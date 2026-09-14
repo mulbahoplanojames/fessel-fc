@@ -1,7 +1,7 @@
 import { requireAdmin } from "@/lib/session";
 import { redirect } from "next/navigation";
 import StandingForm from "@/components/admin/league/standing-form";
-import prisma from "../../../../../../../../../prisma";
+import prisma from "../../../../../../../prisma";
 
 export default async function AddStandingPage() {
   await requireAdmin();

@@ -1,6 +1,6 @@
 import { requireAdmin } from "@/lib/session";
 import { redirect } from "next/navigation";
-import prisma from "../../../../../../prisma";
+import prisma from "../../../../../../../prisma";
 import TierForm from "@/components/admin/donation/tier-form";
 
 export default async function AddTierPage() {
