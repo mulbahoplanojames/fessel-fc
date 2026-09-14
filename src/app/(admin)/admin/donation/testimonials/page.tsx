@@ -1,5 +1,4 @@
 import { requireAdmin } from "@/lib/session";
-import prisma from "../../../../../../prisma";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,6 +6,7 @@ import Link from "next/link";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import Image from "next/image";
 import type { DonationTestimonial } from "@prisma/client";
+import prisma from "../../../../../../prisma";
 
 export default async function DonationTestimonialsPage() {
   await requireAdmin();

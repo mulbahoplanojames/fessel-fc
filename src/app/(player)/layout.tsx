@@ -1,14 +1,20 @@
+"use client";
+
 import type React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Home, Trophy, Calendar, User, LogOut } from "lucide-react";
-import { signOut } from "@/lib/auth";
+import { authClient } from "@/lib/auth-client";
 
 export default function PlayerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const handleSignOut = async () => {
+    await authClient.signOut();
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <nav className="border-b">
@@ -36,17 +42,10 @@ export default function PlayerLayout({
               </Link>
             </div>
           </div>
-          <form
-            action={async () => {
-              "use server";
-              await signOut();
-            }}
-          >
-            <Button variant="ghost" size="sm" type="submit">
-              <LogOut className="h-4 w-4 mr-2" />
-              Sign Out
-            </Button>
-          </form>
+          <Button variant="ghost" size="sm" onClick={handleSignOut}>
+            <LogOut className="h-4 w-4 mr-2" />
+            Sign Out
+          </Button>
         </div>
       </nav>
       <main>{children}</main>

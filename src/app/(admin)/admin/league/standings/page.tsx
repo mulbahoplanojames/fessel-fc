@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Plus, Edit, Trash2 } from "lucide-react";
-import prisma from "../../../../../../prisma";
+import prisma from "../../../../../../../../../prisma";
 
 export default async function LeagueStandingsPage() {
   await requireAdmin();

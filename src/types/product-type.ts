@@ -11,7 +11,9 @@ export interface Product {
   reviews?: {
     average: number;
     count: number;
-  };
+  } | null;
   description: string;
   features?: string[];
+  stock?: number;
+  status?: string;
 }
