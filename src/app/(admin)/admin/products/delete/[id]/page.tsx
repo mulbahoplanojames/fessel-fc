@@ -16,10 +16,11 @@ import DeleteProductForm from "@/components/admin/products/delete-product-form";
 export default async function DeleteProductPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   await requireAdmin();
-  const product = await getProductById(params.id);
+  const { id } = await params;
+  const product = await getProductById(id);
 
   if (!product) {
     notFound();
@@ -63,7 +64,7 @@ export default async function DeleteProductPage({
               <Button variant="outline" asChild>
                 <Link href="/admin/products">Cancel</Link>
               </Button>
-              <DeleteProductForm productId={params.id} />
+              <DeleteProductForm productId={id} />
             </div>
           </div>
         </CardContent>
