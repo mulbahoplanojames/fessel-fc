@@ -5,7 +5,6 @@
 ![version](https://img.shields.io/github/v/release/mulbahoplanojames/fessel-fc?include_prereleases)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white)
-![Auth.js](https://img.shields.io/badge/Auth.js-000000?logo=auth.js&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-000000?logo=prisma&logoColor=white)
 ![Cloudinary](https://img.shields.io/badge/Cloudinary-000000?logo=cloudinary&logoColor=white)
 ![Sonner](https://img.shields.io/badge/Sonner-000000?logo=sonner&logoColor=white)
@@ -38,7 +37,7 @@ Fessel FC is a modern football web application built for Fessel FC with Next.js 
 - 📈 Performance optimized with Turbopack
 - 🛡️ Type-safe development with TypeScript
 - 🎯 Real-time e-commerce with React Query
-- 📱 Mobile-first design
+- � Analytics with Vercel Analytics
 
 ## Tech Stack
 - Frontend:

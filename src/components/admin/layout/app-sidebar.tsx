@@ -17,6 +17,7 @@ import {
   Trophy,
   Users,
   UsersRound,
+  Target,
 } from "lucide-react";
 
 import { NavMain } from "@/components/admin/layout/nav-main";
@@ -48,6 +49,11 @@ const data = {
       icon: Trophy,
     },
     {
+      title: "League",
+      url: "/admin/league/standings",
+      icon: Target,
+    },
+    {
       title: "Players",
       url: "/admin/players",
       icon: Users,
@@ -76,6 +82,20 @@ const data = {
       title: "Donations",
       url: "/admin/donations",
       icon: HandCoins,
+      items: [
+        {
+          title: "Testimonials",
+          url: "/admin/donation/testimonials",
+        },
+        {
+          title: "FAQs",
+          url: "/admin/donation/faqs",
+        },
+        {
+          title: "Sponsor Tiers",
+          url: "/admin/donation/tiers",
+        },
+      ],
     },
     {
       title: "Sponsorships",

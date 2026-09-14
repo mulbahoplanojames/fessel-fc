@@ -4,6 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SingleMatchHeader from "@/components/matches/single-match-header";
 import MatchPreview from "@/components/matches/match-preview";
 import MatchHighlights from "@/components/matches/match-highlights";
+import LeagueStandings from "@/components/matches/league-standings";
 // import { Match } from "@/types/match-type";
 import prisma from "../../../../../../prisma";
 import { PrismaMatchType } from "@/types/match-type";
@@ -42,6 +43,7 @@ export default async function MatchDetailPage({
           <TabsTrigger value="lineup">Lineup</TabsTrigger>
           <TabsTrigger value="stats">Stats</TabsTrigger>
           <TabsTrigger value="h2h">Head to Head</TabsTrigger>
+          <TabsTrigger value="standings">League Table</TabsTrigger>
         </TabsList>
 
         <TabsContent value="preview">
@@ -82,6 +84,10 @@ export default async function MatchDetailPage({
           ) : (
             <p>Match not found.</p>
           )}
+        </TabsContent>
+
+        <TabsContent value="standings">
+          <LeagueStandings />
         </TabsContent>
       </Tabs>
     </div>

@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { authClient } from "@/lib/auth-client";
-import { CircleUser, Grip, Handshake, Settings } from "lucide-react";
+import { CircleUser, Grip, Handshake, Settings, Trophy } from "lucide-react";
 import Link from "next/link";
 import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
@@ -41,6 +41,17 @@ export default function UserDropDown() {
             <Link href="/admin">
               <Grip className="size-6" />
               Dashboard
+            </Link>
+          </DropdownMenuItem>
+        )}
+        {userRole && userRole === "PLAYER" && (
+          <DropdownMenuItem
+            className="flex items-center gap-3 px-3 py-2 font-medium text-gray-700 rounded-lg group text-theme-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300"
+            asChild
+          >
+            <Link href="/player/portal">
+              <Trophy className="size-6" />
+              Player Portal
             </Link>
           </DropdownMenuItem>
         )}

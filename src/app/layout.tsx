@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ThemeProvider } from "@/context/theme-provider";
 import { CartProvider } from "@/context/cart-context";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 
@@ -39,6 +40,7 @@ export default function RootLayout({
               <main className="flex-1">{children}</main>
             </div>
           </ThemeProvider>
+          <Analytics />
         </body>
       </CartProvider>
     </html>

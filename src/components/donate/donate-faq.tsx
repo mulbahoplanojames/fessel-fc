@@ -7,47 +7,54 @@ import {
 } from "../ui/accordion";
 import { HelpCircle } from "lucide-react";
 import Link from "next/link";
+import axios from "axios";
 
-const faqs = [
-  {
-    id: 1,
-    title: "Is my donation tax-deductible?",
-    description:
-      "Yes, all donations to Fassel FC Foundation are tax-deductible under Liberia tax law. You will receive an official receipt for your donation that can be used for tax purposes.",
-  },
-  {
-    id: 2,
-    title: "How is my donation used?",
-    description:
-      "Your donation directly supports our three main initiativesyouth development programs, facility improvements, and community outreach. We publish an annual impact report that details how funds are allocated and the outcomes achieved.",
-  },
-  {
-    id: 3,
-    title: "Can I specify how my donation is used?",
-    description:
-      "Yes, you can designate your donation for a specific program or initiative. Please include this information in the message field when making your donation, or contact our donor relations team for larger gifts.",
-  },
-  {
-    id: 4,
-    title: "How do I cancel or modify a recurring donation?",
-    description:
-      "You can cancel or modify your recurring donation at any time by logging into your donor account on our website or by contacting our donor support team at donations@kigalilonestar.com.",
-  },
-  {
-    id: 5,
-    title: "Are there benefits for donors?",
-    description:
-      "  Yes, depending on your donation level, benefits may include recognition on our website, exclusive event invitations, behind-the-scenes tours, and priority ticket access. Corporate sponsors receive additional benefits as outlined in our sponsorship packages.",
-  },
-  {
-    id: 6,
-    title: "Can I donate equipment or services instead of money?",
-    description:
-      "In-kind donations of equipment, services, or expertise are greatly appreciated. Please contact our team to discuss your specific in-kind donation and how it can support our mission.",
-  },
-];
+interface FAQ {
+  id: string;
+  question: string;
+  answer: string;
+}
 
 export default function DonateFAQ() {
+  const [faqs, setFaqs] = React.useState<FAQ[]>([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchFAQs = async () => {
+      try {
+        const response = await axios.get("/api/donation/faqs");
+        setFaqs(response.data);
+      } catch (error) {
+        console.error("Error fetching FAQs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFAQs();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-muted/30">
+        <div className="container px-4 mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold tracking-tight mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Loading...
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (faqs.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-20 bg-muted/30">
       <div className="container px-4 mx-auto">
@@ -63,9 +70,9 @@ export default function DonateFAQ() {
         <div className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq) => (
-              <AccordionItem value={faq.id.toString()} key={faq.id}>
-                <AccordionTrigger>{faq.title}</AccordionTrigger>
-                <AccordionContent>{faq.description}</AccordionContent>
+              <AccordionItem value={faq.id} key={faq.id}>
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent>{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>

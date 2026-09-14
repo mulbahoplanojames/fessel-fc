@@ -21,6 +21,20 @@ export async function requireUser() {
   return session;
 }
 
+export async function requirePlayer() {
+  const session = await getSession();
+  if (!session) redirect("/sign-in");
+  if (session.user.role !== "PLAYER") redirect("/");
+  return session;
+}
+
+export async function requirePlayerOrAdmin() {
+  const session = await getSession();
+  if (!session) redirect("/sign-in");
+  if (session.user.role !== "PLAYER" && session.user.role !== "ADMIN") redirect("/");
+  return session;
+}
+
 export async function requireAdminInRequest(request: Request) {
   const session = await auth.api.getSession({
     headers: request.headers,
@@ -36,6 +50,26 @@ export async function requireUserInRequest(request: Request) {
     headers: request.headers,
   });
   if (!session) {
+    return null;
+  }
+  return session;
+}
+
+export async function requirePlayerInRequest(request: Request) {
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
+  if (!session || session.user.role !== "PLAYER") {
+    return null;
+  }
+  return session;
+}
+
+export async function requirePlayerOrAdminInRequest(request: Request) {
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
+  if (!session || (session.user.role !== "PLAYER" && session.user.role !== "ADMIN")) {
     return null;
   }
   return session;

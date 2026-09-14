@@ -23,6 +23,7 @@ import DonateTestimonial from "@/components/donate/donate-testimonial";
 import DonateFAQ from "@/components/donate/donate-faq";
 import DonateCTA from "@/components/donate/donate-cta";
 import DonateComfirmation from "@/components/donate/donate-comfirmation";
+import SponsorTiers from "@/components/donate/sponsor-tiers";
 
 export default function DonatePage() {
   const [donationType, setDonationType] = useState("one-time");
@@ -667,104 +668,10 @@ export default function DonatePage() {
                               <h3 className="text-lg font-semibold">
                                 Sponsorship Level
                               </h3>
-                              <RadioGroup
-                                defaultValue="silver"
+                              <SponsorTiers
                                 value={sponsorTier}
                                 onValueChange={setSponsorTier}
-                                className="space-y-4"
-                              >
-                                <div className="flex items-center justify-between space-x-2 border p-4 rounded-lg">
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem
-                                      value="bronze"
-                                      id="bronze"
-                                    />
-                                    <div>
-                                      <Label
-                                        htmlFor="bronze"
-                                        className="text-base font-medium"
-                                      >
-                                        Bronze Partner
-                                      </Label>
-                                      <p className="text-sm text-muted-foreground">
-                                        Logo on website, social media mention
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <div className="font-semibold">
-                                    500,000 LRD
-                                  </div>
-                                </div>
-
-                                <div className="flex items-center justify-between space-x-2 border p-4 rounded-lg">
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem
-                                      value="silver"
-                                      id="silver"
-                                    />
-                                    <div>
-                                      <Label
-                                        htmlFor="silver"
-                                        className="text-base font-medium"
-                                      >
-                                        Silver Partner
-                                      </Label>
-                                      <p className="text-sm text-muted-foreground">
-                                        Bronze benefits + stadium banner, match
-                                        program ad
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <div className="font-semibold">
-                                    1,000,000 LRD
-                                  </div>
-                                </div>
-
-                                <div className="flex items-center justify-between space-x-2 border p-4 rounded-lg">
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem value="gold" id="gold" />
-                                    <div>
-                                      <Label
-                                        htmlFor="gold"
-                                        className="text-base font-medium"
-                                      >
-                                        Gold Partner
-                                      </Label>
-                                      <p className="text-sm text-muted-foreground">
-                                        Silver benefits + jersey logo placement,
-                                        VIP tickets
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <div className="font-semibold">
-                                    2,500,000 LRD
-                                  </div>
-                                </div>
-
-                                <div className="flex items-center justify-between space-x-2 border p-4 rounded-lg">
-                                  <div className="flex items-center space-x-2">
-                                    <RadioGroupItem
-                                      value="platinum"
-                                      id="platinum"
-                                    />
-                                    <div>
-                                      <Label
-                                        htmlFor="platinum"
-                                        className="text-base font-medium"
-                                      >
-                                        Platinum Partner
-                                      </Label>
-                                      <p className="text-sm text-muted-foreground">
-                                        Gold benefits + naming rights, exclusive
-                                        events
-                                      </p>
-                                    </div>
-                                  </div>
-                                  <div className="font-semibold">
-                                    5,000,000 LRD
-                                  </div>
-                                </div>
-                              </RadioGroup>
+                              />
                             </div>
 
                             <Separator />
