@@ -30,3 +30,13 @@ export async function requireAdminInRequest(request: Request) {
   }
   return session;
 }
+
+export async function requireUserInRequest(request: Request) {
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
+  if (!session) {
+    return null;
+  }
+  return session;
+}
