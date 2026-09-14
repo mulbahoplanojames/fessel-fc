@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
 
     // Send order confirmation email
     const itemsList = Array.isArray(items) 
-      ? items.map((item: any) => `${item.name || 'Item'} x${item.quantity || 1} - ${currency || 'USD'} ${item.price || 0}`).join('\n')
+      ? items.map((item: { name?: string; quantity?: number; price?: number }) => `${item.name || 'Item'} x${item.quantity || 1} - ${currency || 'USD'} ${item.price || 0}`).join('\n')
       : 'Items information not available';
     
     await sendEmail({

@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const where: any = {
+    const where: Record<string, unknown> = {
       status: "active",
       OR: [
         { name: { contains: query, mode: "insensitive" } },

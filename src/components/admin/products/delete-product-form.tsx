@@ -21,7 +21,7 @@ export default function DeleteProductForm({ productId }: DeleteProductFormProps)
       await deleteProduct(productId);
       toast("Success", { description: "Product deleted successfully" });
       router.push("/admin/products");
-    } catch (error) {
+    } catch {
       toast("Error", { description: "Failed to delete product" });
       setIsDeleting(false);
     }

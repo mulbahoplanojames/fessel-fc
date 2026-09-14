@@ -110,7 +110,7 @@ export default function ProductForm({ product }: ProductFormProps) {
       }
 
       router.push("/admin/products");
-    } catch (error) {
+    } catch {
       toast("Error", {
         description: product
           ? "Failed to update product"

@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get("limit") || "8");
     const type = searchParams.get("type"); // "new", "bestseller", or "all"
 
-    const where: any = {
+    const where: Record<string, unknown> = {
       status: "active",
     };
 

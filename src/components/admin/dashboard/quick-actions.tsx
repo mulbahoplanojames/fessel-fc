@@ -101,11 +101,10 @@ const QuickActions = () => {
     },
   ];
 
-  const maxValue = Math.max(
+  const maxForRevenue = Math.max(
     revenue?.shopRevenue ?? 0,
     revenue?.donations ?? 0,
     revenue?.sponsorships ?? 0,
-    revenue?.products ?? 0,
     revenue?.openTickets ?? 0,
     1
   );
@@ -158,13 +157,6 @@ const QuickActions = () => {
                   if (item.title === "Products") {
                     return Math.min(100, Math.round((numericValue / Math.max(revenue?.products ?? 1, 1)) * 100));
                   }
-                  const maxForRevenue = Math.max(
-                    revenue?.shopRevenue ?? 0,
-                    revenue?.donations ?? 0,
-                    revenue?.sponsorships ?? 0,
-                    revenue?.openTickets ?? 0,
-                    1
-                  );
                   return Math.min(100, Math.round((numericValue / maxForRevenue) * 100));
                 })()}
                 className={`h-2 bg-muted ${item.progressColor}`}

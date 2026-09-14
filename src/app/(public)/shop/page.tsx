@@ -50,7 +50,7 @@ export default function ShopPage() {
     },
   });
 
-  const products = productsData || [];
+  const products = useMemo(() => productsData || [], [productsData]);
 
   const handleFilterChange = (event: {
     target: { name: string; value: string };

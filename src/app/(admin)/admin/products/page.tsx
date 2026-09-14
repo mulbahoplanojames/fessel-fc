@@ -11,7 +11,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 import { Plus, Edit, Trash2, Search } from "lucide-react";
 import Image from "next/image";
 import type { Product } from "@/types/product-type";
@@ -48,7 +47,7 @@ export default async function ProductsPage({
       </div>
 
       {/* Filters */}
-      <form className="flex gap-4 items-center">
+      <div className="flex gap-4 items-center">
         <div className="relative flex-1 max-w-sm">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -83,15 +82,12 @@ export default async function ProductsPage({
             <SelectItem value="archived">Archived</SelectItem>
           </SelectContent>
         </Select>
-        <Button type="submit">Filter</Button>
-        <Button 
-          type="button" 
-          variant="outline"
-          onClick={() => redirect("/admin/products")}
-        >
-          Reset
+        <Button variant="outline" asChild>
+          <Link href="/admin/products">
+            Reset
+          </Link>
         </Button>
-      </form>
+      </div>
 
       <div className="border rounded-lg overflow-hidden">
         <div className="overflow-x-auto">

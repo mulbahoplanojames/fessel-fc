@@ -12,9 +12,9 @@ export async function getProducts(filters?: {
   isNew?: boolean;
   isBestseller?: boolean;
   search?: string;
-}) {
+}): Promise<Product[]> {
   try {
-    const where: any = {
+    const where: Record<string, unknown> = {
       status: filters?.status || "active",
     };
 
@@ -43,7 +43,7 @@ export async function getProducts(filters?: {
       orderBy: { createdAt: "desc" },
     });
 
-    return products.map((product: any): Product => ({
+    return products.map((product): Product => ({
       id: product.id,
       name: product.name,
       price: product.price,
@@ -168,14 +168,13 @@ export async function updateProduct(id: string, formData: FormData) {
     const isBestseller = formData.get("isBestseller") === "true";
     const stock = formData.get("stock") as string;
     const status = formData.get("status") as string;
-    const keepExistingImage = formData.get("keepExistingImage") === "true";
     
     // Parse arrays from form data
     const images = formData.get("images") as string;
     const features = formData.get("features") as string;
     const sizes = formData.get("sizes") as string;
 
-    const updateData: any = {};
+    const updateData: Record<string, unknown> = {};
 
     if (name) updateData.name = name;
     if (price) updateData.price = parseFloat(price);
@@ -269,7 +268,7 @@ export async function updateProductStock(id: string, quantity: number) {
   }
 }
 
-export async function bulkUpdateProducts(updates: Array<{ id: string; changes: any }>) {
+export async function bulkUpdateProducts(updates: Array<{ id: string; changes: Record<string, unknown> }>) {
   try {
     await requireAdmin();
 
