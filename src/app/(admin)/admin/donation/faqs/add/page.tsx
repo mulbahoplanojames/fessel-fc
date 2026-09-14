@@ -1,7 +1,7 @@
 import { requireAdmin } from "@/lib/session";
 import { redirect } from "next/navigation";
-import prisma from "../../../../../../prisma";
 import FAQForm from "@/components/admin/donation/faq-form";
+import prisma from "../../../../../../../prisma";
 
 export default async function AddFAQPage() {
   await requireAdmin();

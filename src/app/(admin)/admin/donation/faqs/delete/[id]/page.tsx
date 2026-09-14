@@ -1,6 +1,5 @@
 import { requireAdmin } from "@/lib/session";
 import { redirect } from "next/navigation";
-import prisma from "../../../../../../prisma";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,6 +11,7 @@ import {
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Trash2 } from "lucide-react";
+import prisma from "../../../../../../../../prisma";
 
 export default async function DeleteFAQPage({
   params,
