@@ -27,11 +27,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const data = {
-  user: {
-    name: "oplano james",
-    email: "oplaonojames@gmail.com",
-    avatar: "/placeholder.svg?",
-  },
   navMain: [
     {
       title: "Dashboard",
@@ -74,7 +69,16 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  user,
+  ...props
+}: React.ComponentProps<typeof Sidebar> & {
+  user: {
+    name: string;
+    email: string;
+    avatar: string;
+  };
+}) {
   return (
     <Sidebar
       className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
@@ -102,7 +106,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>
   );

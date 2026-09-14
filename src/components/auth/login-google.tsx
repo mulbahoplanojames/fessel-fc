@@ -1,17 +1,22 @@
 "use client";
-import { login } from "@/actions/auth";
 import { Button } from "../ui/button";
 import { Chrome } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
-const LoginGoogle = () => {
+const LoginGoogle = ({ label = "Login with Google" }: { label?: string }) => {
   return (
     <Button
-      onClick={() => login("google")}
+      onClick={() =>
+        authClient.signIn.social({
+          provider: "google",
+          callbackURL: "/admin",
+        })
+      }
       variant="outline"
       className="w-full"
     >
       <Chrome className="size-5" />
-      Login with Google
+      {label}
     </Button>
   );
 };

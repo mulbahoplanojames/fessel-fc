@@ -8,15 +8,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useSession } from "next-auth/react";
+import { authClient } from "@/lib/auth-client";
 import { CircleUser, Grip, Handshake, Settings } from "lucide-react";
 import Link from "next/link";
 import LogoutButton from "@/components/auth/logout-button";
 import Image from "next/image";
 
 export default function UserDropDown() {
-  const { data: session } = useSession();
-  const user = session?.user;
+  const { data } = authClient.useSession();
+  const user = data?.user;
   const userRole = user?.role;
 
   return (

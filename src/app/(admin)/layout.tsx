@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/admin/layout/site-header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
 import TanstackQueryProvider from "@/context/TankStackQueryProvider";
+import { requireAdmin } from "@/lib/session";
 
 export const metadata: Metadata = {
   title: "Kigali Lonestar FC - Official Website",
@@ -15,17 +16,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await requireAdmin();
+  const user = {
+    name: session.user.name ?? "Admin",
+    email: session.user.email ?? "",
+    avatar: session.user.image ?? "/placeholder.svg?",
+  };
+
   return (
     <div className="[--header-height:calc(--spacing(14))]">
       <SidebarProvider className="flex flex-col">
         <SiteHeader />
         <div className="flex flex-1">
-          <AppSidebar />
+          <AppSidebar user={user} />
           <SidebarInset>
             <TanstackQueryProvider>
               <div className="flex flex-1 flex-col gap-4 p-4">{children}</div>

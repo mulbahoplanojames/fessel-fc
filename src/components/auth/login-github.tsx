@@ -1,12 +1,17 @@
 "use client";
-import { login } from "@/actions/auth";
 import { Button } from "../ui/button";
 import { Github } from "lucide-react";
+import { authClient } from "@/lib/auth-client";
 
 const LoginGitHub = () => {
   return (
     <Button
-      onClick={() => login("github")}
+      onClick={() =>
+        authClient.signIn.social({
+          provider: "github",
+          callbackURL: "/admin",
+        })
+      }
       variant="outline"
       className="w-full"
     >

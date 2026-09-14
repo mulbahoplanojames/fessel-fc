@@ -6,8 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import LoginGitHub from "@/components/auth/login-github";
-import LoginForm from "@/components/auth/login-form";
+import SignUpForm from "@/components/auth/sign-up-form";
 import LoginGoogle from "@/components/auth/login-google";
 import { Button } from "@/components/ui/button";
 import { ArrowBigLeft } from "lucide-react";
@@ -24,26 +23,26 @@ export default function Page() {
                 <ArrowBigLeft />
               </Link>
             </Button>
-            <CardTitle className="mt-2">Login to your account</CardTitle>
+            <CardTitle className="mt-2">Create an account</CardTitle>
             <CardDescription>
-              Sign in with your credentials or a social account
+              Sign up to get started with FC Fassell
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <LoginForm />
-            <div className="mt-3">
-              <LoginGoogle />
+            <SignUpForm />
+            <div className="my-4 flex items-center gap-3 text-xs text-muted-foreground">
+              <div className="h-px flex-1 bg-border" />
+              or continue with
+              <div className="h-px flex-1 bg-border" />
             </div>
-            {/* <div className="mt-3">
-              <LoginGitHub />
-            </div> */}
+            <LoginGoogle label="Sign up with Google" />
             <p className="mt-4 text-center text-sm text-muted-foreground">
-              Don&apos;t have an account?{" "}
+              Already have an account?{" "}
               <Link
-                href="/sign-up"
+                href="/sign-in"
                 className="font-medium text-primary underline-offset-4 hover:underline"
               >
-                Sign up
+                Sign in
               </Link>
             </p>
           </CardContent>

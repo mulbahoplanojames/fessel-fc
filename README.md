@@ -9,7 +9,7 @@
 ![Prisma](https://img.shields.io/badge/Prisma-000000?logo=prisma&logoColor=white)
 ![Cloudinary](https://img.shields.io/badge/Cloudinary-000000?logo=cloudinary&logoColor=white)
 ![Sonner](https://img.shields.io/badge/Sonner-000000?logo=sonner&logoColor=white)
-![Next-Auth.js](https://img.shields.io/badge/Next-Auth.js-000000?logo=next-auth.js&logoColor=white)
+![Better Auth](https://img.shields.io/badge/Better%20Auth-000000?logo=better-auth&logoColor=white)
 ![Next-Themes](https://img.shields.io/badge/Next-Themes-000000?logo=next-themes&logoColor=white)
 
 
@@ -27,7 +27,7 @@
 Fessel FC is a modern football web application built for Fessel FC with Next.js and TypeScript, featuring robust authentication, MongoDB integration, and a rich UI built with Radix UI components. It's designed to provide a seamless user experience with real-time data handling and modern development practices.
 
 ## Features
-- ✅ Modern authentication with Auth.js
+- ✅ Modern authentication with Better Auth
 - 🔒 MongoDB integration with Prisma ORM
 - 🎨 Responsive UI with Radix UI components
 - 🎯 Real-time data fetching with React Query
@@ -41,13 +41,13 @@ Fessel FC is a modern football web application built for Fessel FC with Next.js 
 
 ## Tech Stack
 - Frontend:
-  - Next.js 15
+  - Next.js 16
   - React 19
   - TypeScript
   - Tailwind CSS
   - Radix UI Components
   - Sonner (Notifications)
-  - Next-Auth.js
+  - Better Auth
 - Backend:
   - Node.js
   - MongoDB
@@ -92,12 +92,33 @@ Create a `.env` file in the root directory with the following variables:
 
 ```
 DATABASE_URL="mongodb+srv://..."
-NEXTAUTH_URL="http://localhost:3000"
-NEXTAUTH_SECRET="your-secret"
+BETTER_AUTH_SECRET="your-secret"        # openssl rand -base64 32
+BETTER_AUTH_URL="http://localhost:3000"
+NEXT_PUBLIC_BASE_URI="http://localhost:3000"
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
 CLOUDINARY_CLOUD_NAME="your-cloud-name"
 CLOUDINARY_API_KEY="your-api-key"
 CLOUDINARY_API_SECRET="your-api-secret"
 ```
+
+### Migrating from Auth.js (NextAuth v5) to Better Auth
+
+If you previously used Auth.js against this database, existing records are kept
+backward compatible by the migration script. Run it once against production
+(`DATABASE_URL`) before deploying the new stack:
+
+```bash
+pnpm migrate:auth
+```
+
+This renames OAuth account fields (`provider`→`providerId`, `expires_at`→`accessTokenExpiresAt`, etc.), converts
+`emailVerified` to a boolean, moves credential passwords onto Better Auth
+`Account` records, migrates `VerificationToken` → `Verification`, and recreates
+the appropriate indexes. It is idempotent. Note: existing users must sign in
+again (old NextAuth session cookies are not reused by Better Auth).
 
 ## Usage
 1. Start the development server using `pnpm dev`

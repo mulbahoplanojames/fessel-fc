@@ -1,8 +1,8 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  engineType    = "binary"
   binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
- 
 
 datasource db {
   provider = "mongodb"
@@ -16,18 +16,62 @@ enum UserRole {
 }
 
 model User {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
-  email         String?         @unique
-  password      String?  
-  emailVerified DateTime?
+  id            String    @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
   image         String?
+  role          UserRole? @default(USER)
   accounts      Account[]
   sessions      Session[]
-  role          UserRole?       @default(USER)
-  // Optional for WebAuthn support
-  Authenticator Authenticator[]
- 
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Session {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String    @db.ObjectId
+  token     String    @unique
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                   String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId               String    @db.ObjectId
+  accountId            String
+  providerId           String
+  accessToken          String?
+  refreshToken         String?
+  idToken              String?
+  accessTokenExpiresAt DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                String?
+  password             String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([providerId, accountId])
+  @@index([userId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Verification {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  value      String
+  expiresAt  DateTime
+
+  @@index([identifier])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -46,13 +90,13 @@ model Match {
   upcoming        Boolean? @default(false)
   isFeatured      Boolean? @default(false)
   isLive          Boolean? @default(false)
-  
+
   badge          Json?    // Stores: { title: string, color: string, duration: string }
   matchPreview   Json[]   // Stores: [{ id: number|string, label: string }]
   playersToWatch Json[]   // Stores: [{ id: number, name: string, position?: string, team?: string, avatar?: string }]
   highlights     Json[]   // Stores: [{ id: number, title: string, description?: string, date?: string, league?: string }]
-  
-  backToback     Json?    // Stores: { homeTeam: { team: string, win: numb2er }, awayTeam?: { team: string, win: number }, bothTeams?: { draw: number } }
+
+  backToback     Json?    // Stores: { homeTeam: { team: string, win: number }, awayTeam?: { team: string, win: number }, bothTeams?: { draw: number } }
   matchResult    Json?    // Stores: { homeTeamScore: number, awayTeamScore: number, competition: string, status: string }
   tickets        Json?    // Stores: { price: number, quantity: number, sections: [{ name: string, price: number, available: number }] }
 
@@ -67,8 +111,8 @@ model Player {
   number    Int
   featured  Boolean?  @default(false)
   image     String?
-  
-  // Stats as JSON field 
+
+  // Stats as JSON field
   stats     Json?     // Stores: {
                       //   goals?: number,
                       //   assists?: number,
@@ -101,61 +145,4 @@ model News {
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-}
-
-model Account {
-  id                String  @id @default(auto()) @map("_id") @db.ObjectId
-  userId            String  @db.ObjectId
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.String
-  access_token      String? @db.String
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.String
-  session_state     String?
- 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
- 
-model Session {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
-  sessionToken String   @unique
-  userId       String   @db.ObjectId
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
- 
-model VerificationToken {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  identifier String
-   token      String   @unique
-  expires    DateTime
- 
-  @@unique([identifier, token])
-}
- 
-// Optional for WebAuthn support
-model Authenticator {
-  credentialID         String  @id @map("_id")
-  userId               String  @db.ObjectId
-  providerAccountId    String
-  credentialPublicKey  String
-  counter              Int
-  credentialDeviceType String
-  credentialBackedUp   Boolean
-  transports           String?
- 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
- 
-  @@unique([userId, credentialID])
 }

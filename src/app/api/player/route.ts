@@ -2,9 +2,15 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import prisma from "../../../../prisma";
 import { uploadPlayersImageToCloudinary } from "@/lib/upload-to-cloudinary";
+import { requireAdminInRequest } from "@/lib/session";
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await requireAdminInRequest(request);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const formData = await request.formData();
 
     // Handle player image upload
@@ -24,17 +30,6 @@ export async function POST(request: NextRequest) {
       playerbio: JSON.parse(formData.get("playerbio") as string),
     };
 
-    // Test database connection
-    try {
-      await prisma.$connect();
-      console.log("Database connected successfully");
-    } catch (error) {
-      console.error("Database connection failed:", error);
-      throw error;
-    }
-
-    // console.log("Sanitized data:", sanitizedData); // Debug log
-
     const player = await prisma.player.create({
       data: playerData,
     });
@@ -49,21 +44,11 @@ export async function POST(request: NextRequest) {
       },
       { status: 400 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
 export async function GET() {
   try {
-    // Test database connection
-    try {
-      await prisma.$connect();
-      console.log("Database connected successfully");
-    } catch (error) {
-      console.error("Database connection failed:", error);
-      throw error;
-    }
     const players = await prisma.player.findMany();
     // console.log("Players:", players);
     return NextResponse.json(players, { status: 200 });
@@ -76,7 +61,5 @@ export async function GET() {
       },
       { status: 400 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }

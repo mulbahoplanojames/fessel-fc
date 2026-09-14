@@ -1,9 +1,15 @@
 import { uploadNewsImageToCloudinary } from "@/lib/upload-to-cloudinary";
 import { NextResponse, type NextRequest } from "next/server";
 import prisma from "../../../../prisma";
+import { requireAdminInRequest } from "@/lib/session";
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await requireAdminInRequest(request);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const data = await request.formData();
 
     const title = data.get("title") as string;
@@ -17,15 +23,6 @@ export async function POST(request: NextRequest) {
     const image = data.get("image") as File;
 
     const imagePath = await uploadNewsImageToCloudinary(image);
-
-    // Test database connection
-    try {
-      await prisma.$connect();
-      console.log("Database connected successfully");
-    } catch (error) {
-      console.error("Database connection failed:", error);
-      throw error;
-    }
 
     const news = await prisma.news.create({
       data: {
@@ -50,14 +47,11 @@ export async function POST(request: NextRequest) {
       },
       { status: 400 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
 export async function GET() {
   try {
-    await prisma.$connect();
     const news = await prisma.news.findMany();
     // console.log("News from server", news);
     return NextResponse.json(news, { status: 200 });
@@ -69,13 +63,16 @@ export async function GET() {
       },
       { status: 400 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
 export async function DELETE(request: NextRequest) {
   try {
+    const session = await requireAdminInRequest(request);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const data = await request.formData();
     const id = data.get("id") as string;
     await prisma.news.delete({

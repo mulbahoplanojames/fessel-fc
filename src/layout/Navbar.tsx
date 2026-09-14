@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import NavMenu from "./nav-menu";
 import MobileNavbar from "./mobile-navbar";
-import { useSession } from "next-auth/react";
+import { authClient } from "@/lib/auth-client";
 import UserDropDown from "./user-dropdown";
 import { ThemeModeToggle } from "@/components/mode-toggle";
 import CartButton from "./cart-button";
 
 export default function Navbar() {
-  const { data: session } = useSession();
+  const { data } = authClient.useSession();
+  const session = data?.session;
 
   return (
     <>

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../prisma";
 import { uploadMatchImageToCloudinary } from "@/lib/upload-to-cloudinary";
+import { requireAdminInRequest } from "@/lib/session";
 
 type Player = {
   name: string;
@@ -11,6 +12,11 @@ type Player = {
 
 export async function POST(request: NextRequest) {
   try {
+    const session = await requireAdminInRequest(request);
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const formData = await request.formData();
 
     const homeTeamLogo = formData.get("homeTeamLogo") as File;
@@ -120,7 +126,6 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   try {
-    await prisma.$connect();
     const matches = await prisma.match.findMany();
     return NextResponse.json(matches, { status: 200 });
   } catch (error) {
@@ -131,7 +136,5 @@ export async function GET() {
       },
       { status: 400 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
