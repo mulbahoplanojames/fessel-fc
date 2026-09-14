@@ -1,32 +1,16 @@
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { informationsLink, quickLinks } from "@/data/footer-data";
+import { NewsletterForm } from "@/components/home/newsletter-form";
+import { informationsLink, quickLinks, socialLinks } from "@/data/footer-data";
 
-const socialLinks = [
-  {
-    label: "Facebook",
-    icon: <Facebook />,
-    path: "https://facebook.com",
-  },
-  {
-    label: "Instagram",
-    icon: <Instagram />,
-    path: "https://instagram.com",
-  },
-  {
-    label: "Twitter",
-    icon: <Twitter />,
-    path: "https://twitter.com",
-  },
-  {
-    label: "Youtube",
-    icon: <Youtube />,
-    path: "https://youtube.com",
-  },
-];
+const socialIcons = {
+  Facebook: <Facebook />,
+  Instagram: <Instagram />,
+  Twitter: <Twitter />,
+  Youtube: <Youtube />,
+};
+
 export function Footer() {
   return (
     <footer className="bg-muted/30">
@@ -53,9 +37,11 @@ export function Footer() {
                 <Link
                   key={link.label}
                   href={link.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-muted/50 p-2 rounded-full text-muted-foreground hover:text-primary-clr hover:bg-muted transition-colors"
                 >
-                  {link.icon}
+                  {socialIcons[link.label as keyof typeof socialIcons]}
                   <span className="sr-only">{link.label}</span>
                 </Link>
               ))}
@@ -64,19 +50,7 @@ export function Footer() {
               <h3 className="font-semibold mb-3">
                 Subscribe to our newsletter
               </h3>
-              <div className="flex gap-2  w-full">
-                <Input
-                  type="email"
-                  placeholder="Your email"
-                  className="rounded-full w-full flex-1"
-                />
-                <Button
-                  type="submit"
-                  className="rounded-full text-white bg-primary-clr hover:bg-primary-clr/90"
-                >
-                  Subscribe
-                </Button>
-              </div>
+              <NewsletterForm />
             </div>
           </div>
 
@@ -151,19 +125,19 @@ export function Footer() {
             </p>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <Link
-                href="#"
+                href="/privacy"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
-                href="#"
+                href="/terms"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 Terms of Service
               </Link>
               <Link
-                href="#"
+                href="/cookies"
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 Cookie Policy

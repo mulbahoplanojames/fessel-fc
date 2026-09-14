@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock } from "lucide-react";
+import { Clock, Loader2 } from "lucide-react";
+import axios from "axios";
 
 interface LiveMatch {
   id: string;
@@ -13,54 +14,53 @@ interface LiveMatch {
   awayTeam: string;
   homeScore: number;
   awayScore: number;
-  homeTeamLogo: string;
-  awayTeamLogo: string;
+  homeTeamLogo: string | null;
+  awayTeamLogo: string | null;
   minute: number;
-  competition: string;
-  status: "live" | "halftime" | "fulltime";
+  competition: string | null;
+  status: "live" | "halftime" | "fulltime" | "upcoming";
+  fullTime: boolean;
 }
 
-// Mock live match data
-const mockLiveMatches: LiveMatch[] = [
-  {
-    id: "1",
-    homeTeam: "FC Fassell",
-    awayTeam: "LISCR FC",
-    homeScore: 2,
-    awayScore: 1,
-    homeTeamLogo: "/logo.png",
-    awayTeamLogo: "/team/LISCR_FC_official_logo.webp",
-    minute: 20,
-    competition: "Rwanda Premier League",
-    status: "live",
-  },
-];
+type LiveResponse = {
+  isLive: boolean;
+  liveCount: number;
+  matches: LiveMatch[];
+};
 
 export function LiveScoreTracker() {
-  const [liveMatches, setLiveMatches] = useState<LiveMatch[]>(mockLiveMatches);
-  // const [isLive, setIsLive] = useState(true);
+  const [liveMatches, setLiveMatches] = useState<LiveMatch[]>([]);
+  const [hasLive, setHasLive] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const isLive = true;
+  const loadMatches = useCallback(async () => {
+    try {
+      const response = await axios.get<LiveResponse>("/api/match/live");
+      setLiveMatches(response.data.matches);
+      setHasLive(response.data.isLive);
+    } catch (error) {
+      console.error("Failed to load live matches", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-  // Simulate updating the match time
   useEffect(() => {
-    if (!isLive) return;
-
-    const interval = setInterval(() => {
-      setLiveMatches((prev) =>
-        prev.map((match) => {
-          if (match.status === "live" && match.minute < 90) {
-            return { ...match, minute: match.minute + 1 };
-          } else if (match.status === "live" && match.minute >= 90) {
-            return { ...match, status: "fulltime" };
-          }
-          return match;
-        })
-      );
-    }, 60000); // Update every minute
-
+    loadMatches();
+    const interval = setInterval(loadMatches, 60000);
     return () => clearInterval(interval);
-  }, [isLive]);
+  }, [loadMatches]);
+
+  if (loading) {
+    return (
+      <div className="bg-primary-clr/10 py-4">
+        <div className="container px-4 mx-auto flex items-center justify-center text-muted-foreground text-sm">
+          <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+          Loading matches...
+        </div>
+      </div>
+    );
+  }
 
   if (liveMatches.length === 0) {
     return null;
@@ -75,16 +75,16 @@ export function LiveScoreTracker() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
             </span>
-            Live Matches
+            {hasLive ? "Live Matches" : "Featured Matches"}
           </h2>
-          <Link href="#" className="text-sm text-primary hover:underline">
-            View All Live Matches
+          <Link href="/matches" className="text-sm text-primary hover:underline">
+            View All Matches
           </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {liveMatches.map((match) => (
-            <Link key={match.id} href={`#`}>
+            <Link key={match.id} href={`/matches/details/${match.id}`}>
               <Card className="hover:shadow-md transition-shadow cursor-pointer p-0">
                 <CardContent className="p-4">
                   <div className="flex justify-between items-center mb-4">
@@ -95,24 +95,28 @@ export function LiveScoreTracker() {
                           ? "bg-red-500 text-white"
                           : match.status === "halftime"
                           ? "bg-amber-500 text-white"
-                          : "bg-green-500 text-white"
+                          : match.status === "fulltime"
+                          ? "bg-green-500 text-white"
+                          : "bg-blue-500 text-white"
                       }
                     >
                       {match.status === "live"
                         ? `LIVE ${match.minute}'`
                         : match.status === "halftime"
                         ? "HALF TIME"
-                        : "FULL TIME"}
+                        : match.status === "fulltime"
+                        ? "FULL TIME"
+                        : match.date || "UPCOMING"}
                     </Badge>
                     <div className="flex items-center text-xs text-muted-foreground">
                       <Clock className="h-3 w-3 mr-1" />
-                      {match.competition}
+                      {match.competition || match.time}
                     </div>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
-                      <div className="relative h-10 w-10 bg-white rounded-full  overflow-hidden">
+                      <div className="relative h-10 w-10 bg-white rounded-full overflow-hidden">
                         <Image
                           src={match.homeTeamLogo || "/placeholder.svg"}
                           alt={match.homeTeam}

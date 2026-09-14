@@ -1,7 +1,15 @@
 "use client";
 
-import { Filter, Grid3X3, GridIcon, SlidersHorizontal } from "lucide-react";
+import {
+  Filter,
+  Grid3X3,
+  GridIcon,
+  SlidersHorizontal,
+  Search,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
@@ -23,6 +31,8 @@ export default function ShopPage() {
     isBestseller: false,
   });
   const [tabValue, setTabValue] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortValue, setSortValue] = useState("featured");
 
   const handleFilterChange = (event: {
     target: { name: string; value: string };
@@ -32,7 +42,13 @@ export default function ShopPage() {
   };
 
   const filteredProducts = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
     const filtered = products.filter((product) => {
+      const searchMatch =
+        query === "" ||
+        product.name.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query) ||
+        product.category.toLowerCase().includes(query);
       const categoryMatch =
         filterCriteria.category === "" ||
         product.category === filterCriteria.category;
@@ -50,6 +66,7 @@ export default function ShopPage() {
         (tabValue === "sale" && product.price < 50);
 
       return (
+        searchMatch &&
         categoryMatch &&
         priceRangeMatch &&
         isNewMatch &&
@@ -58,8 +75,17 @@ export default function ShopPage() {
       );
     });
 
-    return filtered;
-  }, [filterCriteria, tabValue]);
+    switch (sortValue) {
+      case "price-low":
+        return [...filtered].sort((a, b) => a.price - b.price);
+      case "price-high":
+        return [...filtered].sort((a, b) => b.price - a.price);
+      case "name":
+        return [...filtered].sort((a, b) => a.name.localeCompare(b.name));
+      default:
+        return filtered;
+    }
+  }, [filterCriteria, tabValue, searchQuery, sortValue]);
 
   return (
     <div className="container px-4 py-12 mx-auto">
@@ -74,19 +100,40 @@ export default function ShopPage() {
           </p>
         </div>
         <div className="flex items-center gap-2 mt-4 md:mt-0">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="search"
+              placeholder="Search products..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-[180px] md:w-[220px] pl-9 pr-8"
+            />
+            {searchQuery && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute right-1 top-1/2 -translate-y-1/2 h-6 w-6"
+                onClick={() => setSearchQuery("")}
+              >
+                <X className="h-4 w-4" />
+                <span className="sr-only">Clear search</span>
+              </Button>
+            )}
+          </div>
           <Button variant="outline" size="sm" className="hidden md:flex">
             <Filter className="h-4 w-4 mr-2" />
             Filters
           </Button>
-          <Select defaultValue="featured">
+          <Select value={sortValue} onValueChange={setSortValue}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="featured">Featured</SelectItem>
-              <SelectItem value="newest">Newest</SelectItem>
               <SelectItem value="price-low">Price: Low to High</SelectItem>
               <SelectItem value="price-high">Price: High to Low</SelectItem>
+              <SelectItem value="name">Name: A to Z</SelectItem>
             </SelectContent>
           </Select>
           <div className="flex items-center border rounded-md">
@@ -185,11 +232,13 @@ export default function ShopPage() {
               <Button
                 variant="outline"
                 className="rounded-full"
-                onClick={() =>
+                onClick={() => {
                   handleFilterChange({
                     target: { name: "category", value: "" },
-                  })
-                }
+                  });
+                  setSearchQuery("");
+                  setTabValue("all");
+                }}
               >
                 Reset Filter
               </Button>

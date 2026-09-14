@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import NavMenu from "./nav-menu";
@@ -33,6 +34,16 @@ export default function Navbar() {
         <NavMenu />
         <div className="flex items-center gap-2">
           <div className="flex  items-center  space-x-1 ">
+            <Button
+              className="rounded-full h-9 w-9 p-0 text-black dark:text-white"
+              variant="ghost"
+              asChild
+              aria-label="Search the site"
+            >
+              <Link href="/search">
+                <Search className="h-4 w-4" />
+              </Link>
+            </Button>
             <Button
               className="rounded-full hidden sm:flex text-black dark:text-white"
               asChild

@@ -2,6 +2,7 @@ import { betterAuth } from "better-auth";
 import { prismaAdapter } from "@better-auth/prisma-adapter";
 import bcrypt from "bcryptjs";
 import prisma from "../../prisma";
+import { emailTemplate, sendEmail } from "./email";
 
 const googleClientId = process.env.GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -36,6 +37,34 @@ export const auth = betterAuth({
       hash: async (password) => await bcrypt.hash(password, 10),
       verify: async ({ hash, password }) =>
         await bcrypt.compare(password, hash),
+    },
+    sendResetPassword: async ({ user, url }) => {
+      await sendEmail({
+        to: user.email,
+        subject: "Reset your Fessel FC password",
+        html: emailTemplate({
+          title: "Reset your password",
+          message: `Hi ${user.name || "there"}, we received a request to reset your Fessel FC password. Click the button below to choose a new one. This link expires shortly.`,
+          ctaLabel: "Reset password",
+          ctaUrl: url,
+        }),
+      });
+    },
+  },
+  emailVerification: {
+    sendOnSignUp: false,
+    autoSignInAfterVerification: true,
+    sendVerificationEmail: async ({ user, url }) => {
+      await sendEmail({
+        to: user.email,
+        subject: "Verify your Fessel FC email",
+        html: emailTemplate({
+          title: "Verify your email",
+          message: `Hi ${user.name || "there"}, welcome to Fessel FC! Confirm your email address to unlock your account.`,
+          ctaLabel: "Verify email",
+          ctaUrl: url,
+        }),
+      });
     },
   },
   socialProviders: {

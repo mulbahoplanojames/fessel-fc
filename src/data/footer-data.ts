@@ -9,19 +9,19 @@ const informationsLink = [
   },
   {
     label: "Stadium Info",
-    path: "#",
+    path: "/about",
   },
   {
     label: "Sponsors",
-    path: "#",
+    path: "/donate",
   },
   {
     label: "Careers",
-    path: "#",
+    path: "/about",
   },
   {
     label: "Privacy Policy",
-    path: "#",
+    path: "/privacy",
   },
 ];
 
@@ -48,4 +48,23 @@ const quickLinks = [
   },
 ];
 
-export { informationsLink, quickLinks };
+const socialLinks = [
+  {
+    label: "Facebook",
+    path: "https://www.facebook.com/fcfassell",
+  },
+  {
+    label: "Instagram",
+    path: "https://www.instagram.com/fcfassell",
+  },
+  {
+    label: "Twitter",
+    path: "https://twitter.com/fcfassell",
+  },
+  {
+    label: "Youtube",
+    path: "https://www.youtube.com/@fcfassell",
+  },
+];
+
+export { informationsLink, quickLinks, socialLinks };

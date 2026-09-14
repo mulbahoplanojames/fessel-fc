@@ -11,13 +11,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
-import { Checkbox } from "@/components/ui/checkbox";
+import axios from "axios";
 import { toast } from "sonner";
 
 export default function JoinFanClubPage() {
   const [membershipType, setMembershipType] = useState("standard");
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -41,10 +43,9 @@ export default function JoinFanClubPage() {
     setFormData((prev) => ({ ...prev, [name]: checked }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validate form
     if (!formData.firstName || !formData.lastName || !formData.email) {
       toast("Error", {
         description: "Please fill in all required fields.",
@@ -59,25 +60,50 @@ export default function JoinFanClubPage() {
       return;
     }
 
-    // Submit form (in future updates, this would send data to a server)
-    toast("Success", {
-      description: "Your fan club membership application has been submitted!",
-    });
-
-    // Reset form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      address: "",
-      city: "",
-      country: "",
-      postalCode: "",
-      dateOfBirth: "",
-      agreeTerms: false,
-      agreeMarketing: false,
-    });
+    try {
+      setSubmitting(true);
+      const response = await axios.post("/api/fan/club", {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        city: formData.city,
+        country: formData.country,
+        postalCode: formData.postalCode,
+        membershipType,
+        agreeTerms: formData.agreeTerms,
+        agreeMarketing: formData.agreeMarketing,
+      });
+      toast("Success", {
+        description: `Your ${String(
+          response.data.member.membershipType
+        ).toUpperCase()} fan club application has been submitted. We'll email you when it is confirmed!`,
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        address: "",
+        city: "",
+        country: "",
+        postalCode: "",
+        dateOfBirth: "",
+        agreeTerms: false,
+        agreeMarketing: false,
+      });
+    } catch (error: unknown) {
+      const serverError =
+        typeof error === "object" && error && "response" in error
+          ? (error.response as { data?: { error?: string } }).data?.error
+          : undefined;
+      toast("Error", {
+        description: serverError || "Your application could not be submitted. Please try again.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

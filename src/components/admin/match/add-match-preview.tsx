@@ -111,7 +111,7 @@ const AddMatchPreview: React.FC<AddMatchPreviewProps> = ({
                   id="homeTeamWins"
                   type="number"
                   min="0"
-                  value={match.backToback?.homeTeam.win || ""}
+                  value={match.backToback?.homeTeam?.win || ""}
                   onChange={(e) => {
                     const value = Number.parseInt(e.target.value);
                     setMatch((prev) => ({

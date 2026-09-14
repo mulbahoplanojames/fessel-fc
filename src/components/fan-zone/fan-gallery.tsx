@@ -1,10 +1,17 @@
+import { useState } from "react";
 import { Card, CardContent, CardFooter } from "../ui/card";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { Input } from "../ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { MessageSquare, Share2, ThumbsUp, X } from "lucide-react";
-import { GalleryPhoto } from "@/types/fanzone-type";
+import {
+  Loader2,
+  MessageSquare,
+  Share2,
+  ThumbsUp,
+  X,
+} from "lucide-react";
+import { FanPhotoItem, formatPostTime } from "@/types/fanzone-type";
 
 interface FanGalleryProps {
   handlePhotoSubmit: (e: React.FormEvent) => void;
@@ -13,9 +20,11 @@ interface FanGalleryProps {
   handleFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   photoCaption: string;
   setPhotoCaption: React.Dispatch<React.SetStateAction<string>>;
-  galleryPhotos: GalleryPhoto[];
-  handleLikePhoto: (photoId: string) => void;
-  formatTimestamp: (timestamp: number) => string;
+  photos: FanPhotoItem[];
+  submitting: boolean;
+  onLikePhoto: (photoId: string) => void;
+  onCommentPhoto: (photoId: string, content: string) => void;
+  onSharePhoto: (photo: FanPhotoItem) => void;
 }
 
 export default function FanGallery({
@@ -25,10 +34,24 @@ export default function FanGallery({
   handleFileChange,
   photoCaption,
   setPhotoCaption,
-  galleryPhotos,
-  handleLikePhoto,
-  formatTimestamp,
+  photos,
+  submitting,
+  onLikePhoto,
+  onCommentPhoto,
+  onSharePhoto,
 }: FanGalleryProps) {
+  const [commentingPhotoId, setCommentingPhotoId] = useState<string | null>(
+    null
+  );
+  const [commentText, setCommentText] = useState("");
+
+  const submitComment = (photoId: string) => {
+    if (!commentText.trim()) return;
+    onCommentPhoto(photoId, commentText.trim());
+    setCommentText("");
+    setCommentingPhotoId(null);
+  };
+
   return (
     <>
       <div className="mb-8">
@@ -90,8 +113,12 @@ export default function FanGallery({
                 <div className="flex justify-end">
                   <Button
                     type="submit"
+                    disabled={submitting}
                     className="rounded-full bg-primary-clr text-primary-foreground hover:bg-primary-clr/90"
                   >
+                    {submitting && (
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    )}
                     Share
                   </Button>
                 </div>
@@ -100,8 +127,15 @@ export default function FanGallery({
           </CardContent>
         </Card>
       </div>
+      {photos.length === 0 && (
+        <Card className="border-none shadow-lg dark:bg-background">
+          <CardContent className="p-10 text-center text-muted-foreground">
+            No photos yet. Share the first shot from the stands!
+          </CardContent>
+        </Card>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {galleryPhotos.map((photo) => (
+        {photos.map((photo) => (
           <Card
             key={photo.id}
             className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-all dark:bg-background p-0"
@@ -109,7 +143,7 @@ export default function FanGallery({
             <div className="relative h-64">
               <Image
                 src={photo.image || "/placeholder.svg"}
-                alt={`Fan Photo by ${photo.author}`}
+                alt={`Fan Photo by ${photo.authorName}`}
                 fill
                 className="object-cover"
               />
@@ -119,14 +153,14 @@ export default function FanGallery({
                 <Avatar className="h-8 w-8">
                   <AvatarImage
                     src={photo.authorAvatar || "/placeholder.svg"}
-                    alt={`@${photo.author}`}
+                    alt={photo.authorName}
                   />
-                  <AvatarFallback>{photo.author.charAt(0)}</AvatarFallback>
+                  <AvatarFallback>{photo.authorName.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="text-sm font-medium">{photo.author}</p>
+                  <p className="text-sm font-medium">{photo.authorName}</p>
                   <p className="text-xs text-muted-foreground">
-                    {formatTimestamp(photo.timestamp)}
+                    {formatPostTime(photo.createdAt)}
                   </p>
                 </div>
               </div>
@@ -138,15 +172,22 @@ export default function FanGallery({
                   variant="ghost"
                   size="sm"
                   className="flex items-center gap-1"
-                  onClick={() => handleLikePhoto(photo.id)}
+                  onClick={() => onLikePhoto(photo.id)}
                 >
-                  <ThumbsUp className="h-4 w-4" />
+                  <ThumbsUp
+                    className={`h-4 w-4 ${photo.likedByMe ? "fill-primary-clr text-primary-clr" : ""}`}
+                  />
                   <span>{photo.likes}</span>
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
                   className="flex items-center gap-1"
+                  onClick={() =>
+                    setCommentingPhotoId(
+                      commentingPhotoId === photo.id ? null : photo.id
+                    )
+                  }
                 >
                   <MessageSquare className="h-4 w-4" />
                   <span>{photo.comments}</span>
@@ -155,22 +196,44 @@ export default function FanGallery({
                   variant="ghost"
                   size="sm"
                   className="flex items-center gap-1 ml-auto"
+                  onClick={() => onSharePhoto(photo)}
                 >
                   <Share2 className="h-4 w-4" />
                   <span>Share</span>
                 </Button>
               </div>
+              {commentingPhotoId === photo.id && (
+                <div className="mt-4 flex gap-2">
+                  <Input
+                    placeholder="Write a comment..."
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        submitComment(photo.id);
+                      }
+                    }}
+                  />
+                  <Button
+                    size="sm"
+                    className="rounded-full bg-primary-clr hover:bg-primary-clr/90"
+                    onClick={() => submitComment(photo.id)}
+                  >
+                    Comment
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setCommentingPhotoId(null)}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
+              )}
             </CardFooter>
           </Card>
         ))}
-      </div>
-      <div className="flex justify-center mt-8">
-        <Button
-          variant="outline"
-          className="rounded-full bg-primary-clr hover:bg-primary-clr/90"
-        >
-          Load More
-        </Button>
       </div>
     </>
   );

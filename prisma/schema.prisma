@@ -224,3 +224,122 @@ model News {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
+
+model FanPost {
+  id           String          @id @default(auto()) @map("_id") @db.ObjectId
+  authorId     String?         @db.ObjectId
+  authorName   String
+  authorAvatar String?
+  content      String
+  image        String?
+  status       String          @default("approved")
+
+  comments     FanPostComment[]
+  likes        FanPostLike[]
+
+  @@index([status])
+  @@index([createdAt])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FanPostComment {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  postId     String   @db.ObjectId
+  post       FanPost  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId   String?  @db.ObjectId
+  authorName String
+  content    String
+
+  @@index([postId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FanPostLike {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  postId    String   @db.ObjectId
+  post      FanPost  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String   @db.ObjectId
+
+  @@unique([postId, userId])
+  @@index([postId])
+  createdAt DateTime @default(now())
+}
+
+model FanPhoto {
+  id           String           @id @default(auto()) @map("_id") @db.ObjectId
+  authorId     String           @db.ObjectId
+  authorName   String
+  authorAvatar String?
+  caption      String
+  image        String
+  status       String           @default("approved")
+
+  comments     FanPhotoComment[]
+  likes        FanPhotoLike[]
+
+  @@index([status])
+  @@index([createdAt])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FanPhotoComment {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  photoId    String    @db.ObjectId
+  photo      FanPhoto  @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  authorId   String?   @db.ObjectId
+  authorName String
+  content    String
+
+  @@index([photoId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FanPhotoLike {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  photoId   String    @db.ObjectId
+  photo     FanPhoto  @relation(fields: [photoId], references: [id], onDelete: Cascade)
+  userId    String    @db.ObjectId
+
+  @@unique([photoId, userId])
+  @@index([photoId])
+  createdAt DateTime @default(now())
+}
+
+model FanClubMember {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String?  @db.ObjectId
+  firstName      String
+  lastName       String
+  email          String
+  phone          String?
+  address        String?
+  city           String?
+  country        String?
+  postalCode     String?
+  membershipType String
+  amount         Float
+  agreeTerms     Boolean
+  agreeMarketing Boolean  @default(false)
+  status         String   @default("pending")
+
+  @@index([email])
+  @@index([status])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NewsletterSubscriber {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String   @unique
+  name        String?
+  token       String
+  status      String   @default("subscribed")
+
+  @@index([status])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

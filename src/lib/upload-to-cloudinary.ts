@@ -91,6 +91,30 @@ export async function uploadNewsImageToCloudinary(file: File): Promise<string> {
   });
 }
 
+export async function uploadFanImageToCloudinary(file: File): Promise<string> {
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  return new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: "fassel-fc/fan",
+        resource_type: "image",
+        transformation: [
+          { width: 900, crop: "scale" },
+          { fetch_format: "auto", quality: "auto" },
+        ],
+      },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result?.secure_url || "");
+      }
+    );
+
+    bufferToStream(buffer).pipe(uploadStream);
+  });
+}
+
 export async function uploadAvatarImageToCloudinary(file: File): Promise<string> {
   const arrayBuffer = await file.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);

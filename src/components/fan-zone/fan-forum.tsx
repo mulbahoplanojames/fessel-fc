@@ -1,43 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "../ui/card";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { MessageSquare, Share2, ThumbsUp } from "lucide-react";
+import { Loader2, MessageSquare, Share2, ThumbsUp, X } from "lucide-react";
 import { Badge } from "../ui/badge";
 import { Textarea } from "../ui/textarea";
-import { ForumPost } from "@/types/fanzone-type";
+import { Input } from "../ui/input";
+import {
+  FanClubMemberItem,
+  FanPostItem,
+  formatPostTime,
+} from "@/types/fanzone-type";
 
 export interface FanForumProps {
-  forumPosts: ForumPost[];
-  handlePostSubmit: (e: React.FormEvent) => void;
-  handleLikePost: (postId: string) => void;
+  posts: FanPostItem[];
+  isMember: boolean;
+  members: FanClubMemberItem[];
+  submitting: boolean;
   postContent: string;
   setPostContent: React.Dispatch<React.SetStateAction<string>>;
-  formatTimestamp: (timestamp: number) => string;
+  onPostSubmit: (e: React.FormEvent) => void;
+  onLikePost: (postId: string) => void;
+  onCommentPost: (postId: string, content: string) => void;
+  onSharePost: (post: FanPostItem) => void;
 }
 
 export default function FanForum({
-  forumPosts,
-  handlePostSubmit,
-  handleLikePost,
+  posts,
+  isMember,
+  members,
+  submitting,
   postContent,
   setPostContent,
-  formatTimestamp,
+  onPostSubmit,
+  onLikePost,
+  onCommentPost,
+  onSharePost,
 }: FanForumProps) {
+  const [commentingPostId, setCommentingPostId] = useState<string | null>(null);
+  const [commentText, setCommentText] = useState("");
+
+  const submitComment = (postId: string) => {
+    if (!commentText.trim()) return;
+    onCommentPost(postId, commentText.trim());
+    setCommentText("");
+    setCommentingPostId(null);
+  };
+
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div className="lg:col-span-2 space-y-8">
         <Card className="border-none shadow-lg dark:bg-background">
           <CardContent className="p-6">
-            <form onSubmit={handlePostSubmit}>
+            <form onSubmit={onPostSubmit}>
               <div className="flex items-start gap-4">
                 <Avatar className="h-10 w-10">
-                  <AvatarImage
-                    src="/placeholder.svg?height=40&width=40&text=You"
-                    alt="@user"
-                  />
-                  <AvatarFallback>You</AvatarFallback>
+                  <AvatarImage src="/placeholder.svg" alt="You" />
+                  <AvatarFallback>FC</AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
                   <Textarea
@@ -49,8 +70,10 @@ export default function FanForum({
                   <div className="flex justify-end">
                     <Button
                       type="submit"
-                      className="rounded-full bg-primary-clr hover:bg-primary-clr/90 text-primary-foreground "
+                      disabled={submitting}
+                      className="rounded-full bg-primary-clr hover:bg-primary-clr/90 text-primary-foreground"
                     >
+                      {submitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                       Post
                     </Button>
                   </div>
@@ -60,7 +83,15 @@ export default function FanForum({
           </CardContent>
         </Card>
 
-        {forumPosts.map((post) => (
+        {posts.length === 0 && (
+          <Card className="border-none shadow-lg dark:bg-background">
+            <CardContent className="p-10 text-center text-muted-foreground">
+              No posts yet. Be the first to start the conversation!
+            </CardContent>
+          </Card>
+        )}
+
+        {posts.map((post) => (
           <Card
             key={post.id}
             className="border-none shadow-lg dark:bg-background p-0"
@@ -70,19 +101,19 @@ export default function FanForum({
                 <Avatar className="h-10 w-10">
                   <AvatarImage
                     src={post.authorAvatar || "/placeholder.svg"}
-                    alt={`@${post.author}`}
+                    alt={post.authorName}
                   />
-                  <AvatarFallback>{post.author.charAt(0)}</AvatarFallback>
+                  <AvatarFallback>{post.authorName.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-2">
                     <div>
-                      <h3 className="font-medium">{post.author}</h3>
+                      <h3 className="font-medium">{post.authorName}</h3>
                       <p className="text-xs text-muted-foreground">
-                        {formatTimestamp(post.timestamp)}
+                        {formatPostTime(post.createdAt)}
                       </p>
                     </div>
-                    {post.isFanClubMember && (
+                    {isMember && (
                       <Badge
                         variant="outline"
                         className="bg-primary-clr/10 text-primary-clr"
@@ -92,20 +123,37 @@ export default function FanForum({
                     )}
                   </div>
                   <p className="mb-4">{post.content}</p>
+                  {post.image && (
+                    <div className="relative h-64 rounded-lg overflow-hidden mb-4">
+                      <Image
+                        src={post.image}
+                        alt="Post attachment"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
                   <div className="flex items-center gap-4">
                     <Button
                       variant="ghost"
                       size="sm"
                       className="flex items-center gap-1"
-                      onClick={() => handleLikePost(post.id)}
+                      onClick={() => onLikePost(post.id)}
                     >
-                      <ThumbsUp className="h-4 w-4" />
+                      <ThumbsUp
+                        className={`h-4 w-4 ${post.likedByMe ? "fill-primary-clr text-primary-clr" : ""}`}
+                      />
                       <span>{post.likes}</span>
                     </Button>
                     <Button
                       variant="ghost"
                       size="sm"
                       className="flex items-center gap-1"
+                      onClick={() =>
+                        setCommentingPostId(
+                          commentingPostId === post.id ? null : post.id
+                        )
+                      }
                     >
                       <MessageSquare className="h-4 w-4" />
                       <span>{post.comments}</span>
@@ -114,22 +162,46 @@ export default function FanForum({
                       variant="ghost"
                       size="sm"
                       className="flex items-center gap-1"
+                      onClick={() => onSharePost(post)}
                     >
                       <Share2 className="h-4 w-4" />
                       <span>Share</span>
                     </Button>
                   </div>
+                  {commentingPostId === post.id && (
+                    <div className="mt-4 flex gap-2">
+                      <Input
+                        placeholder="Write a comment..."
+                        value={commentText}
+                        onChange={(e) => setCommentText(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" && !e.shiftKey) {
+                            e.preventDefault();
+                            submitComment(post.id);
+                          }
+                        }}
+                      />
+                      <Button
+                        size="sm"
+                        className="rounded-full bg-primary-clr hover:bg-primary-clr/90"
+                        onClick={() => submitComment(post.id)}
+                      >
+                        Comment
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setCommentingPostId(null)}
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </div>
             </CardContent>
           </Card>
         ))}
-
-        <div className="flex justify-center">
-          <Button variant="outline" className="rounded-full">
-            Load More
-          </Button>
-        </div>
       </div>
 
       <div className="space-y-8">
@@ -137,61 +209,25 @@ export default function FanForum({
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-4">Popular Topics</h3>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  href="#"
-                  className="text-primary-clr hover:underline flex items-center justify-between"
-                >
-                  <span>Match Predictions</span>
-                  <span className="text-xs text-muted-foreground">
-                    32 posts
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-primary-clr hover:underline flex items-center justify-between"
-                >
-                  <span>Transfer Rumors</span>
-                  <span className="text-xs text-muted-foreground">
-                    28 posts
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-primary-clr hover:underline flex items-center justify-between"
-                >
-                  <span>Away Day Planning</span>
-                  <span className="text-xs text-muted-foreground">
-                    15 posts
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-primary-clr hover:underline flex items-center justify-between"
-                >
-                  <span>Player Performances</span>
-                  <span className="text-xs text-muted-foreground">
-                    42 posts
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-primary-clr hover:underline flex items-center justify-between"
-                >
-                  <span>Fan Chants</span>
-                  <span className="text-xs text-muted-foreground">
-                    19 posts
-                  </span>
-                </Link>
-              </li>
+              {[
+                { label: "Match Predictions", count: 32, href: "/matches" },
+                { label: "Transfer Rumors", count: 28, href: "/news" },
+                { label: "Away Day Planning", count: 15, href: "/matches" },
+                { label: "Player Performances", count: 42, href: "/players" },
+                { label: "Fan Chants", count: 19, href: "/fan-zone" },
+              ].map((topic) => (
+                <li key={topic.label}>
+                  <Link
+                    href={topic.href}
+                    className="text-primary-clr hover:underline flex items-center justify-between"
+                  >
+                    <span>{topic.label}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {topic.count} posts
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </CardContent>
         </Card>
@@ -199,25 +235,36 @@ export default function FanForum({
         <Card className="border-none shadow-lg dark:bg-background p-0">
           <CardContent className="p-6">
             <h3 className="text-lg font-semibold mb-4">Active Members</h3>
-            <div className="space-y-4">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage
-                      src={`/placeholder.svg?height=32&width=32&text=U${i + 1}`}
-                      alt="@user"
-                    />
-                    <AvatarFallback>U{i + 1}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm font-medium">Fan {i + 1}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {20 - i * 2} posts
-                    </p>
+            {members.length === 0 ? (
+              <p className="text-sm text-muted-foreground">
+                No active fan club members yet.
+              </p>
+            ) : (
+              <div className="space-y-4">
+                {members.map((member) => (
+                  <div key={member.id} className="flex items-center gap-3">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage
+                        src="/placeholder.svg"
+                        alt={member.firstName}
+                      />
+                      <AvatarFallback>
+                        {member.firstName.charAt(0)}
+                        {member.lastName.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="text-sm font-medium">
+                        {member.firstName} {member.lastName}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {member.membershipType} member
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </CardContent>
         </Card>
 
