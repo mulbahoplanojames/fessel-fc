@@ -19,9 +19,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ProductCard } from "@/components/product-card";
-import products from "@/data/products.json";
 import { useMemo, useState } from "react";
 import { Product } from "@/types/product-type";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export default function ShopPage() {
   const [filterCriteria, setFilterCriteria] = useState({
@@ -34,6 +35,23 @@ export default function ShopPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortValue, setSortValue] = useState("featured");
 
+  // Fetch products from API
+  const { data: productsData, isLoading, error } = useQuery({
+    queryKey: ["products", filterCriteria.category, searchQuery],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      if (filterCriteria.category) params.append("category", filterCriteria.category);
+      if (searchQuery) params.append("search", searchQuery);
+      if (filterCriteria.isNew) params.append("isNew", "true");
+      if (filterCriteria.isBestseller) params.append("isBestseller", "true");
+      
+      const response = await axios.get(`/api/products?${params.toString()}`);
+      return response.data.products;
+    },
+  });
+
+  const products = productsData || [];
+
   const handleFilterChange = (event: {
     target: { name: string; value: string };
   }) => {
@@ -42,8 +60,10 @@ export default function ShopPage() {
   };
 
   const filteredProducts = useMemo(() => {
+    if (!products || products.length === 0) return [];
+    
     const query = searchQuery.trim().toLowerCase();
-    const filtered = products.filter((product) => {
+    const filtered = products.filter((product: Product) => {
       const searchMatch =
         query === "" ||
         product.name.toLowerCase().includes(query) ||
@@ -85,7 +105,47 @@ export default function ShopPage() {
       default:
         return filtered;
     }
-  }, [filterCriteria, tabValue, searchQuery, sortValue]);
+  }, [filterCriteria, tabValue, searchQuery, sortValue, products]);
+
+  if (isLoading) {
+    return (
+      <div className="container px-4 py-12 mx-auto">
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-clr mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Loading products...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="container px-4 py-12 mx-auto">
+        <div className="text-center py-16">
+          <h2 className="text-xl font-semibold mb-2">Error loading products</h2>
+          <p className="text-muted-foreground mb-4">
+            Failed to load products. Please try again later.
+          </p>
+          <Button onClick={() => window.location.reload()}>Retry</Button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isLoading && (!products || products.length === 0)) {
+    return (
+      <div className="container px-4 py-12 mx-auto">
+        <div className="text-center py-16">
+          <h2 className="text-xl font-semibold mb-2">No products available</h2>
+          <p className="text-muted-foreground">
+            Check back later for new merchandise.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container px-4 py-12 mx-auto">
@@ -210,8 +270,8 @@ export default function ShopPage() {
           {filteredProducts.length > 0 ? (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product as Product} />
+                {filteredProducts.map((product: Product) => (
+                  <ProductCard key={product.id} product={product} />
                 ))}
               </div>
               <div className="mt-12 flex justify-center">

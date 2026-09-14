@@ -5,11 +5,11 @@ const informationsLink = [
   },
   {
     label: "Contact",
-    path: "/about",
+    path: "/about#contact",
   },
   {
     label: "Stadium Info",
-    path: "/about",
+    path: "/about#stadium",
   },
   {
     label: "Sponsors",
@@ -17,11 +17,23 @@ const informationsLink = [
   },
   {
     label: "Careers",
-    path: "/about",
+    path: "/about#careers",
   },
   {
     label: "Privacy Policy",
     path: "/privacy",
+  },
+  {
+    label: "Terms of Service",
+    path: "/terms",
+  },
+  {
+    label: "Cookie Policy",
+    path: "/cookies",
+  },
+  {
+    label: "FAQ",
+    path: "/faq",
   },
 ];
 

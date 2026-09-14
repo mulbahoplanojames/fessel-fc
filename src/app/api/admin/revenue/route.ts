@@ -52,6 +52,7 @@ export async function GET(request: NextRequest) {
     const currentMonth = now.getMonth();
 
     const orders = await prisma.order.findMany();
+    const products = await prisma.product.count({ where: { status: "active" } });
     const donations = await prisma.donation.findMany({
       where: { status: { not: "PENDING" } },
     });
@@ -89,6 +90,7 @@ export async function GET(request: NextRequest) {
         month: MONTH_LABELS[currentMonth],
         shopRevenue,
         shopByMonth,
+        products,
         donations: donationTotal,
         donationByMonth,
         sponsorships: sponsorshipTotal,

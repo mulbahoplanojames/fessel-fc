@@ -5,7 +5,7 @@ import type React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Check, ChevronLeft } from "lucide-react";
+import { Check, ChevronLeft, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -385,8 +385,16 @@ export default function JoinFanClubPage() {
                     type="submit"
                     className="w-full rounded-full"
                     size="lg"
+                    disabled={submitting}
                   >
-                    Join Fan Club
+                    {submitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Submitting...
+                      </>
+                    ) : (
+                      "Join Fan Club"
+                    )}
                   </Button>
                 </CardFooter>
               </form>

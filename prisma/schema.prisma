@@ -343,3 +343,27 @@ model NewsletterSubscriber {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Product {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  price        Float
+  image        String
+  images       Json     // Stores: string[] 
+  description  String
+  features     Json     // Stores: string[]
+  category     String
+  sizes        Json     // Stores: string[]
+  isNew        Boolean  @default(false)
+  isBestseller Boolean  @default(false)
+  reviews      Json?    // Stores: { average: number, count: number }
+  stock        Int      @default(0)
+  status       String   @default("active") // active, draft, archived
+  
+  @@index([category])
+  @@index([status])
+  @@index([isNew])
+  @@index([isBestseller])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

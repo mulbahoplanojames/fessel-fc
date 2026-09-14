@@ -22,36 +22,26 @@ import { authClient } from "@/lib/auth-client";
 import { FanPhotoItem, formatPostTime } from "@/types/fanzone-type";
 import axios from "axios";
 import { toast } from "sonner";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function GalleryPage() {
   const { data: session } = authClient.useSession();
+  const queryClient = useQueryClient();
+  const { data: photosData, isLoading } = useQuery<{ photos: FanPhotoItem[] }>({
+    queryKey: ["fan-gallery"],
+    queryFn: async () =>
+      (await axios.get<{ photos: FanPhotoItem[] }>("/api/fan/feed?type=photos"))
+        .data,
+  });
   const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
   const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
-  const [photos, setPhotos] = useState<FanPhotoItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const photos = photosData?.photos ?? [];
   const [caption, setCaption] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [commentingId, setCommentingId] = useState<string | null>(null);
   const [commentText, setCommentText] = useState("");
-
-  const loadPhotos = useCallback(async () => {
-    try {
-      const response = await axios.get<{ photos: FanPhotoItem[] }>(
-        "/api/fan/feed?type=photos"
-      );
-      setPhotos(response.data.photos);
-    } catch (error) {
-      console.error("Failed to load gallery", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    loadPhotos();
-  }, [loadPhotos]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -84,7 +74,7 @@ export default function GalleryPage() {
         "/api/fan/photo",
         formData
       );
-      setPhotos((prev) => [response.data.photo, ...prev]);
+      applyPhotoChange((prev) => [response.data.photo, ...prev]);
       setCaption("");
       setSelectedFile(null);
       setPreviewUrl(null);
@@ -100,8 +90,17 @@ export default function GalleryPage() {
     }
   };
 
+  const applyPhotoChange = (
+    updater: (photos: FanPhotoItem[]) => FanPhotoItem[]
+  ) => {
+    queryClient.setQueryData<{ photos: FanPhotoItem[] }>(
+      ["fan-gallery"],
+      (old) => (old ? { photos: updater(old.photos) } : old)
+    );
+  };
+
   const updatePhoto = (id: string, changes: Partial<FanPhotoItem>) =>
-    setPhotos((prev) =>
+    applyPhotoChange((prev) =>
       prev.map((p) => (p.id === id ? { ...p, ...changes } : p))
     );
 
@@ -230,13 +229,13 @@ export default function GalleryPage() {
               </div>
             </form>
 
-            {loading && (
+            {isLoading && (
               <p className="text-center text-sm text-muted-foreground animate-pulse py-8">
                 Loading gallery...
               </p>
             )}
 
-            {!loading && photos.length === 0 && (
+            {!isLoading && photos.length === 0 && (
               <p className="text-center text-muted-foreground py-8">
                 No photos yet. Upload the first fan shot!
               </p>

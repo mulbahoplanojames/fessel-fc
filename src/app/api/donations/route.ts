@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../prisma";
+import { emailTemplate, sendEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -47,6 +48,18 @@ export async function POST(request: NextRequest) {
         anonymous: anonymous === true,
         status: "PENDING",
       },
+    });
+
+    // Send donation confirmation email
+    const displayName = anonymous ? "Anonymous Supporter" : `${firstName} ${lastName || ""}`.trim();
+    
+    await sendEmail({
+      to: String(email),
+      subject: "Donation Confirmation - FC Fassell",
+      html: emailTemplate({
+        title: "Thank You for Your Support!",
+        message: `Dear ${displayName},\n\nThank you for your generous donation of ${currency || 'LRD'} ${numericAmount} to FC Fassell. Your support helps us develop local talent and bring joy to our fans through beautiful football.\n\nDonation Details:\nType: ${donationType || 'One-time'}\nAmount: ${currency || 'LRD'} ${numericAmount}\n${message ? `Message: ${message}` : ''}\n\nYou will receive a receipt once your donation is processed.`,
+      }),
     });
 
     return NextResponse.json(donation, { status: 201 });

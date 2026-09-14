@@ -22,12 +22,13 @@ const ENV_CHECKS = [
 ];
 
 export default async function AdminSettingsPage() {
-  const [users, matches, players, news, orders, donations, tickets] =
+  const [users, matches, players, news, products, orders, donations, tickets] =
     await Promise.all([
       prisma.user.count(),
       prisma.match.count(),
       prisma.player.count(),
       prisma.news.count(),
+      prisma.product.count(),
       prisma.order.count(),
       prisma.donation.count(),
       prisma.supportTicket.count(),
@@ -85,12 +86,13 @@ export default async function AdminSettingsPage() {
           <CardTitle>Database</CardTitle>
           <CardDescription>Record counts across the platform.</CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3">
+        <CardContent className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
           {[
             { label: "Users", value: users },
             { label: "Matches", value: matches },
             { label: "Players", value: players },
             { label: "News", value: news },
+            { label: "Products", value: products },
             { label: "Orders", value: orders },
             { label: "Donations", value: donations },
             { label: "Tickets", value: tickets },

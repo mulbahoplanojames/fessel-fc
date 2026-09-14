@@ -138,3 +138,27 @@ export async function uploadAvatarImageToCloudinary(file: File): Promise<string>
     bufferToStream(buffer).pipe(uploadStream);
   });
 }
+
+export async function uploadProductImageToCloudinary(file: File): Promise<string> {
+  const arrayBuffer = await file.arrayBuffer();
+  const buffer = Buffer.from(arrayBuffer);
+
+  return new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: "fassel-fc/products",
+        resource_type: "image",
+        transformation: [
+          { width: 800, crop: "scale" },
+          { fetch_format: "auto", quality: "auto" },
+        ],
+      },
+      (error, result) => {
+        if (error) return reject(error);
+        resolve(result?.secure_url || "");
+      }
+    );
+
+    bufferToStream(buffer).pipe(uploadStream);
+  });
+}

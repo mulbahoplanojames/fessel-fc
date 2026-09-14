@@ -8,6 +8,7 @@ import {
   LifeBuoy,
   Mail,
   Newspaper,
+  Package,
   Send,
   SettingsIcon,
   ShoppingCart,
@@ -55,6 +56,11 @@ const data = {
       title: "News",
       url: "/admin/news",
       icon: Newspaper,
+    },
+    {
+      title: "Products",
+      url: "/admin/products",
+      icon: Package,
     },
     {
       title: "Orders",

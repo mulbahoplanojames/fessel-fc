@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,8 +19,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { ProductCard } from "@/components/product-card";
 import { useCart } from "@/context/cart-context";
-import products from "@/data/products.json";
 import { Product } from "@/types/product-type";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function SingleProductClient({ product }: { product: Product }) {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -32,6 +33,16 @@ export default function SingleProductClient({ product }: { product: Product }) {
   });
 
   const { addItem } = useCart();
+
+  // Fetch related products
+  const { data: relatedProducts } = useQuery({
+    queryKey: ["related-products", product.category, product.id],
+    queryFn: async () => {
+      const response = await axios.get(`/api/products?category=${product.category}`);
+      return response.data.products.filter((p: Product) => p.id !== product.id).slice(0, 4);
+    },
+    enabled: !!product.category,
+  });
 
   if (!product) {
     return (
@@ -57,7 +68,7 @@ export default function SingleProductClient({ product }: { product: Product }) {
       id: product.id,
       name: product.name,
       price: product.price,
-      image: product.images![0],
+      image: (product.images && product.images.length > 0) ? product.images[0] : product.image,
       quantity,
       size: selectedSize,
       personalization:
@@ -94,33 +105,39 @@ export default function SingleProductClient({ product }: { product: Product }) {
         <div className="space-y-6">
           <div className="aspect-square relative overflow-hidden rounded-lg border">
             <Image
-              src={product?.images![selectedImage] || "/placeholder.svg"}
+              src={
+                (product.images && product.images.length > 0 && product.images[selectedImage])
+                  ? product.images[selectedImage]
+                  : product.image || "/placeholder.svg"
+              }
               alt={product.name}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          <div className="grid grid-cols-4 gap-2">
-            {product?.images?.map((image, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "aspect-square relative overflow-hidden rounded-lg border cursor-pointer",
-                  selectedImage === index && "ring-2 ring-primary"
-                )}
-                onClick={() => setSelectedImage(index)}
-              >
-                <Image
-                  src={image || "/placeholder.svg"}
-                  alt={`${product.name} view ${index + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 25vw, 12vw"
-                />
-              </div>
-            ))}
-          </div>
+          {product.images && product.images.length > 1 && (
+            <div className="grid grid-cols-4 gap-2">
+              {product.images.map((image, index) => (
+                <div
+                  key={index}
+                  className={cn(
+                    "aspect-square relative overflow-hidden rounded-lg border cursor-pointer",
+                    selectedImage === index && "ring-2 ring-primary"
+                  )}
+                  onClick={() => setSelectedImage(index)}
+                >
+                  <Image
+                    src={image || "/placeholder.svg"}
+                    alt={`${product.name} view ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 25vw, 12vw"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div>
@@ -320,14 +337,15 @@ export default function SingleProductClient({ product }: { product: Product }) {
       <div className="mt-20">
         <h2 className="text-2xl font-bold mb-6">You May Also Like</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {products
-            .filter(
-              (item) =>
-                item.category === product.category && item.id !== product.id
-            )
-            .map((product) => (
-              <ProductCard key={product.id} product={product as Product} />
-            ))}
+          {relatedProducts && relatedProducts.length > 0 ? (
+            relatedProducts.map((relatedProduct: Product) => (
+              <ProductCard key={relatedProduct.id} product={relatedProduct} />
+            ))
+          ) : (
+            <p className="text-muted-foreground col-span-full text-center py-8">
+              No related products found.
+            </p>
+          )}
         </div>
       </div>
     </div>

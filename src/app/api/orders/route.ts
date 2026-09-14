@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../prisma";
+import { emailTemplate, sendEmail } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -50,6 +51,20 @@ export async function POST(request: NextRequest) {
         currency: currency ? String(currency) : "USD",
         status: "PENDING",
       },
+    });
+
+    // Send order confirmation email
+    const itemsList = Array.isArray(items) 
+      ? items.map((item: any) => `${item.name || 'Item'} x${item.quantity || 1} - ${currency || 'USD'} ${item.price || 0}`).join('\n')
+      : 'Items information not available';
+    
+    await sendEmail({
+      to: String(email),
+      subject: "Order Confirmation - FC Fassell Shop",
+      html: emailTemplate({
+        title: "Order Confirmed!",
+        message: `Thank you for your order, ${customerName}! Your order #${order.id} has been received and is being processed.\n\nOrder Details:\n${itemsList}\n\nSubtotal: ${currency || 'USD'} ${Number(subtotal) || 0}\nShipping: ${currency || 'USD'} ${Number(shipping) || 0}\nTotal: ${currency || 'USD'} ${Number(total) || 0}\n\nWe'll send you another email when your order ships.`,
+      }),
     });
 
     return NextResponse.json(order, { status: 201 });

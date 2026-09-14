@@ -9,13 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Newspaper, ShoppingCart, Trophy, Users } from "lucide-react";
+import { Newspaper, Package, ShoppingCart, Trophy, Users } from "lucide-react";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 type RevenueResponse = {
   shopRevenue: number;
+  products: number;
   donations: number;
   sponsorships: number;
   openTickets: number;
@@ -43,6 +44,11 @@ const quickActions = [
     link: "/admin/news",
   },
   {
+    title: "Products",
+    icon: <Package className="h-5 w-5 mb-1" />,
+    link: "/admin/products",
+  },
+  {
     title: "Orders",
     icon: <ShoppingCart className="h-5 w-5 mb-1" />,
     link: "/admin/orders",
@@ -64,6 +70,13 @@ const QuickActions = () => {
       unit: "USD",
       color: "bg-blue-500",
       progressColor: "[&>div]:bg-blue-500",
+    },
+    {
+      title: "Products",
+      value: String(revenue?.products ?? 0),
+      unit: "",
+      color: "bg-purple-500",
+      progressColor: "[&>div]:bg-purple-500",
     },
     {
       title: "Donations",
@@ -92,6 +105,7 @@ const QuickActions = () => {
     revenue?.shopRevenue ?? 0,
     revenue?.donations ?? 0,
     revenue?.sponsorships ?? 0,
+    revenue?.products ?? 0,
     revenue?.openTickets ?? 0,
     1
   );
@@ -103,7 +117,7 @@ const QuickActions = () => {
           <CardTitle>Quick Actions</CardTitle>
           <CardDescription>Frequently used admin actions</CardDescription>
         </CardHeader>
-        <CardContent className="grid grid-cols-2 gap-4">
+        <CardContent className="grid grid-cols-3 gap-4">
           {quickActions.map((action) => (
             <Button
               asChild
@@ -137,9 +151,22 @@ const QuickActions = () => {
                 </span>
               </div>
               <Progress
-                value={Math.round(
-                  (Number(item.value.replace(/,/g, "")) / maxValue) * 100
-                )}
+                value={(() => {
+                  const numericValue = typeof item.value === 'string' 
+                    ? Number(item.value.replace(/,/g, "")) 
+                    : Number(item.value);
+                  if (item.title === "Products") {
+                    return Math.min(100, Math.round((numericValue / Math.max(revenue?.products ?? 1, 1)) * 100));
+                  }
+                  const maxForRevenue = Math.max(
+                    revenue?.shopRevenue ?? 0,
+                    revenue?.donations ?? 0,
+                    revenue?.sponsorships ?? 0,
+                    revenue?.openTickets ?? 0,
+                    1
+                  );
+                  return Math.min(100, Math.round((numericValue / maxForRevenue) * 100));
+                })()}
                 className={`h-2 bg-muted ${item.progressColor}`}
               />
             </div>

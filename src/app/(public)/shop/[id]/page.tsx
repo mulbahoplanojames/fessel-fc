@@ -1,6 +1,9 @@
-import products from "@/data/products.json";
+import { notFound } from "next/navigation";
 import SingleProductClient from "./single-product-client";
 import { Product } from "@/types/product-type";
+import { getProductById } from "@/lib/actions/products";
+import { Suspense } from "react";
+import ProductLoading from "./loading";
 
 export default async function ProductPage({
   params,
@@ -8,7 +11,20 @@ export default async function ProductPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const product = products.find((product) => product.id === id);
+  
+  try {
+    const product = await getProductById(id);
+    
+    if (!product) {
+      notFound();
+    }
 
-  return <SingleProductClient product={product as Product} />;
+    return (
+      <Suspense fallback={<ProductLoading />}>
+        <SingleProductClient product={product as Product} />
+      </Suspense>
+    );
+  } catch (error) {
+    notFound();
+  }
 }
