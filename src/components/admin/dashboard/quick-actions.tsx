@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,8 +9,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Newspaper, Ticket, Trophy, Users } from "lucide-react";
+import { Newspaper, ShoppingCart, Trophy, Users } from "lucide-react";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
+type RevenueResponse = {
+  shopRevenue: number;
+  donations: number;
+  sponsorships: number;
+  openTickets: number;
+};
+
+const fetchRevenue = async () => {
+  const { data } = await axios.get<RevenueResponse>("/api/admin/revenue");
+  return data;
+};
 
 const quickActions = [
   {
@@ -27,44 +43,59 @@ const quickActions = [
     link: "/admin/news",
   },
   {
-    title: "Tickets",
-    icon: <Ticket className="h-5 w-5 mb-1" />,
-    link: "/admin/tickets",
-  },
-];
-
-const financialOverview = [
-  {
-    title: "Ticket Sales",
-    value: "$45,000",
-    percentage: 39,
-    color: "bg-green-500",
-    progressColor: "[&>div]:bg-green-500",
-  },
-  {
-    title: "Merchandise ",
-    value: "$23,500",
-    percentage: 25,
-    color: "bg-blue-500",
-    progressColor: "[&>div]:bg-blue-500",
-  },
-  {
-    title: "Sponsorships",
-    value: "$89, 600",
-    percentage: 45,
-    color: "bg-amber-500",
-    progressColor: "[&>div]:bg-amber-500",
-  },
-  {
-    title: "Donations",
-    value: "$67,000",
-    percentage: 67,
-    color: "bg-red-500",
-    progressColor: "[&>div]:bg-red-500",
+    title: "Orders",
+    icon: <ShoppingCart className="h-5 w-5 mb-1" />,
+    link: "/admin/orders",
   },
 ];
 
 const QuickActions = () => {
+  const { data: revenue } = useQuery({
+    queryKey: ["admin-revenue"],
+    queryFn: fetchRevenue,
+  });
+
+  const financials = [
+    {
+      title: "Shop Sales",
+      value: (revenue?.shopRevenue ?? 0).toLocaleString(undefined, {
+        maximumFractionDigits: 2,
+      }),
+      unit: "USD",
+      color: "bg-blue-500",
+      progressColor: "[&>div]:bg-blue-500",
+    },
+    {
+      title: "Donations",
+      value: (revenue?.donations ?? 0).toLocaleString(),
+      unit: "LRD",
+      color: "bg-red-500",
+      progressColor: "[&>div]:bg-red-500",
+    },
+    {
+      title: "Sponsorships",
+      value: (revenue?.sponsorships ?? 0).toLocaleString(),
+      unit: "LRD",
+      color: "bg-amber-500",
+      progressColor: "[&>div]:bg-amber-500",
+    },
+    {
+      title: "Open Tickets",
+      value: String(revenue?.openTickets ?? 0),
+      unit: "",
+      color: "bg-green-500",
+      progressColor: "[&>div]:bg-green-500",
+    },
+  ];
+
+  const maxValue = Math.max(
+    revenue?.shopRevenue ?? 0,
+    revenue?.donations ?? 0,
+    revenue?.sponsorships ?? 0,
+    revenue?.openTickets ?? 0,
+    1
+  );
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
       <Card className="lg:col-span-2 h-fit">
@@ -91,28 +122,37 @@ const QuickActions = () => {
       <Card className="lg:col-span-2">
         <CardHeader>
           <CardTitle>Financial Overview</CardTitle>
-          <CardDescription>Current month revenue breakdown</CardDescription>
+          <CardDescription>Revenue recorded in the database</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {financialOverview.map((item) => (
+          {financials.map((item) => (
             <div className="space-y-2" key={item.title}>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className={`h-3 w-3 rounded-full ${item.color}`}></div>
                   <span className="text-sm">{item.title}</span>
                 </div>
-                <span className="text-sm font-medium">{item.value} RWF</span>
+                <span className="text-sm font-medium">
+                  {item.value} {item.unit}
+                </span>
               </div>
               <Progress
-                value={item.percentage}
+                value={Math.round(
+                  (Number(item.value.replace(/,/g, "")) / maxValue) * 100
+                )}
                 className={`h-2 bg-muted ${item.progressColor}`}
               />
             </div>
           ))}
 
           <div className="pt-2 flex items-center justify-between text-sm font-medium">
-            <span>Total Revenue</span>
-            <span>$150,000 RWF</span>
+            <span>Donations + Sponsorships</span>
+            <span>
+              LRD{" "}
+              {(
+                (revenue?.donations ?? 0) + (revenue?.sponsorships ?? 0)
+              ).toLocaleString()}
+            </span>
           </div>
         </CardContent>
       </Card>

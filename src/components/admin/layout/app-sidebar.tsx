@@ -3,12 +3,17 @@
 import * as React from "react";
 import {
   BarChart3,
+  HandCoins,
+  Handshake,
   LifeBuoy,
   Newspaper,
   Send,
   SettingsIcon,
+  ShoppingCart,
+  Ticket,
   Trophy,
   Users,
+  UsersRound,
 } from "lucide-react";
 
 import { NavMain } from "@/components/admin/layout/nav-main";
@@ -50,20 +55,45 @@ const data = {
       icon: Newspaper,
     },
     {
+      title: "Orders",
+      url: "/admin/orders",
+      icon: ShoppingCart,
+    },
+    {
+      title: "Tickets",
+      url: "/admin/tickets",
+      icon: Ticket,
+    },
+    {
+      title: "Donations",
+      url: "/admin/donations",
+      icon: HandCoins,
+    },
+    {
+      title: "Sponsorships",
+      url: "/admin/sponsorships",
+      icon: Handshake,
+    },
+    {
+      title: "Users",
+      url: "/admin/users",
+      icon: UsersRound,
+    },
+    {
       title: "Settings",
-      url: "#",
+      url: "/admin/settings",
       icon: SettingsIcon,
     },
   ],
   navSecondary: [
     {
       title: "Support",
-      url: "#",
+      url: "/admin/support",
       icon: LifeBuoy,
     },
     {
       title: "Feedback",
-      url: "#",
+      url: "/admin/feedback",
       icon: Send,
     },
   ],

@@ -213,11 +213,11 @@ export default function PlayerClient() {
                             <DropdownMenuContent align="end">
                               <DropdownMenuLabel>Actions</DropdownMenuLabel>
                               <DropdownMenuSeparator />
-                              <DropdownMenuItem>
-                                {/* <Link href={`/admin/players/${player.id}`} > */}
-                                <Edit className="h-4 w-4 mr-2" />
-                                Edit
-                                {/* </Link> */}
+                              <DropdownMenuItem asChild>
+                                <Link href={`/admin/players/edit/${player.id}`}>
+                                  <Edit className="h-4 w-4 mr-2" />
+                                  Edit
+                                </Link>
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onClick={() =>

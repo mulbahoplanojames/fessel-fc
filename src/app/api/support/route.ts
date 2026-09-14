@@ -3,6 +3,7 @@ import { requireUserInRequest } from "@/lib/session";
 import prisma from "../../../../prisma";
 
 const SUPPORT_CATEGORIES = [
+  "Feedback / Suggestion",
   "Tickets & Booking",
   "Shop & Orders",
   "Donations",

@@ -78,15 +78,78 @@ model Verification {
 }
 
 model SupportTicket {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId    String   @db.ObjectId
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String    @db.ObjectId
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   subject   String
   category  String
   message   String
-  status    String   @default("OPEN")
+  status    String    @default("OPEN")
+  response  String?
+  respondedAt DateTime?
 
   @@index([userId])
+  @@index([category])
+  @@index([status])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerName  String
+  email         String
+  phone         String?
+  address       String?
+  city          String?
+  items         Json
+  subtotal      Float    @default(0)
+  shipping      Float    @default(0)
+  personalization Float  @default(0)
+  total         Float    @default(0)
+  paymentMethod String
+  status        String   @default("PENDING")
+  currency      String   @default("USD")
+
+  @@index([status])
+  @@index([createdAt])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Donation {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  donationType  String
+  amount        Float
+  currency      String   @default("LRD")
+  paymentMethod String
+  firstName     String
+  lastName      String?
+  email         String
+  phone         String?
+  message       String?
+  anonymous     Boolean  @default(false)
+  status        String   @default("PENDING")
+
+  @@index([status])
+  @@index([createdAt])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SponsorshipRequest {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  company     String
+  contactName String
+  position    String?
+  email       String
+  phone       String?
+  tier        String
+  message     String?
+  status      String   @default("PENDING")
+
+  @@index([status])
+  @@index([createdAt])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

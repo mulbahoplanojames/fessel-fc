@@ -304,11 +304,11 @@ export default function MatcheClient() {
                             <DropdownMenuContent align="end">
                               <DropdownMenuLabel>Actions</DropdownMenuLabel>
                               <DropdownMenuSeparator />
-                              <DropdownMenuItem>
-                                {/* <Link href={`/admin/matches/${match.id}`}> */}
-                                <Edit className="h-4 w-4 mr-2" />
-                                Edit
-                                {/* </Link> */}
+                              <DropdownMenuItem asChild>
+                                <Link href={`/admin/matches/edit/${match.id}`}>
+                                  <Edit className="h-4 w-4 mr-2" />
+                                  Edit
+                                </Link>
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onClick={() =>
@@ -319,13 +319,11 @@ export default function MatcheClient() {
                                 Delete
                               </DropdownMenuItem>
                               {match.upcoming && (
-                                <DropdownMenuItem>
-                                  {/* <Link
-                                    href={`/admin/tickets/match/${match.id}`}
-                                  > */}
-                                  <Ticket className="h-4 w-4 mr-2" />
-                                  Manage Tickets
-                                  {/* </Link> */}
+                                <DropdownMenuItem asChild>
+                                  <Link href="/admin/tickets">
+                                    <Ticket className="h-4 w-4 mr-2" />
+                                    Manage Tickets
+                                  </Link>
                                 </DropdownMenuItem>
                               )}
                             </DropdownMenuContent>

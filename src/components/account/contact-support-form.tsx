@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 
 const CATEGORIES = [
+  "Feedback / Suggestion",
   "Tickets & Booking",
   "Shop & Orders",
   "Donations",

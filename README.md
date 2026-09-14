@@ -20,6 +20,7 @@
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
 - [Usage](#usage)
+- [Feature Status & Roadmap](#feature-status--roadmap)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -125,6 +126,10 @@ again (old NextAuth session cookies are not reused by Better Auth).
 2. Create an account or log in
 3. Explore the features and UI components
 4. Use the dark/light theme toggle in the settings
+
+## Feature Status & Roadmap
+See [ROADMAP.md](./ROADMAP.md) for a full audit of incomplete, stubbed, and
+not-yet-implemented features, organized by priority level and suggested build order.
 
 ## Contributing
 1. Fork the repository

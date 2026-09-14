@@ -17,10 +17,15 @@ import {
 } from "@/components/ui/select";
 import { useCart } from "@/context/cart-context";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import axios from "axios";
+import { toast } from "sonner";
 
 export default function CheckoutPage() {
   const router = useRouter();
   const { items, itemCount, subtotal, clearCart } = useCart();
+  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
   // Calculate shipping and total
   const shipping = subtotal >= 50 ? 0 : 5;
@@ -29,6 +34,61 @@ export default function CheckoutPage() {
     0
   );
   const total = subtotal + shipping + personalizationCost;
+
+  const fieldValue = (id: string) =>
+    (document.getElementById(id) as HTMLInputElement | null)?.value ?? "";
+
+  const handleCompleteOrder = async () => {
+    const firstName = fieldValue("firstName");
+    const lastName = fieldValue("lastName");
+    const email = fieldValue("email");
+    const phone = fieldValue("phone");
+
+    if (!firstName || !lastName || !email) {
+      toast.error("Please fill in your contact information.");
+      return;
+    }
+
+    const orderItems = items.map((item) => ({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      quantity: item.quantity,
+      size: item.size,
+      personalization: item.personalization,
+    }));
+
+    try {
+      setIsPlacingOrder(true);
+      await axios.post("/api/orders", {
+        customerName: `${firstName} ${lastName}`.trim(),
+        email,
+        phone,
+        address: fieldValue("address"),
+        city: fieldValue("city"),
+        items: orderItems,
+        subtotal,
+        shipping,
+        personalization: personalizationCost,
+        total,
+        paymentMethod,
+        currency: "USD",
+      });
+
+      toast.success("Order placed successfully", {
+        description: "We'll process your order shortly.",
+      });
+      clearCart();
+      router.push("/shop");
+    } catch (error) {
+      console.error("Error placing order:", error);
+      toast.error("We couldn't place your order. Please try again.");
+      setIsPlacingOrder(false);
+    } finally {
+      setIsPlacingOrder(false);
+    }
+  };
 
   return (
     <div className="container px-4 py-12 mx-auto">
@@ -124,7 +184,11 @@ export default function CheckoutPage() {
 
           <div className="rounded-lg border p-6">
             <h2 className="text-xl font-semibold mb-4">Payment Method</h2>
-            <RadioGroup defaultValue="card">
+            <RadioGroup
+              value={paymentMethod}
+              onValueChange={setPaymentMethod}
+              defaultValue="card"
+            >
               <div className="flex items-center space-x-2 mb-4">
                 <RadioGroupItem value="card" id="card" />
                 <Label htmlFor="card" className="flex items-center">
@@ -207,12 +271,10 @@ export default function CheckoutPage() {
 
             <Button
               className="w-full bg-[#e6da46] text-black hover:bg-[#d6ca36]"
-              onClick={() => {
-                clearCart();
-                router.push("/shop");
-              }}
+              onClick={handleCompleteOrder}
+              disabled={isPlacingOrder}
             >
-              Complete Order
+              {isPlacingOrder ? "Placing Order..." : "Complete Order"}
             </Button>
 
             <div className="mt-4 flex items-center justify-center text-sm text-muted-foreground">

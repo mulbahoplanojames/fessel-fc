@@ -12,6 +12,8 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
+import axios from "axios";
+import { toast } from "sonner";
 
 import DonateHero from "@/components/donate/donate-hero";
 import DonateImpact from "@/components/donate/donate-impact";
@@ -27,14 +29,68 @@ export default function DonatePage() {
   const [donationAmount, setDonationAmount] = useState("25000");
   const [customAmount, setCustomAmount] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("card");
+  const [sponsorTier, setSponsorTier] = useState("silver");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
-  const handleDonationSubmit = (e: React.FormEvent) => {
+  const handleDonationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+
+    try {
+      await axios.post("/api/donations", {
+        donationType,
+        amount: getActualAmount(),
+        currency: "LRD",
+        paymentMethod,
+        firstName: formData.get("firstName"),
+        lastName: formData.get("lastName"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        message: formData.get("message"),
+        anonymous: formData.get("anonymous") === "on",
+      });
+    } catch (error) {
+      console.error("Error submitting donation:", error);
+      setIsSubmitting(false);
+      toast.error("We couldn't record your donation. Please try again.");
+      return;
+    }
+
     // Simulate donation processing
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsComplete(true);
+      window.scrollTo(0, 0);
+    }, 2000);
+  };
+
+  const handleSponsorshipSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget as HTMLFormElement);
+
+    try {
+      await axios.post("/api/sponsorship", {
+        company: formData.get("companyName"),
+        contactName: formData.get("contactName"),
+        position: formData.get("position"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        tier: sponsorTier,
+        message: formData.get("message"),
+      });
+    } catch (error) {
+      console.error("Error submitting sponsorship:", error);
+      setIsSubmitting(false);
+      toast.error("We couldn't submit your request. Please try again.");
+      return;
+    }
+
+    // Simulate processing
     setTimeout(() => {
       setIsSubmitting(false);
       setIsComplete(true);
@@ -214,6 +270,7 @@ export default function DonatePage() {
                                   <Label htmlFor="first-name">First Name</Label>
                                   <Input
                                     id="first-name"
+                                    name="firstName"
                                     placeholder="Enter your first name"
                                     required
                                   />
@@ -222,6 +279,7 @@ export default function DonatePage() {
                                   <Label htmlFor="last-name">Last Name</Label>
                                   <Input
                                     id="last-name"
+                                    name="lastName"
                                     placeholder="Enter your last name"
                                     required
                                   />
@@ -232,6 +290,7 @@ export default function DonatePage() {
                                 <Label htmlFor="email">Email Address</Label>
                                 <Input
                                   id="email"
+                                  name="email"
                                   type="email"
                                   placeholder="Enter your email address"
                                   required
@@ -242,6 +301,7 @@ export default function DonatePage() {
                                 <Label htmlFor="phone">Phone Number</Label>
                                 <Input
                                   id="phone"
+                                  name="phone"
                                   placeholder="Enter your phone number"
                                 />
                               </div>
@@ -449,6 +509,7 @@ export default function DonatePage() {
                                 </Label>
                                 <Textarea
                                   id="message"
+                                  name="message"
                                   placeholder="Share why you're supporting FC Fassel"
                                   rows={3}
                                 />
@@ -458,6 +519,7 @@ export default function DonatePage() {
                                 <div className="flex items-center h-5">
                                   <input
                                     id="anonymous"
+                                    name="anonymous"
                                     type="checkbox"
                                     className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                                   />
@@ -531,7 +593,7 @@ export default function DonatePage() {
 
                         <TabsContent value="corporate">
                           <form
-                            onSubmit={handleDonationSubmit}
+                            onSubmit={handleSponsorshipSubmit}
                             className="space-y-6"
                           >
                             <div className="space-y-4">
@@ -544,6 +606,7 @@ export default function DonatePage() {
                                 </Label>
                                 <Input
                                   id="company-name"
+                                  name="companyName"
                                   placeholder="Enter your company name"
                                   required
                                 />
@@ -556,6 +619,7 @@ export default function DonatePage() {
                                   </Label>
                                   <Input
                                     id="contact-name"
+                                    name="contactName"
                                     placeholder="Enter contact person's name"
                                     required
                                   />
@@ -564,6 +628,7 @@ export default function DonatePage() {
                                   <Label htmlFor="position">Position</Label>
                                   <Input
                                     id="position"
+                                    name="position"
                                     placeholder="Enter position/title"
                                     required
                                   />
@@ -576,6 +641,7 @@ export default function DonatePage() {
                                 </Label>
                                 <Input
                                   id="company-email"
+                                  name="email"
                                   type="email"
                                   placeholder="Enter company email address"
                                   required
@@ -588,6 +654,7 @@ export default function DonatePage() {
                                 </Label>
                                 <Input
                                   id="company-phone"
+                                  name="phone"
                                   placeholder="Enter company phone number"
                                   required
                                 />
@@ -602,6 +669,8 @@ export default function DonatePage() {
                               </h3>
                               <RadioGroup
                                 defaultValue="silver"
+                                value={sponsorTier}
+                                onValueChange={setSponsorTier}
                                 className="space-y-4"
                               >
                                 <div className="flex items-center justify-between space-x-2 border p-4 rounded-lg">
@@ -710,6 +779,7 @@ export default function DonatePage() {
                                 </Label>
                                 <Textarea
                                   id="company-message"
+                                  name="message"
                                   placeholder="Share any specific requirements or questions about the sponsorship"
                                   rows={3}
                                 />

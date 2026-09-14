@@ -165,10 +165,10 @@ export default function NewsClient() {
                       <TableCell>{item.readTime}</TableCell>
                       <TableCell className="text-right">
                         <div className="flex justify-end gap-2">
-                          <Button variant="outline" size="sm" disabled>
-                            {/* <Link href={`/admin/news/edit/${item.id}`}> */}
-                            Edit
-                            {/* </Link> */}
+                          <Button variant="outline" size="sm" asChild>
+                            <Link href={`/admin/news/edit/${item.id}`}>
+                              Edit
+                            </Link>
                           </Button>
                           <Button
                             variant="ghost"
