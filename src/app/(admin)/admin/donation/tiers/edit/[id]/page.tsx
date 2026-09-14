@@ -61,7 +61,7 @@ export default async function EditTierPage({
           name: tier.name,
           description: tier.description,
           minAmount: tier.minAmount,
-          benefits: Array.isArray(tier.benefits) ? tier.benefits : [],
+          benefits: Array.isArray(tier.benefits) ? (tier.benefits as string[]) : [],
           isActive: tier.isActive,
           displayOrder: tier.displayOrder,
         }}

@@ -1,8 +1,8 @@
 import { requireAdmin } from "@/lib/session";
 import { redirect } from "next/navigation";
-import prisma from "../../../../../prisma";
 import StandingForm from "@/components/admin/league/standing-form";
 import { notFound } from "next/navigation";
+import prisma from "../../../../../../../../prisma";
 
 export default async function EditStandingPage({
   params,
@@ -82,7 +82,7 @@ export default async function EditStandingPage({
           goalsFor: standing.goalsFor,
           goalsAgainst: standing.goalsAgainst,
           points: standing.points,
-          form: Array.isArray(standing.form) ? standing.form : [],
+          form: Array.isArray(standing.form) ? (standing.form as string[]) : [],
           isActive: standing.isActive,
         }}
       />

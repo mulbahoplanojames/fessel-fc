@@ -90,7 +90,7 @@ export default function LeagueStandings() {
               </tr>
             </thead>
             <tbody>
-              {standings.map((team, index) => (
+              {standings.map((team) => (
                 <tr key={team.id} className="border-b hover:bg-muted/50">
                   <td className="py-2 px-2 font-medium">{team.position}</td>
                   <td className="py-2 px-2">{team.teamName}</td>
