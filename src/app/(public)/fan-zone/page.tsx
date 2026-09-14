@@ -14,8 +14,9 @@ import {
   FanPostItem,
 } from "@/types/fanzone-type";
 import Link from "next/link";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 type FeedResponse = {
   posts: FanPostItem[];
@@ -26,38 +27,31 @@ type FeedResponse = {
 
 export default function FanZonePage() {
   const { data: session } = authClient.useSession();
-  
+
+  const queryClient = useQueryClient();
+  const { data: feed, isLoading } = useQuery<FeedResponse>({
+    queryKey: ["fan-feed"],
+    queryFn: async () => (await axios.get<FeedResponse>("/api/fan/feed")).data,
+  });
+
+  const forumPosts = feed?.posts ?? [];
+  const galleryPhotos = feed?.photos ?? [];
+  const isMember = feed?.clientMember ?? false;
+  const members = feed?.members ?? [];
+
+  const updateFeed = (updater: (old: FeedResponse) => FeedResponse) => {
+    queryClient.setQueryData<FeedResponse>(["fan-feed"], (old) =>
+      old ? updater(old) : old
+    );
+  };
+
   const [activeTab, setActiveTab] = useState("forum");
   const [postContent, setPostContent] = useState("");
   const [photoCaption, setPhotoCaption] = useState("");
-  const [forumPosts, setForumPosts] = useState<FanPostItem[]>([]);
-  const [galleryPhotos, setGalleryPhotos] = useState<FanPhotoItem[]>([]);
-  const [isMember, setIsMember] = useState(false);
-  const [members, setMembers] = useState<FanClubMemberItem[]>([]);
-  const [loading, setLoading] = useState(true);
   const [postSubmitting, setPostSubmitting] = useState(false);
   const [photoSubmitting, setPhotoSubmitting] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-
-  const loadFeed = useCallback(async () => {
-    try {
-      const response = await axios.get<FeedResponse>("/api/fan/feed");
-      const data = response.data;
-      setForumPosts(data.posts);
-      setGalleryPhotos(data.photos);
-      setIsMember(data.clientMember);
-      setMembers(data.members);
-    } catch (error) {
-      console.error("Failed to load fan feed", error);
-    } finally {
-      setLoading(false);
-    }
-  }, [axios]);
-
-  useEffect(() => {
-    loadFeed();
-  }, [loadFeed]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -92,7 +86,7 @@ export default function FanZonePage() {
       formData.append("content", postContent.trim());
       if (selectedFile) formData.append("image", selectedFile);
       const response = await axios.post<{ post: FanPostItem }>("/api/fan/post", formData);
-      setForumPosts((prev) => [response.data.post, ...prev]);
+      updateFeed((f) => ({ ...f, posts: [response.data.post, ...f.posts] }));
       setPostContent("");
       clearFileSelection();
       toast("Success", { description: "Your post has been published!" });
@@ -123,7 +117,7 @@ export default function FanZonePage() {
       formData.append("caption", photoCaption.trim());
       formData.append("image", selectedFile);
       const response = await axios.post<{ photo: FanPhotoItem }>("/api/fan/photo", formData);
-      setGalleryPhotos((prev) => [response.data.photo, ...prev]);
+      updateFeed((f) => ({ ...f, photos: [response.data.photo, ...f.photos] }));
       setPhotoCaption("");
       clearFileSelection();
       toast("Success", { description: "Your photo has been uploaded!" });
@@ -139,10 +133,16 @@ export default function FanZonePage() {
   };
 
   const updatePost = (id: string, changes: Partial<FanPostItem>) =>
-    setForumPosts((prev) => prev.map((p) => (p.id === id ? { ...p, ...changes } : p)));
+    updateFeed((f) => ({
+      ...f,
+      posts: f.posts.map((p) => (p.id === id ? { ...p, ...changes } : p)),
+    }));
 
   const updatePhoto = (id: string, changes: Partial<FanPhotoItem>) =>
-    setGalleryPhotos((prev) => prev.map((p) => (p.id === id ? { ...p, ...changes } : p)));
+    updateFeed((f) => ({
+      ...f,
+      photos: f.photos.map((p) => (p.id === id ? { ...p, ...changes } : p)),
+    }));
 
   const handleLikePost = async (postId: string) => {
     const post = forumPosts.find((p) => p.id === postId);
@@ -296,7 +296,7 @@ export default function FanZonePage() {
             <FanEvents />
           </TabsContent>
         </Tabs>
-        {loading && (
+        {isLoading && (
           <p className="text-center text-sm text-muted-foreground animate-pulse">
             Loading fan community...
           </p>

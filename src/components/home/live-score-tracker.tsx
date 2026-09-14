@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Loader2 } from "lucide-react";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 interface LiveMatch {
   id: string;
@@ -18,6 +18,8 @@ interface LiveMatch {
   awayTeamLogo: string | null;
   minute: number;
   competition: string | null;
+  date: string;
+  time: string;
   status: "live" | "halftime" | "fulltime" | "upcoming";
   fullTime: boolean;
 }
@@ -29,29 +31,16 @@ type LiveResponse = {
 };
 
 export function LiveScoreTracker() {
-  const [liveMatches, setLiveMatches] = useState<LiveMatch[]>([]);
-  const [hasLive, setHasLive] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const { data, isLoading } = useQuery<LiveResponse>({
+    queryKey: ["live-matches"],
+    queryFn: async () => (await axios.get<LiveResponse>("/api/match/live")).data,
+    refetchInterval: 60000,
+  });
 
-  const loadMatches = useCallback(async () => {
-    try {
-      const response = await axios.get<LiveResponse>("/api/match/live");
-      setLiveMatches(response.data.matches);
-      setHasLive(response.data.isLive);
-    } catch (error) {
-      console.error("Failed to load live matches", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const liveMatches = data?.matches ?? [];
+  const hasLive = data?.isLive ?? false;
 
-  useEffect(() => {
-    loadMatches();
-    const interval = setInterval(loadMatches, 60000);
-    return () => clearInterval(interval);
-  }, [loadMatches]);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="bg-primary-clr/10 py-4">
         <div className="container px-4 mx-auto flex items-center justify-center text-muted-foreground text-sm">

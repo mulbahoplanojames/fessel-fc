@@ -12,7 +12,7 @@ import axios from "axios";
 import { toast } from "sonner";
 
 type StatusSelectProps = {
-  kind: "donation" | "sponsorship" | "order" | "ticket";
+  kind: "donation" | "sponsorship" | "order" | "ticket" | "fanclub";
   id: string;
   value: string;
   options: string[];
