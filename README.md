@@ -11,8 +11,8 @@
 ![Better Auth](https://img.shields.io/badge/Better%20Auth-000000?logo=better-auth&logoColor=white)
 ![Next-Themes](https://img.shields.io/badge/Next-Themes-000000?logo=next-themes&logoColor=white)
 
-
 ## Table of Contents
+
 - [About](#about)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -24,9 +24,11 @@
 - [License](#license)
 
 ## About
-Fessel FC is a modern football web application built for Fessel FC with Next.js and TypeScript, featuring robust authentication, MongoDB integration, and a rich UI built with Radix UI components. It's designed to provide a seamless user experience with real-time data handling and modern development practices.
+
+Fessel FC is a modern football web application built for Fessel FC with Next.js and TypeScript, featuring robust authentication, MongoDB integration, and a rich UI built with Radix UI components. It's designed to provide a seamless user experience with real-time data handling and modern development practices. The best football team in Libeira
 
 ## Features
+
 - ✅ Modern authentication with Better Auth
 - 🔒 MongoDB integration with Prisma ORM
 - 🎨 Responsive UI with Radix UI components
@@ -40,6 +42,7 @@ Fessel FC is a modern football web application built for Fessel FC with Next.js 
 - � Analytics with Vercel Analytics
 
 ## Tech Stack
+
 - Frontend:
   - Next.js 16
   - React 19
@@ -63,12 +66,14 @@ Fessel FC is a modern football web application built for Fessel FC with Next.js 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js ≥ 18
 - MongoDB (local or Atlas)
 - pnpm
 - Cloudinary account
 
 ### Installation
+
 ```bash
 # Clone the repository
 git clone https://github.com/mulbahoplanojames/fessel-fc.git
@@ -85,9 +90,11 @@ pnpm dev
 ```
 
 ### Access the Application
+
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
 ## Environment Variables
+
 Create a `.env` file in the root directory with the following variables:
 
 ```
@@ -121,16 +128,19 @@ the appropriate indexes. It is idempotent. Note: existing users must sign in
 again (old NextAuth session cookies are not reused by Better Auth).
 
 ## Usage
+
 1. Start the development server using `pnpm dev`
 2. Create an account or log in
 3. Explore the features and UI components
 4. Use the dark/light theme toggle in the settings
 
 ## Feature Status & Roadmap
+
 See [ROADMAP.md](./ROADMAP.md) for a full audit of incomplete, stubbed, and
 not-yet-implemented features, organized by priority level and suggested build order.
 
 ## Contributing
+
 1. Fork the repository
 2. Create your feature branch: `git checkout -b feature/AmazingFeature`
 3. Commit your changes: `git commit -m 'Add some AmazingFeature'`
@@ -138,9 +148,11 @@ not-yet-implemented features, organized by priority level and suggested build or
 5. Open a pull request
 
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
+
 - [Next.js](https://nextjs.org/)
 - [Radix UI](https://www.radix-ui.com/)
 - [Prisma](https://www.prisma.io/)
